@@ -1,5 +1,7 @@
 import 'package:aider/screens/Donorcreateacc.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/screens/Donorcreateacc.dart';
+import 'package:aider/screens/donorregsuccess.dart';
 
 void main() => runApp(Donorlogin());
 
@@ -103,15 +105,18 @@ class _DonorloginState extends State<Donorlogin> {
                                 borderRadius: BorderRadius.circular(20.0)),
                             //GO TO CREATE NEW ACC
                             onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => DonorCreateAcc()));
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => DonorCreateAcc(),
+                                ),
+                              );
                             },
                             child: Text(
                               'New user? Create an account.',
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 11.0,
+                                  fontSize: 12.0,
                                   color: Color(0xFF2B2D42)),
                             )),
                         FlatButton(
@@ -125,7 +130,7 @@ class _DonorloginState extends State<Donorlogin> {
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 11.0,
+                                  fontSize: 12.0,
                                   color: Color(0xFF2B2D42)),
                             )),
                       ]),
@@ -142,6 +147,11 @@ class _DonorloginState extends State<Donorlogin> {
                       color: Color(0xFF2B2D42),
                       onPressed: () {
                         print('Pressed log in');
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => DregSuccess(),
+                          ),
+                        );
                       },
                       child: Text(
                         'Log In',

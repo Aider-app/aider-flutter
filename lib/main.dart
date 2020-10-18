@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:aider/screens/receiver-login.dart';
+import 'package:aider/screens/choose_login.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -15,7 +15,7 @@ void main() {
           ),
         ),
       ),*/
-      body: Receiver_login(),
+      body: Login(),
     ),
   ));
 }
