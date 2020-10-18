@@ -50,8 +50,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0-nullsafety.3"
-<<<<<<< HEAD
-=======
   convert:
     dependency: transitive
     description:
@@ -59,7 +57,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
->>>>>>> 8e6d08adae4503c4ca499cc0faa20961823516ae
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -112,8 +109,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0-nullsafety.1"
-<<<<<<< HEAD
-=======
   path_drawing:
     dependency: transitive
     description:
@@ -135,7 +130,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.4"
->>>>>>> 8e6d08adae4503c4ca499cc0faa20961823516ae
   sky_engine:
     dependency: transitive
     description: flutter
@@ -197,10 +191,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0-nullsafety.3"
-<<<<<<< HEAD
-sdks:
-  dart: ">=2.10.0-110 <2.11.0"
-=======
   xml:
     dependency: transitive
     description:
@@ -211,4 +201,3 @@ sdks:
 sdks:
   dart: ">=2.10.0-110 <2.11.0"
   flutter: ">=1.18.0-6.0.pre <2.0.0"
->>>>>>> 8e6d08adae4503c4ca499cc0faa20961823516ae
