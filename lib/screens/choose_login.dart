@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:aider/screens/receiver-login.dart';
+import 'package:aider/screens/donorlogin.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -31,6 +32,12 @@ class _LoginState extends State<Login> {
               color: Color(0xFF2B2D42),
               onPressed: () {
                 print('pressed');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Donorlogin(),
+                  ),
+                );
               },
               child: Text(
                 'Log In as Donor',
