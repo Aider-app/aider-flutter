@@ -13,18 +13,18 @@ class _Receiver_loginState extends State<Receiver_login> {
       decoration: BoxDecoration(
         color: Color(0xFFEDF2F4),
         image: DecorationImage(
-          image: AssetImage('assets/image/bg_stripes.png'),
+          image: AssetImage('images/bg_stripes.png'),
+          fit: BoxFit.fill,
         ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          SizedBox(),
           Text(
             'Recipient',
-            style: TextStyle(
-              fontSize: 30,
-            ),
+            style: TextStyle(fontSize: 30, fontFamily: 'Montserrat'),
           ),
           Container(
             decoration: BoxDecoration(
@@ -38,6 +38,7 @@ class _Receiver_loginState extends State<Receiver_login> {
             child: TextField(
               cursorColor: Colors.black,
               decoration: InputDecoration(
+                border: InputBorder.none,
                 hintText: "Email",
               ),
             ),
@@ -55,7 +56,23 @@ class _Receiver_loginState extends State<Receiver_login> {
               obscureText: true,
               cursorColor: Colors.black,
               decoration: InputDecoration(
-                hintText: "password",
+                border: InputBorder.none,
+                hintText: "Password",
+              ),
+            ),
+          ),
+          SizedBox(),
+          FlatButton(
+            color: Color(0xFF2B2D42),
+            onPressed: () {
+              print('pressed');
+            },
+            child: Text(
+              'Log In',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: 'Montserrat',
               ),
             ),
           ),
@@ -65,18 +82,12 @@ class _Receiver_loginState extends State<Receiver_login> {
               print('pressed');
             },
             child: Text(
-              'Log In',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-          ),
-          FlatButton(
-            color: Color(0xFF2B2D42),
-            onPressed: () {
-              print('pressed');
-            },
-            child: Text(
               'Blood Donation',
-              style: TextStyle(color: Colors.white, fontSize: 20),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w100),
             ),
           ),
         ],
