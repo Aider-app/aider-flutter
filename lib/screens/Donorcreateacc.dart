@@ -9,6 +9,20 @@ class DonorCreateAcc extends StatefulWidget {
 }
 
 class _DonorCreateAccState extends State<DonorCreateAcc> {
+  //Text editing controllers and validators for verification
+  final _passcon = TextEditingController();
+  final _mailcon = TextEditingController();
+  final _confirmpasscon = TextEditingController();
+  final _phonecon = TextEditingController();
+  final _addresscon = TextEditingController();
+  final _namecon = TextEditingController();
+  bool _validatePass = false;
+  bool _validateEmail = false;
+  bool _validateConPass = false;
+  bool _validatePhone = false;
+  bool _validateAddress = false;
+  bool _validateName = false;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -53,7 +67,7 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                     SizedBox(
                       height: 40.0,
                     ),
-                    //Name
+                    //****************************************************Name****************************************
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -64,21 +78,26 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                       ),
                       padding: EdgeInsets.all(10),
                       child: TextField(
+                        //text controller
+                        controller: _namecon,
                         cursorColor: Color(0xFF2B2D42),
                         decoration: InputDecoration(
+                          border: InputBorder.none,
                           hintText: "Name",
                           hintStyle: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
                               fontSize: 15.0,
                               color: Color(0x802B2D42)),
+                          //error checking message
+                          errorText: _validateName ? 'Enter a name.' : null,
                         ),
                       ),
                     ),
                     SizedBox(
                       height: 20.0,
                     ),
-                    //Phone
+                    //***************************************Phone*************************************************
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -89,20 +108,27 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                       ),
                       padding: EdgeInsets.all(10),
                       child: TextField(
+                          //text controller
+                          controller: _phonecon,
                           cursorColor: Color(0xFF2B2D42),
                           decoration: InputDecoration(
-                            hintText: "Phone",
+                            border: InputBorder.none,
+                            hintText: "Mobile",
                             hintStyle: TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
                                 color: Color(0x802B2D42)),
+                            //error checking message
+                            errorText: _validatePhone
+                                ? 'Enter a valid mobile number.'
+                                : null,
                           )),
                     ),
                     SizedBox(
                       height: 20.0,
                     ),
-                    //Email
+                    //*****************************************Email**************************************************
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -113,21 +139,66 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                       ),
                       padding: EdgeInsets.all(10),
                       child: TextField(
+                        //controller
+                        controller: _mailcon,
                         cursorColor: Color(0xFF2B2D42),
                         decoration: InputDecoration(
+                          border: InputBorder.none,
                           hintText: "Email",
                           hintStyle: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
                               fontSize: 15.0,
                               color: Color(0x802B2D42)),
+                          //error message
+                          errorText:
+                              _validateEmail ? 'Enter a valid Email.' : null,
                         ),
                       ),
                     ),
                     SizedBox(
                       height: 20.0,
                     ),
-                    //Address
+                    //*******************************************Address***********************************************
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 40,
+                      ),
+                      padding: EdgeInsets.all(10),
+                      // to scroll down
+                      child: new SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        reverse: true,
+                        child: TextField(
+                          //controller
+                          controller: _addresscon,
+                          //for multiple lines
+                          maxLines: null,
+                          cursorColor: Color(0xFF2B2D42),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Address",
+                            hintStyle: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.0,
+                                color: Color(0x802B2D42)),
+                            //error message
+                            errorText: _validateAddress
+                                ? 'Enter a valid address.'
+                                : null,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    //*******************************************password*******************************************************************
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -138,21 +209,62 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                       ),
                       padding: EdgeInsets.all(10),
                       child: TextField(
+                        //controller
+                        controller: _passcon,
+                        obscureText: true,
                         cursorColor: Color(0xFF2B2D42),
                         decoration: InputDecoration(
-                          hintText: "Address",
+                          border: InputBorder.none,
+                          hintText: "Create password",
                           hintStyle: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
                               fontSize: 15.0,
                               color: Color(0x802B2D42)),
+                          //error message
+                          errorText: _validatePass
+                              ? 'Password should be atleast 8 characters long.'
+                              : null,
                         ),
                       ),
                     ),
                     SizedBox(
                       height: 20.0,
                     ),
-                    //Create acc button
+                    //************************************confirm password***********************************************************
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 40,
+                      ),
+                      padding: EdgeInsets.all(10),
+                      child: TextField(
+                        //controller
+                        controller: _confirmpasscon,
+                        obscureText: true,
+                        cursorColor: Color(0xFF2B2D42),
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Confirm password",
+                          hintStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15.0,
+                              color: Color(0x802B2D42)),
+                          //error message
+                          errorText: _validateConPass
+                              ? 'Passwords do not match.'
+                              : null,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    //*******************************************Create acc button*************************************************
                     ButtonTheme(
                       minWidth: 50.0,
                       height: 60.0,
@@ -161,8 +273,46 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                               borderRadius: BorderRadius.circular(20.0)),
                           color: Color(0xFF2B2D42),
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => DregSuccess()));
+                            setState(() {
+                              //validating for password
+                              if (_passcon.text.isEmpty ||
+                                  _passcon.text.length < 8) {
+                                _validatePass = true;
+                              }
+                              //validating for email
+                              if (_mailcon.text.isEmpty ||
+                                  !_mailcon.text.contains('@')) {
+                                _validateEmail = true;
+                              }
+                              //validating for confirm password
+                              if ((_confirmpasscon.text != _passcon.text) ||
+                                  _confirmpasscon.text.length < 8) {
+                                _validateConPass = true;
+                              }
+                              //validating for phone number
+                              if (_phonecon.text.length < 10 ||
+                                  _phonecon.text.isEmpty) {
+                                _validatePhone = true;
+                              }
+                              //validating for address
+                              if (_addresscon.text.isEmpty) {
+                                _validateAddress = true;
+                              }
+                              if (_namecon.text.isEmpty) {
+                                _validateName = true;
+                              }
+                              // only goes to success page if all validators are false.
+                              if (_validateAddress == false &&
+                                  _validateName == false &&
+                                  _validatePhone == false &&
+                                  _validateConPass == false &&
+                                  _validatePass == false &&
+                                  _validateEmail == false) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => DregSuccess()));
+                                return null;
+                              }
+                            });
                           },
                           child: Text(
                             'Create Account',
