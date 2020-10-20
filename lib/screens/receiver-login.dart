@@ -91,9 +91,32 @@ class _Receiver_loginState extends State<Receiver_login> {
                     fontWeight: FontWeight.w100),
               ),
             ),
+            FlatButton(
+              color: Color(0xFF2B2D42),
+              textColor: Colors.white,
+              onPressed: (){
+                createdialogbox(context);
+              },
+              child: Text(
+                "PopUp"
+              ),
+            )
           ],
         ),
       ),
     );
   }
+}
+
+createdialogbox(BuildContext context)
+{
+  return showDialog(context: context, builder: (context){
+    return AlertDialog(
+      backgroundColor: Colors.redAccent[600],
+      title : Text("Alert", style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),),
+      content: Text("The credentials you have entered already belongs to an account. Try Again",
+       style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+    )
+  );
+  });
 }
