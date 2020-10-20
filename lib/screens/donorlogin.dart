@@ -1,6 +1,6 @@
 import 'package:aider/screens/Donorcreateacc.dart';
 import 'package:flutter/material.dart';
-import 'package:aider/screens/Donorcreateacc.dart';
+
 import 'package:aider/screens/donorregsuccess.dart';
 
 void main() => runApp(Donorlogin());
@@ -40,7 +40,7 @@ class _DonorloginState extends State<Donorlogin> {
               children: <Widget>[
                 Center(
                   child: Text(
-                    'DONOR',
+                    'DONOR LOG IN',
                     style: TextStyle(
                         fontFamily: 'Montserrat',
                         fontWeight: FontWeight.bold,
