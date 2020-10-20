@@ -320,8 +320,10 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                                   _validateConPass == false &&
                                   _validatePass == false &&
                                   _validateEmail == false) {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => DregSuccess()));
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DregSuccess()));
                                 return null;
                               }
                             });
