@@ -23,11 +23,17 @@ class _LoginState extends State<Login> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Choose Login',
-              style: TextStyle(fontSize: 30, fontFamily: 'Montserrat'),
+              'CHOOSE LOG IN',
+              style: TextStyle(
+                fontSize: 30,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold,
+              ),
             ),
             SizedBox(height: 120),
             FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
               padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
               color: Color(0xFF2B2D42),
               onPressed: () {
@@ -42,13 +48,17 @@ class _LoginState extends State<Login> {
               child: Text(
                 'Log In as Donor',
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontFamily: 'Montserrat'),
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(height: 30),
             FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
               padding: EdgeInsets.fromLTRB(15.5, 20, 15.5, 20),
               color: Color(0xFF2B2D42),
               onPressed: () {
@@ -63,9 +73,11 @@ class _LoginState extends State<Login> {
               child: Text(
                 'Log In as Recipient',
                 style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontFamily: 'Montserrat'),
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SizedBox(height: 50)
