@@ -278,28 +278,40 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                               if (_passcon.text.isEmpty ||
                                   _passcon.text.length < 8) {
                                 _validatePass = true;
+                              } else {
+                                _validatePass = false;
                               }
                               //validating for email
                               if (_mailcon.text.isEmpty ||
                                   !_mailcon.text.contains('@')) {
                                 _validateEmail = true;
+                              } else {
+                                _validateEmail = false;
                               }
                               //validating for confirm password
                               if ((_confirmpasscon.text != _passcon.text) ||
                                   _confirmpasscon.text.length < 8) {
                                 _validateConPass = true;
+                              } else {
+                                _validateConPass = false;
                               }
                               //validating for phone number
                               if (_phonecon.text.length < 10 ||
                                   _phonecon.text.isEmpty) {
                                 _validatePhone = true;
+                              } else {
+                                _validatePhone = false;
                               }
                               //validating for address
                               if (_addresscon.text.isEmpty) {
                                 _validateAddress = true;
+                              } else {
+                                _validateAddress = false;
                               }
                               if (_namecon.text.isEmpty) {
                                 _validateName = true;
+                              } else {
+                                _validateName = false;
                               }
                               // only goes to success page if all validators are false.
                               if (_validateAddress == false &&
