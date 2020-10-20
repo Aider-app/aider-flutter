@@ -1,21 +1,23 @@
-import 'package:aider/screens/donorregsuccess.dart';
+import 'package:aider/screens/Recregsuccess.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(DonorCreateAcc());
+void main() => runApp(RecieverCreateAcc());
 
-class DonorCreateAcc extends StatefulWidget {
+class RecieverCreateAcc extends StatefulWidget {
   @override
-  _DonorCreateAccState createState() => _DonorCreateAccState();
+  _RecieverCreateAccState createState() => _RecieverCreateAccState();
 }
 
-class _DonorCreateAccState extends State<DonorCreateAcc> {
+class _RecieverCreateAccState extends State<RecieverCreateAcc> {
   //Text editing controllers and validators for verification
+  final _regcon = TextEditingController();
   final _passcon = TextEditingController();
   final _mailcon = TextEditingController();
   final _confirmpasscon = TextEditingController();
   final _phonecon = TextEditingController();
   final _addresscon = TextEditingController();
   final _namecon = TextEditingController();
+  bool _validateReg = false;
   bool _validatePass = false;
   bool _validateEmail = false;
   bool _validateConPass = false;
@@ -56,7 +58,7 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                   children: <Widget>[
                     Center(
                       child: Text(
-                        ' NEW DONOR',
+                        'NEW RECIPIENT',
                         style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold,
@@ -66,6 +68,38 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                     ),
                     SizedBox(
                       height: 40.0,
+                    ),
+                    //************************************************Registration num************************************************
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 40,
+                      ),
+                      padding: EdgeInsets.all(10),
+                      child: TextField(
+                        //text controller
+                        controller: _regcon,
+                        cursorColor: Color(0xFF2B2D42),
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Registration Number",
+                          hintStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15.0,
+                              color: Color(0x802B2D42)),
+                          //error checking message
+                          errorText: _validateReg
+                              ? 'Enter the registration number.'
+                              : null,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.0,
                     ),
                     //****************************************************Name****************************************
                     Container(
@@ -274,6 +308,13 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                           color: Color(0xFF2B2D42),
                           onPressed: () {
                             setState(() {
+                              //validating for registration number
+                              if (_regcon.text.isEmpty ||
+                                  _regcon.text.length < 8) {
+                                _validateReg = true;
+                              } else {
+                                _validateReg = false;
+                              }
                               //validating for password
                               if (_passcon.text.isEmpty ||
                                   _passcon.text.length < 8) {
@@ -314,7 +355,8 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                                 _validateName = false;
                               }
                               // only goes to success page if all validators are false.
-                              if (_validateAddress == false &&
+                              if (_validateReg == false &&
+                                  _validateAddress == false &&
                                   _validateName == false &&
                                   _validatePhone == false &&
                                   _validateConPass == false &&
@@ -323,7 +365,7 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                                 Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => DregSuccess()));
+                                        builder: (context) => RecregSuccess()));
                                 return null;
                               }
                             });
