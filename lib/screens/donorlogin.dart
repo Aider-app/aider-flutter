@@ -1,7 +1,8 @@
 import 'package:aider/screens/Donorcreateacc.dart';
+import 'package:aider/screens/donordash.dart';
 import 'package:flutter/material.dart';
 
-import 'package:aider/screens/donorregsuccess.dart';
+//import 'package:aider/screens/donorregsuccess.dart';
 
 void main() => runApp(Donorlogin());
 
@@ -149,7 +150,7 @@ class _DonorloginState extends State<Donorlogin> {
                         print('Pressed log in');
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => DregSuccess(),
+                            builder: (context) => Donordash(),
                           ),
                         );
                       },
