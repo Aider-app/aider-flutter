@@ -187,15 +187,13 @@ class _DonorloginState extends State<Donorlogin> {
                       )),
                 ),
                 FlatButton(
-              color: Color(0xFF2B2D42),
-              textColor: Colors.white,
-              onPressed: (){
-                createdialogbox(context);
-              },
-              child: Text(
-                "PopUp"
-              ),
-            )
+                  color: Color(0xFF2B2D42),
+                  textColor: Colors.white,
+                  onPressed: () {
+                    createdialogbox(context);
+                  },
+                  child: Text("PopUp"),
+                )
               ],
             ),
           ),
@@ -205,15 +203,19 @@ class _DonorloginState extends State<Donorlogin> {
   }
 }
 
-createdialogbox(BuildContext context)
-{
-  return showDialog(context: context, builder: (context){
-    return AlertDialog(
-      backgroundColor: Colors.redAccent[600],
-      title : Text("Alert", style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),),
-      content: Text("The credentials you have entered already belongs to an account. Try Again",
-       style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
-    )
-  );
-  });
+createdialogbox(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+            backgroundColor: Colors.redAccent[600],
+            title: Text(
+              "Alert",
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ),
+            content: Text(
+              "The username and password does not match. Try again.",
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ));
+      });
 }

@@ -1,5 +1,6 @@
 //import 'package:aider/screens/Donorcreateacc.dart';
 
+import 'package:aider/screens/add_donation.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(Donordash());
@@ -110,11 +111,11 @@ class _DonordashState extends State<Donordash> {
                               color: Color(0xFF2B2D42),
                               //GO TO ADD A NEW DONATION
                               onPressed: () {
-                                //   Navigator.of(context).push(
-                                //    MaterialPageRoute(
-                                //       builder: (context) => DonorCreateAcc(),
-                                //   ),
-                                //    );
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => MakeDonation(),
+                                  ),
+                                );
                               },
                               padding: EdgeInsets.all(25.0),
                               child: Icon(
