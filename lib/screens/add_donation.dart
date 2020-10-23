@@ -133,6 +133,7 @@ class _MakeDonationState extends State<MakeDonation> {
                   ],
                 ), // Select Type ends here
                 SizedBox(height: 50),
+                // new Divider(),
                 Row(
                   //Row contains Description and TextField
                   mainAxisAlignment: MainAxisAlignment.center,

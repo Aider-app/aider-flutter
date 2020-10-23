@@ -1,7 +1,10 @@
 import 'package:aider/screens/Donorcreateacc.dart';
 import 'package:aider/screens/donordash.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/networking/auth.dart';
+import 'dart:convert';
 
+String loggeduser = "NA";
 //import 'package:aider/screens/donorregsuccess.dart';
 
 void main() => runApp(Donorlogin());
@@ -12,6 +15,8 @@ class Donorlogin extends StatefulWidget {
 }
 
 class _DonorloginState extends State<Donorlogin> {
+  final _passcon = TextEditingController();
+  final _mailcon = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -62,6 +67,7 @@ class _DonorloginState extends State<Donorlogin> {
                   ),
                   padding: EdgeInsets.all(10),
                   child: TextField(
+                    controller: _mailcon,
                     cursorColor: Color(0xFF2B2D42),
                     decoration: InputDecoration(
                       hintText: "Email",
@@ -86,6 +92,7 @@ class _DonorloginState extends State<Donorlogin> {
                   ),
                   padding: EdgeInsets.all(10),
                   child: TextField(
+                      controller: _passcon,
                       obscureText: true,
                       cursorColor: Color(0xFF2B2D42),
                       decoration: InputDecoration(
@@ -146,13 +153,22 @@ class _DonorloginState extends State<Donorlogin> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
                       color: Color(0xFF2B2D42),
-                      onPressed: () {
-                        print('Pressed log in');
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => Donordash(),
-                          ),
-                        );
+                      onPressed: () async {
+                        print(_mailcon.text);
+                        Map<String, dynamic> response =
+                            await login(_mailcon.text, _passcon.text);
+                        print(response);
+                        if (response["status"] == 200) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Donordash(
+                                username: response["name"],
+                              ),
+                            ),
+                          );
+                        } else {
+                          createdialogbox(context);
+                        }
                       },
                       child: Text(
                         'Log In',
@@ -186,14 +202,6 @@ class _DonorloginState extends State<Donorlogin> {
                         ),
                       )),
                 ),
-                FlatButton(
-                  color: Color(0xFF2B2D42),
-                  textColor: Colors.white,
-                  onPressed: () {
-                    createdialogbox(context);
-                  },
-                  child: Text("PopUp"),
-                )
               ],
             ),
           ),
@@ -214,7 +222,7 @@ createdialogbox(BuildContext context) {
               style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
             ),
             content: Text(
-              "The username and password does not match. Try again.",
+              "The credentials you have entered already belongs to an account. Try Again",
               style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
             ));
       });

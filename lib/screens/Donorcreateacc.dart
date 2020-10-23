@@ -1,8 +1,6 @@
 import 'package:aider/screens/donorregsuccess.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(DonorCreateAcc());
-
 class DonorCreateAcc extends StatefulWidget {
   @override
   _DonorCreateAccState createState() => _DonorCreateAccState();
@@ -320,6 +318,7 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                                   _validateConPass == false &&
                                   _validatePass == false &&
                                   _validateEmail == false) {
+                                print(_namecon.text.characters);
                                 Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(

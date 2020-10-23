@@ -16,7 +16,7 @@ class _Receiver_loginState extends State<Receiver_login> {
           color: Color(0xFFEDF2F4),
           image: DecorationImage(
             image: AssetImage('images/bg_stripes.png'),
-            //fit: BoxFit.fill,
+            fit: BoxFit.fill,
           ),
         ),
         child: Column(

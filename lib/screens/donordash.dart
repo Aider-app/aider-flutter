@@ -3,9 +3,9 @@
 import 'package:aider/screens/add_donation.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(Donordash());
-
 class Donordash extends StatefulWidget {
+  String username;
+  Donordash({this.username});
   @override
   _DonordashState createState() => _DonordashState();
 }
@@ -70,7 +70,7 @@ class _DonordashState extends State<Donordash> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            'Name',
+                            widget.username,
                             style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
