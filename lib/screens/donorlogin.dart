@@ -124,7 +124,7 @@ class _DonorloginState extends State<Donorlogin> {
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 12.0,
+                                  fontSize: 12.0
                                   color: Color(0xFF2B2D42)),
                             )),
                         FlatButton(
