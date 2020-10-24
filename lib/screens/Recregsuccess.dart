@@ -86,7 +86,7 @@ class _RecregSuccessState extends State<RecregSuccess> {
                           onPressed: () {
                             print('Pressed Log In...Return to login page.');
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Receiver_login()));
+                                builder: (context) => Receiverlogin()));
                           },
                           child: Text(
                             'Go to Log In',

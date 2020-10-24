@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:aider/screens/Recievercreateacc.dart';
 
-class Receiver_login extends StatefulWidget {
+class Receiverlogin extends StatefulWidget {
   @override
-  _Receiver_loginState createState() => _Receiver_loginState();
+  _ReceiverloginState createState() => _ReceiverloginState();
 }
 
-class _Receiver_loginState extends State<Receiver_login> {
+class _ReceiverloginState extends State<Receiverlogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,24 +88,25 @@ class _Receiver_loginState extends State<Receiver_login> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
-                        //GO TO CREATE NEW ACC
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => RecieverCreateAcc(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'New user? Create an account.',
-                          style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12.0,
-                              color: Color(0xFF2B2D42)),
-                        )),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0)),
+                      //GO TO CREATE NEW ACC
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => RecieverCreateAcc(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'New user? Create an account.',
+                        style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12.0,
+                            color: Color(0xFF2B2D42)),
+                      ),
+                    ),
                     FlatButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
@@ -170,12 +171,10 @@ class _Receiver_loginState extends State<Receiver_login> {
             FlatButton(
               color: Color(0xFF2B2D42),
               textColor: Colors.white,
-              onPressed: (){
+              onPressed: () {
                 createdialogbox(context);
               },
-              child: Text(
-                "PopUp"
-              ),
+              child: Text("PopUp"),
             )
           ],
         ),
@@ -184,15 +183,19 @@ class _Receiver_loginState extends State<Receiver_login> {
   }
 }
 
-createdialogbox(BuildContext context)
-{
-  return showDialog(context: context, builder: (context){
-    return AlertDialog(
-      backgroundColor: Colors.redAccent[600],
-      title : Text("Alert", style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),),
-      content: Text("The credentials you have entered already belongs to an account. Try Again",
-       style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
-    )
-  );
-  });
+createdialogbox(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+            backgroundColor: Colors.redAccent[600],
+            title: Text(
+              "Alert",
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ),
+            content: Text(
+              "The credentials you have entered already belongs to an account. Try Again",
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ));
+      });
 }
