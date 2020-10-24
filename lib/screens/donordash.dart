@@ -1,6 +1,7 @@
 //import 'package:aider/screens/Donorcreateacc.dart';
 
 import 'package:aider/screens/add_donation.dart';
+import 'package:aider/screens/prev_donations.dart';
 import 'package:flutter/material.dart';
 
 class Donordash extends StatefulWidget {
@@ -132,6 +133,11 @@ class _DonordashState extends State<Donordash> {
                               //GO TO PREVIOUS DONATIONS
                               onPressed: () {
                                 print('Pressed previous donations');
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => PrevDonation(),
+                                  ),
+                                );
                               },
                               padding: EdgeInsets.all(25.0),
 

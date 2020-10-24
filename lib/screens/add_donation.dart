@@ -12,6 +12,10 @@ class MakeDonation extends StatefulWidget {
 }
 
 class _MakeDonationState extends State<MakeDonation> {
+  final _description = TextEditingController();
+  bool _validatedescription = false;
+  final _quantity = TextEditingController();
+  bool _validatequantity = false;
   int _value = 1;
   @override
   Widget build(BuildContext context) {
@@ -159,6 +163,7 @@ class _MakeDonationState extends State<MakeDonation> {
                         ),
                         padding: EdgeInsets.all(10),
                         child: TextField(
+                          controller: _description,
                           maxLines: null,
                           cursorColor: Color(0xFF2B2D42),
                           decoration: InputDecoration(
@@ -168,6 +173,9 @@ class _MakeDonationState extends State<MakeDonation> {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
                                 color: Color(0x802B2D42)),
+                            errorText: _validatedescription
+                                ? 'Describe the item.'
+                                : null,
                           ),
                         ),
                       ),
@@ -201,6 +209,7 @@ class _MakeDonationState extends State<MakeDonation> {
                         ),
                         padding: EdgeInsets.all(10),
                         child: TextField(
+                          controller: _quantity,
                           maxLines: null,
                           cursorColor: Color(0xFF2B2D42),
                           decoration: InputDecoration(
@@ -210,6 +219,9 @@ class _MakeDonationState extends State<MakeDonation> {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
                                 color: Color(0x802B2D42)),
+                            errorText: _validatedescription
+                                ? 'Enter the quantity.'
+                                : null,
                           ),
                         ),
                       ),
@@ -259,11 +271,24 @@ class _MakeDonationState extends State<MakeDonation> {
                           borderRadius: BorderRadius.circular(20.0)),
                       color: Color(0xFF2B2D42),
                       onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => Recipient_List(),
-                          ),
-                        );
+                        if (_description.text.isEmpty) {
+                          _validatedescription = true;
+                        } else {
+                          _validatedescription = false;
+                        }
+                        if (_quantity.text.isEmpty) {
+                          _validatequantity = true;
+                        } else {
+                          _validatequantity = false;
+                        }
+                        if (_validatedescription == false &&
+                            _validatequantity == false) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => RecipientList(),
+                            ),
+                          );
+                        }
                       },
                       child: Text(
                         'Submit',

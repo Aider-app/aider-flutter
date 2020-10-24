@@ -1,12 +1,12 @@
 import 'package:aider/screens/donordash.dart';
 import 'package:flutter/material.dart';
 
-class Recipient_List extends StatefulWidget {
+class RecipientList extends StatefulWidget {
   @override
-  _Recipient_ListState createState() => _Recipient_ListState();
+  _RecipientListState createState() => _RecipientListState();
 }
 
-class _Recipient_ListState extends State<Recipient_List> {
+class _RecipientListState extends State<RecipientList> {
   int val = 1;
   @override
   Widget build(BuildContext context) {
