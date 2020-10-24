@@ -1,6 +1,8 @@
 import 'package:aider/screens/donordash.dart';
+import 'package:aider/screens/gmap.dart';
 import 'package:aider/screens/rec_list.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
   runApp(MaterialApp(home: MakeDonation()));
@@ -254,6 +256,11 @@ class _MakeDonationState extends State<MakeDonation> {
                               color: Color(0xFF2B2D42),
                               onPressed: () {
                                 print('Pressed Location');
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => gmap(),
+                                  ),
+                                );
                               },
                               child: Icon(
                                 Icons.add_location_alt_rounded,
