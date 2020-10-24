@@ -2,7 +2,6 @@ import 'package:aider/screens/Donorcreateacc.dart';
 import 'package:aider/screens/donordash.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/networking/auth.dart';
-import 'dart:convert';
 
 String loggeduser = "NA";
 //import 'package:aider/screens/donorregsuccess.dart';
@@ -159,11 +158,10 @@ class _DonorloginState extends State<Donorlogin> {
                             await login(_mailcon.text, _passcon.text);
                         print(response);
                         if (response["status"] == 200) {
-                          Navigator.of(context).push(
+                          loggeduser = response["name"];
+                          Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (context) => Donordash(
-                                username: response["name"],
-                              ),
+                              builder: (context) => Donordash(),
                             ),
                           );
                         } else if (response["status"] == 403) {

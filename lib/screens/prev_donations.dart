@@ -39,11 +39,7 @@ class _PrevDonationState extends State<PrevDonation> {
             backgroundColor: Color(0xFF2B2D42),
             child: Icon(Icons.home_outlined),
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => Donordash(),
-                ),
-              );
+              Navigator.of(context).pop();
             },
           ),
           floatingActionButtonLocation:

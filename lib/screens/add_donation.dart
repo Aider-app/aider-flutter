@@ -41,11 +41,7 @@ class _MakeDonationState extends State<MakeDonation> {
           backgroundColor: Color(0xFF2B2D42),
           child: Icon(Icons.home_outlined),
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => Donordash(),
-              ),
-            );
+            Navigator.of(context).pop();
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -212,6 +208,7 @@ class _MakeDonationState extends State<MakeDonation> {
                           controller: _quantity,
                           maxLines: null,
                           cursorColor: Color(0xFF2B2D42),
+                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             hintText: "Quantity",
                             hintStyle: TextStyle(

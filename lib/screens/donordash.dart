@@ -3,10 +3,9 @@
 import 'package:aider/screens/add_donation.dart';
 import 'package:aider/screens/prev_donations.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/screens/donorlogin.dart';
 
 class Donordash extends StatefulWidget {
-  String username;
-  Donordash({this.username});
   @override
   _DonordashState createState() => _DonordashState();
 }
@@ -71,7 +70,7 @@ class _DonordashState extends State<Donordash> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            widget.username,
+                            loggeduser,
                             style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
