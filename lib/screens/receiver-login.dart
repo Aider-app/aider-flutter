@@ -1,3 +1,4 @@
+import 'package:aider/screens/recieverdash.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/Recievercreateacc.dart';
 
@@ -134,7 +135,12 @@ class _ReceiverloginState extends State<Receiverlogin> {
                   borderRadius: BorderRadius.circular(20.0)),
               color: Color(0xFF2B2D42),
               onPressed: () {
-                print('pressed');
+                print('pressed log in');
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Recieverdash(),
+                  ),
+                );
               },
               child: Text(
                 'Log In',

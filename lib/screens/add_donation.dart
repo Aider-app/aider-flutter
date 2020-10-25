@@ -2,7 +2,7 @@ import 'package:aider/screens/donordash.dart';
 import 'package:aider/screens/gmap.dart';
 import 'package:aider/screens/rec_list.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
   runApp(MaterialApp(home: MakeDonation()));
