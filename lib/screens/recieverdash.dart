@@ -1,3 +1,6 @@
+import 'package:aider/screens/add_donation.dart';
+import 'package:aider/screens/add_request.dart';
+import 'package:aider/screens/prev_requests.dart';
 import 'package:flutter/material.dart';
 
 class Recieverdash extends StatefulWidget {
@@ -107,7 +110,11 @@ class _RecieverdashState extends State<Recieverdash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO create request
                                 onPressed: () {
-                                  //pressed create request
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => MakeRequest(),
+                                    ),
+                                  );
                                 },
                                 padding: EdgeInsets.all(25.0),
                                 child: Icon(
@@ -123,7 +130,11 @@ class _RecieverdashState extends State<Recieverdash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO PREVIOUS requests
                                 onPressed: () {
-                                  print('Pressed previous requests');
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => PrevRequests(),
+                                    ),
+                                  );
                                 },
                                 padding: EdgeInsets.all(25.0),
 

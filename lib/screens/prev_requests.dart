@@ -1,13 +1,13 @@
-import 'package:aider/screens/donordash.dart';
+import 'package:aider/screens/recieverdash.dart';
 //import 'package:aider/screens/donorlogin.dart';
 import 'package:flutter/material.dart';
 
-class PrevDonation extends StatefulWidget {
+class PrevRequests extends StatefulWidget {
   @override
-  _PrevDonationState createState() => _PrevDonationState();
+  _PrevRequestsState createState() => _PrevRequestsState();
 }
 
-class _PrevDonationState extends State<PrevDonation> {
+class _PrevRequestsState extends State<PrevRequests> {
   int val = 1;
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class _PrevDonationState extends State<PrevDonation> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => Donordash(),
+                  builder: (context) => Recieverdash(),
                 ),
               );
             },
@@ -67,7 +67,7 @@ class _PrevDonationState extends State<PrevDonation> {
                         height: 80,
                         child: Center(
                           child: Text(
-                            "PREVIOUS DONATIONS",
+                            "Previous Requests",
                             style: TextStyle(
                                 fontSize: 30.0,
                                 fontFamily: "Montserrat",
@@ -81,29 +81,29 @@ class _PrevDonationState extends State<PrevDonation> {
                       child: Column(
                         children: [
                           SizedBox(height: 20.0),
-                          predon(context, 1),
+                          prereq(context, 1),
                           SizedBox(height: 20.0),
-                          predon(context, 2),
+                          prereq(context, 2),
                           SizedBox(height: 20.0),
-                          predon(context, 3),
+                          prereq(context, 3),
                           SizedBox(height: 20.0),
-                          predon(context, 4),
+                          prereq(context, 4),
                           SizedBox(height: 20.0),
-                          predon(context, 5),
+                          prereq(context, 5),
                           SizedBox(height: 20.0),
-                          predon(context, 6),
+                          prereq(context, 6),
                           SizedBox(height: 20.0),
-                          predon(context, 7),
+                          prereq(context, 7),
                           SizedBox(height: 20.0),
-                          predon(context, 8),
+                          prereq(context, 8),
                           SizedBox(height: 20.0),
-                          predon(context, 9),
+                          prereq(context, 9),
                           SizedBox(height: 20.0),
-                          predon(context, 10),
+                          prereq(context, 10),
                           SizedBox(height: 20.0),
-                          predon(context, 11),
+                          prereq(context, 11),
                           SizedBox(height: 20.0),
-                          predon(context, 12),
+                          prereq(context, 12),
                           SizedBox(height: 20.0),
                         ],
                       ),
@@ -116,7 +116,7 @@ class _PrevDonationState extends State<PrevDonation> {
 }
 
 //function for each row
-Widget predon(BuildContext context, val) {
+Widget prereq(BuildContext context, val) {
   return Container(
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -126,7 +126,7 @@ Widget predon(BuildContext context, val) {
           width: 50.0,
         ),
         Text(
-          'Donation #$val',
+          'Request #$val',
           style: TextStyle(
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
@@ -161,7 +161,7 @@ Widget predon(BuildContext context, val) {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Recipient name: ",
+                          "Donor name: ",
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
@@ -177,7 +177,7 @@ Widget predon(BuildContext context, val) {
                               color: Color(0xFF2B2D42)),
                         ),
                         Text(
-                          "Donated items: ",
+                          "Recieved items: ",
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
