@@ -75,25 +75,23 @@ class _DonorDetailsState extends State<DonorDetails> {
                           fontFamily: "Montserrat",
                           fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(width: 200.0), 
+                    SizedBox(
+                        width:
+                            200.0), //sized box might have to remove while actual name is displayed
                     Container(
                       width: 50.0,
                       height: 50.0,
                       child: OutlineButton(
-                        borderSide: BorderSide.none,
-                        shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10.0)),
-                          onPressed: (){
+                          borderSide: BorderSide.none,
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(10.0)),
+                          onPressed: () {
                             print("Pressed Name Edit");
                           },
-                           child: Icon(
-                             Icons.create_rounded,
-                             color: Colors.black,
-                             size: 20.0
-                           )
-                        ),
+                          child: Icon(Icons.create_rounded,
+                              color: Colors.black, size: 20.0)),
                     ),
                     SizedBox(width: 16.7)
-                    
                   ],
                 ),
                 SizedBox(height: 15),
@@ -109,7 +107,9 @@ class _DonorDetailsState extends State<DonorDetails> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(width: 264.0), 
+                    SizedBox(
+                        width:
+                            264.0), //sized box might have to remove while actual name is displayed
                   ],
                 ),
                 SizedBox(height: 15.0),
@@ -125,14 +125,17 @@ class _DonorDetailsState extends State<DonorDetails> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                   SizedBox(width: 195.0), 
+                    SizedBox(
+                        width:
+                            195.0), //sized box might have to remove while actual name is displayed
                     Container(
                       width: 50.0,
                       height: 50.0,
                       child: OutlineButton(
                           borderSide: BorderSide.none,
-                          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10.0)),
-                          onPressed: (){
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(10.0)),
+                          onPressed: () {
                             print("Pressed Phone Edit");
                           },
                           child: Center(
@@ -141,14 +144,12 @@ class _DonorDetailsState extends State<DonorDetails> {
                               color: Colors.black,
                               size: 20.0,
                             ),
-                          )
-                        ),
+                          )),
                     ),
                     SizedBox(width: 16.7)
-                    
                   ],
                 ),
-                SizedBox(height: 15.0),
+                SizedBox(height: 12.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -161,14 +162,15 @@ class _DonorDetailsState extends State<DonorDetails> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(width: 202.0), 
+                    SizedBox(width: 202.0),
                     Container(
                       width: 50.0,
                       height: 50.0,
                       child: OutlineButton(
                           borderSide: BorderSide.none,
-                          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10.0)),
-                          onPressed: (){
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(10.0)),
+                          onPressed: () {
                             print("Pressed Phone Edit");
                           },
                           child: Center(
@@ -177,15 +179,13 @@ class _DonorDetailsState extends State<DonorDetails> {
                               color: Colors.black,
                               size: 20.0,
                             ),
-                          )
-                        ),
+                          )),
                     ),
                     SizedBox(width: 16.7)
-                    
                   ],
                 ),
                 SizedBox(height: 60.0),
-                ],
+              ],
             )));
   }
 }

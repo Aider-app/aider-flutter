@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:aider/screens/receiver-login.dart';
 import 'package:aider/screens/donorlogin.dart';
+import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
+class chooseSection extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _chooseSectionState createState() => _chooseSectionState();
 }
 
-class _LoginState extends State<Login> {
+class _chooseSectionState extends State<chooseSection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +22,7 @@ class _LoginState extends State<Login> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'CHOOSE LOG IN',
+              'CHOOSE SECTION',
               style: TextStyle(
                 fontSize: 30,
                 fontFamily: 'Montserrat',
@@ -40,13 +39,11 @@ class _LoginState extends State<Login> {
                 print('pressed');
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => Donorlogin(),
-                  ),
+                  MaterialPageRoute(builder: (context) => Donorlogin()),
                 );
               },
               child: Text(
-                'Log In as Donor',
+                'Resource donation',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -63,15 +60,9 @@ class _LoginState extends State<Login> {
               color: Color(0xFF2B2D42),
               onPressed: () {
                 print('pressed');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Receiverlogin(),
-                  ),
-                );
               },
               child: Text(
-                'Log In as Recipient',
+                'Blood donation',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
