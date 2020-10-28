@@ -1,19 +1,17 @@
-import 'package:aider/screens/donordash.dart';
-import 'package:aider/screens/gmap.dart';
-import 'package:aider/screens/rec_list.dart';
 import 'package:flutter/material.dart';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:aider/screens/gmap.dart';
 
 void main() {
-  runApp(MaterialApp(home: MakeDonation()));
+  runApp(MaterialApp(home: MakeRequest()));
 }
 
-class MakeDonation extends StatefulWidget {
+class MakeRequest extends StatefulWidget {
   @override
-  _MakeDonationState createState() => _MakeDonationState();
+  _MakeRequestState createState() => _MakeRequestState();
 }
 
-class _MakeDonationState extends State<MakeDonation> {
+class _MakeRequestState extends State<MakeRequest> {
   final _description = TextEditingController();
   bool _validatedescription = false;
   final _quantity = TextEditingController();
@@ -43,7 +41,11 @@ class _MakeDonationState extends State<MakeDonation> {
           backgroundColor: Color(0xFF2B2D42),
           child: Icon(Icons.home_outlined),
           onPressed: () {
-            Navigator.of(context).pop();
+            // Navigator.of(context).push(
+            //   MaterialPageRoute(
+            //     builder: (context) => Donordash(),
+            //   ),
+            // );
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -60,7 +62,7 @@ class _MakeDonationState extends State<MakeDonation> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Make a Donation",
+                  "CREATE NEW REQUEST",
                   style: TextStyle(
                       fontSize: 30.0,
                       fontFamily: "Montserrat",
@@ -210,7 +212,6 @@ class _MakeDonationState extends State<MakeDonation> {
                           controller: _quantity,
                           maxLines: null,
                           cursorColor: Color(0xFF2B2D42),
-                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             hintText: "Quantity",
                             hintStyle: TextStyle(
@@ -287,11 +288,11 @@ class _MakeDonationState extends State<MakeDonation> {
                         }
                         if (_validatedescription == false &&
                             _validatequantity == false) {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => RecipientList(),
-                            ),
-                          );
+                          // Navigator.of(context).push(
+                          //   MaterialPageRoute(
+                          //     builder: (context) => RecipientList(),
+                          //   ),
+                          // );
                         }
                       },
                       child: Text(
