@@ -1,4 +1,3 @@
-import 'package:aider/screens/add_donation.dart';
 import 'package:aider/screens/add_request.dart';
 import 'package:aider/screens/prev_requests.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +49,7 @@ class _RecieverdashState extends State<Recieverdash> {
                     child: Column(
                       children: <Widget>[
                         SizedBox(
-                          height: 70.0,
+                          height: 30.0,
                         ),
                         Center(
                           child: Text(
@@ -58,18 +57,32 @@ class _RecieverdashState extends State<Recieverdash> {
                             style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
-                                fontSize: 50.0,
+                                fontSize: 60.0,
                                 color: Color(0xFFFFFFFF)),
                           ),
                         ),
                         SizedBox(
-                          height: 40.0,
+                          height: 20,
+                        ),
+                        Text(
+                          'Name',
+                          style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
+                              color: Color(0xFFFFFFFF)),
+                        ),
+                        SizedBox(
+                          height: 20.0,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                            SizedBox(
+                              width: 20.0,
+                            ),
                             Text(
-                              'Name',
+                              'Id',
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
@@ -77,16 +90,28 @@ class _RecieverdashState extends State<Recieverdash> {
                                   color: Color(0xFFFFFFFF)),
                             ),
                             SizedBox(
-                              width: 100.0,
+                              width: 40.0,
                             ),
-                            Text(
-                              'ID',
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
-                                  color: Color(0xFFFFFFFF)),
-                            )
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.white),
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              alignment: Alignment.topRight,
+                              child: FlatButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                    'Logout',
+                                    style: TextStyle(
+                                      color: Colors.redAccent,
+                                      fontFamily: 'Montserrat',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20.0,
+                                    ),
+                                  )),
+                            ),
                           ],
                         )
                       ],
@@ -223,26 +248,26 @@ class _RecieverdashState extends State<Recieverdash> {
                     height: 40.0,
                   ),
                   //*******************************blood donation******************************
-                  ButtonTheme(
-                    minWidth: 50.0,
-                    height: 60.0,
-                    child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
-                        color: Color(0xFF2B2D42),
-                        onPressed: () {
-                          print('Pressed blood donation');
-                        },
-                        child: Text(
-                          'Blood Donation',
-                          style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
-                            color: Colors.white,
-                          ),
-                        )),
-                  ),
+                  // ButtonTheme(
+                  //   minWidth: 50.0,
+                  //   height: 60.0,
+                  //   child: FlatButton(
+                  //       shape: RoundedRectangleBorder(
+                  //           borderRadius: BorderRadius.circular(20.0)),
+                  //       color: Color(0xFF2B2D42),
+                  //       onPressed: () {
+                  //         print('Pressed blood donation');
+                  //       },
+                  //       child: Text(
+                  //         'Blood Donation',
+                  //         style: TextStyle(
+                  //           fontFamily: 'Montserrat',
+                  //           fontWeight: FontWeight.bold,
+                  //           fontSize: 20.0,
+                  //           color: Colors.white,
+                  //         ),
+                  //       )),
+                  // ),
                 ],
               ),
             ),

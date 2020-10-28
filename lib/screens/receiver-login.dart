@@ -155,25 +155,25 @@ class _ReceiverloginState extends State<Receiverlogin> {
             SizedBox(
               height: 30.0,
             ),
-            FlatButton(
-              minWidth: 50.0,
-              height: 60.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)),
-              color: Color(0xFF2B2D42),
-              onPressed: () {
-                print('pressed');
-              },
-              child: Text(
-                'Blood Donation',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            // FlatButton(
+            //   minWidth: 50.0,
+            //   height: 60.0,
+            //   shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.circular(20.0)),
+            //   color: Color(0xFF2B2D42),
+            //   onPressed: () {
+            //     print('pressed');
+            //   },
+            //   child: Text(
+            //     'Blood Donation',
+            //     style: TextStyle(
+            //       color: Colors.white,
+            //       fontSize: 20,
+            //       fontFamily: 'Montserrat',
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
             FlatButton(
               color: Color(0xFF2B2D42),
               textColor: Colors.white,
