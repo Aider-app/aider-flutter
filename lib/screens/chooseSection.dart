@@ -1,15 +1,19 @@
 import 'package:aider/screens/donorlogin.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:aider/screens/bloodlogin.dart';
 
-class chooseSection extends StatefulWidget {
+class ChooseSection extends StatefulWidget {
   @override
-  _chooseSectionState createState() => _chooseSectionState();
+  _ChooseSectionState createState() => _ChooseSectionState();
 }
 
-class _chooseSectionState extends State<chooseSection> {
+class _ChooseSectionState extends State<ChooseSection> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(

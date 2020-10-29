@@ -1,4 +1,3 @@
-import 'package:aider/screens/donordash.dart';
 import 'package:aider/screens/gmap.dart';
 import 'package:aider/screens/rec_list.dart';
 import 'package:flutter/material.dart';
@@ -43,11 +42,7 @@ class _MakeDonationState extends State<MakeDonation> {
           backgroundColor: Color(0xFF2B2D42),
           child: Icon(Icons.home_outlined),
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => Donordash(),
-              ),
-            );
+            Navigator.of(context).pop();
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -214,6 +209,7 @@ class _MakeDonationState extends State<MakeDonation> {
                           controller: _quantity,
                           maxLines: null,
                           cursorColor: Color(0xFF2B2D42),
+                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             hintText: "Quantity",
                             hintStyle: TextStyle(
@@ -258,7 +254,7 @@ class _MakeDonationState extends State<MakeDonation> {
                                 print('Pressed Location');
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => gmap(),
+                                    builder: (context) => Gmap(),
                                   ),
                                 );
                               },
