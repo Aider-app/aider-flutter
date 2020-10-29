@@ -161,7 +161,7 @@ class _DonorloginState extends State<Donorlogin> {
                             await login(_mailcon.text, _passcon.text);
                         print(response);
                         if (response["status"] == 200) {
-                          Navigator.of(context).push(
+                          Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                               builder: (context) => Donordash(
                                 username: response["name"],

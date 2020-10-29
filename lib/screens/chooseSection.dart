@@ -1,5 +1,6 @@
 import 'package:aider/screens/donorlogin.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/screens/bloodlogin.dart';
 
 class chooseSection extends StatefulWidget {
   @override
@@ -43,7 +44,7 @@ class _chooseSectionState extends State<chooseSection> {
                 );
               },
               child: Text(
-                'Resource donation',
+                'Resource bank',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -60,9 +61,13 @@ class _chooseSectionState extends State<chooseSection> {
               color: Color(0xFF2B2D42),
               onPressed: () {
                 print('pressed');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Bloodlogin()),
+                );
               },
               child: Text(
-                'Blood donation',
+                'Blood bank',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
