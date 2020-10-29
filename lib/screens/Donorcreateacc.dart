@@ -21,11 +21,6 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
   bool _validatePhone = false;
   //bool _validateAddress = false;
   bool _validateName = false;
-  register(String email, int contact, String name, String password) async {
-    Map<String, dynamic> response =
-        await donorreg(email, contact, name, password);
-    return response;
-  }
 
   @override
   Widget build(BuildContext context) {
