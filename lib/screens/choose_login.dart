@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:aider/screens/receiver-login.dart';
 import 'package:aider/screens/donorlogin.dart';
+import 'package:flutter/services.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -10,6 +11,9 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
