@@ -167,10 +167,11 @@ class _DonorloginState extends State<Donorlogin> {
                             ),
                           );
                         } else if (response["status"] == 403) {
-                          createdialogbox(context);
+                          createdialogbox(
+                              context, "Incorrect username or password");
                           print("hai");
                         } else {
-                          createdialogbox(context);
+                          createdialogbox(context, "User does not exists");
                         }
                       },
                       child: Text(
@@ -219,7 +220,7 @@ class _DonorloginState extends State<Donorlogin> {
   }
 }
 
-createdialogbox(BuildContext context) {
+createdialogbox(BuildContext context, String text) {
   return showDialog(
       context: context,
       builder: (context) {
@@ -230,7 +231,7 @@ createdialogbox(BuildContext context) {
               style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
             ),
             content: Text(
-              "The credentials you have entered already belongs to an account. Try Again",
+              text,
               style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
             ));
       });
