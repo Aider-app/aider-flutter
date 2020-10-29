@@ -4,15 +4,15 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 //ithaanu google maps sdk api key:
 const apikey = 'AIzaSyAYf5hXJY84mYCsgje7ZwwTk8TxaWSieQM';
 void main() {
-  runApp(MaterialApp(home: gmap()));
+  runApp(MaterialApp(home: Gmap()));
 }
 
-class gmap extends StatefulWidget {
+class Gmap extends StatefulWidget {
   @override
   _gmapState createState() => _gmapState();
 }
 
-class _gmapState extends State<gmap> {
+class _gmapState extends State<Gmap> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

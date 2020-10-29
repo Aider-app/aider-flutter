@@ -1,4 +1,3 @@
-import 'package:aider/screens/donordash.dart';
 import 'package:aider/screens/gmap.dart';
 import 'package:aider/screens/rec_list.dart';
 import 'package:flutter/material.dart';
@@ -255,7 +254,7 @@ class _MakeDonationState extends State<MakeDonation> {
                                 print('Pressed Location');
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => gmap(),
+                                    builder: (context) => Gmap(),
                                   ),
                                 );
                               },

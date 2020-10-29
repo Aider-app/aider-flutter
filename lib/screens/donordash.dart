@@ -1,6 +1,5 @@
 //import 'package:aider/screens/Donorcreateacc.dart';
 
-import 'package:aider/networking/auth.dart';
 import 'package:aider/screens/add_donation.dart';
 import 'package:aider/screens/donor_details.dart';
 import 'package:aider/screens/prev_donations.dart';
@@ -69,7 +68,7 @@ class _DonordashState extends State<Donordash> {
                         height: 20,
                       ),
                       Text(
-                        "${loggeduser}",
+                        "$loggeduser",
                         style: TextStyle(
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold,

@@ -256,7 +256,7 @@ class _MakeRequestState extends State<MakeRequest> {
                                 print('Pressed Location');
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => gmap(),
+                                    builder: (context) => Gmap(),
                                   ),
                                 );
                               },

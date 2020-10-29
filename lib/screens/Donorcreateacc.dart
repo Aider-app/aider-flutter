@@ -1,5 +1,6 @@
 import 'package:aider/screens/donorregsuccess.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/networking/auth.dart';
 
 class DonorCreateAcc extends StatefulWidget {
   @override
@@ -20,6 +21,11 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
   bool _validatePhone = false;
   //bool _validateAddress = false;
   bool _validateName = false;
+  register(String email, int contact, String name, String password) async {
+    Map<String, dynamic> response =
+        await donorreg(email, contact, name, password);
+    return response;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +114,7 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                       child: TextField(
                           //text controller
                           controller: _phonecon,
+                          keyboardType: TextInputType.number,
                           cursorColor: Color(0xFF2B2D42),
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -270,7 +277,8 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0)),
                           color: Color(0xFF2B2D42),
-                          onPressed: () {
+                          onPressed: () async {
+                            bool validated = false;
                             setState(() {
                               //validating for password
                               if (_passcon.text.isEmpty ||
@@ -318,13 +326,31 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                                   _validatePass == false &&
                                   _validateEmail == false) {
                                 print(_namecon.text.characters);
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => DregSuccess()));
-                                return null;
+                                validated = true;
                               }
+
+                              /* */
+
+                              return null;
                             });
+                            if (validated) {
+                              Map<String, dynamic> resp = await donorreg(
+                                  _mailcon.text,
+                                  int.parse(_phonecon.text),
+                                  _namecon.text,
+                                  _passcon.text);
+                              print(resp);
+                              if (resp["status"] == 200) {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DregSuccess(),
+                                  ),
+                                );
+                              } else if (resp["status"] == 401) {
+                                createdialogbox(context, "User already exists");
+                              }
+                            }
                           },
                           child: Text(
                             'Create Account',
@@ -347,4 +373,21 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
       ),
     );
   }
+}
+
+createdialogbox(BuildContext context, String text) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+            backgroundColor: Colors.redAccent[600],
+            title: Text(
+              "Alert",
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ),
+            content: Text(
+              text,
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ));
+      });
 }
