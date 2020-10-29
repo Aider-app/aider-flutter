@@ -1,7 +1,6 @@
 import 'package:http/http.dart';
 import 'dart:convert';
 
-String loggeduser = "";
 /*Future<Map<String, dynamic>> */ login(String email, String password) async {
   dynamic body = {
     "email": email,
