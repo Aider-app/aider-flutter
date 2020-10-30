@@ -15,7 +15,7 @@ void main() {
           ),
         ),
       ),*/
-      body: chooseSection(),
+      body: ChooseSection(),
     ),
   ));
 }

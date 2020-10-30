@@ -313,7 +313,7 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                                 print('Pressed Location');
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => gmap(),
+                                    builder: (context) => Gmap(),
                                   ),
                                 );
                               },

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:aider/screens/donordash.dart';
+
 
 class DonorDetails extends StatefulWidget {
   @override
@@ -6,51 +8,11 @@ class DonorDetails extends StatefulWidget {
 }
 
 class _DonorDetailsState extends State<DonorDetails> {
-  // final _description = TextEditingController();
-  // bool _validatedescription = false;
-  // final _quantity = TextEditingController();
-  // bool _validatequantity = false;
-  // int _value = 1;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        //bottom notched bar
-        bottomNavigationBar: new BottomAppBar(
-          color: Color(0xFF2B2D42),
-          shape: CircularNotchedRectangle(),
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.circle,
-                  color: Color(0xFF2B2D42),
-                ),
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: new FloatingActionButton(
-          backgroundColor: Color(0xFF2B2D42),
-          child: Icon(Icons.home_outlined),
-          onPressed: () {
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(
-            //     // builder: (context) => Donordash(),
-            //   ),
-            // );
-          },
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        //bottom notched bar ends
-        resizeToAvoidBottomInset: false,
         body: Container(
             decoration: BoxDecoration(
                 color: Color(0xFFEDF2F4),
                 image: DecorationImage(
                     image: AssetImage('images/background.jpg'))),
-            width: double.infinity,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -77,28 +39,15 @@ class _DonorDetailsState extends State<DonorDetails> {
                     ),
                     SizedBox(
                         width:
-                            200.0), //sized box might have to remove while actual name is displayed
-                    Container(
-                      width: 50.0,
-                      height: 50.0,
-                      child: OutlineButton(
-                          borderSide: BorderSide.none,
-                          shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(10.0)),
-                          onPressed: () {
-                            print("Pressed Name Edit");
-                          },
-                          child: Icon(Icons.create_rounded,
-                              color: Colors.black, size: 20.0)),
-                    ),
+                            250.0), //sized box might have to remove while actual name is displayed
                     SizedBox(width: 16.7)
                   ],
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(width: 20.0),
+                    SizedBox(width: 38.0),
                     Text(
                       "Rating : ",
                       style: TextStyle(
@@ -109,10 +58,10 @@ class _DonorDetailsState extends State<DonorDetails> {
                     ),
                     SizedBox(
                         width:
-                            264.0), //sized box might have to remove while actual name is displayed
+                            279.0), //sized box might have to remove while actual name is displayed
                   ],
                 ),
-                SizedBox(height: 15.0),
+                SizedBox(height: 30.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -127,29 +76,11 @@ class _DonorDetailsState extends State<DonorDetails> {
                     ),
                     SizedBox(
                         width:
-                            195.0), //sized box might have to remove while actual name is displayed
-                    Container(
-                      width: 50.0,
-                      height: 50.0,
-                      child: OutlineButton(
-                          borderSide: BorderSide.none,
-                          shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(10.0)),
-                          onPressed: () {
-                            print("Pressed Phone Edit");
-                          },
-                          child: Center(
-                            child: Icon(
-                              Icons.create_rounded,
-                              color: Colors.black,
-                              size: 20.0,
-                            ),
-                          )),
-                    ),
+                            245.0), //sized box might have to remove while actual name is displayed
                     SizedBox(width: 16.7)
                   ],
                 ),
-                SizedBox(height: 12.0),
+                SizedBox(height: 30.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -163,28 +94,29 @@ class _DonorDetailsState extends State<DonorDetails> {
                       ),
                     ),
                     SizedBox(width: 202.0),
-                    Container(
-                      width: 50.0,
-                      height: 50.0,
-                      child: OutlineButton(
-                          borderSide: BorderSide.none,
-                          shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(10.0)),
-                          onPressed: () {
-                            print("Pressed Phone Edit");
-                          },
-                          child: Center(
-                            child: Icon(
-                              Icons.create_rounded,
-                              color: Colors.black,
-                              size: 20.0,
-                            ),
-                          )),
-                    ),
                     SizedBox(width: 16.7)
                   ],
                 ),
+                SizedBox(height: 30.0),
                 SizedBox(height: 60.0),
+                Container(
+                  width: 100.0,
+                  height: 50.0,
+                  child: OutlineButton(
+                            // borderSide: BorderSide.none,
+                            shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(5.0)),
+                            onPressed: () {
+                              print("Pressed Edit");
+                            },
+                            child: Center(
+                              child: Text("Edit", style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: "Montserrat",
+                        fontWeight: FontWeight.bold,
+                      ),)
+                            )),
+                ),
               ],
             )));
   }

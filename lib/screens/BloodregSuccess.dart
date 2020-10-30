@@ -1,6 +1,5 @@
 import 'package:aider/screens/bloodlogin.dart';
 import 'package:flutter/material.dart';
-//import 'package:aider/screens/donorlogin.dart';
 
 void main() => runApp(Bloodregsuccess());
 
