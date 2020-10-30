@@ -1,3 +1,4 @@
+import 'package:aider/screens/chathome.dart';
 import 'package:aider/screens/donordash.dart';
 import 'package:flutter/material.dart';
 
@@ -80,19 +81,19 @@ class _RecipientListState extends State<RecipientList> {
                       child: Column(
                         children: [
                           SizedBox(height: 20.0),
-                          rowelement(1),
+                          rowelement(1, context),
                           SizedBox(height: 20.0),
-                          rowelement(2),
+                          rowelement(2, context),
                           SizedBox(height: 20.0),
-                          rowelement(3),
+                          rowelement(3, context),
                           SizedBox(height: 20.0),
-                          rowelement(4),
+                          rowelement(4, context),
                           SizedBox(height: 20.0),
-                          rowelement(5),
+                          rowelement(5, context),
                           SizedBox(height: 20.0),
-                          rowelement(6),
+                          rowelement(6, context),
                           SizedBox(height: 20.0),
-                          rowelement(7),
+                          rowelement(7, context),
                           SizedBox(height: 20.0),
                         ],
                       ),
@@ -104,7 +105,7 @@ class _RecipientListState extends State<RecipientList> {
   }
 }
 
-Widget rowelement(val) {
+Widget rowelement(val, context) {
   return Container(
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -136,6 +137,54 @@ Widget rowelement(val) {
                     borderRadius: BorderRadius.circular(20.0)),
                 onPressed: () {
                   print('Pressed view request');
+                  return showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        backgroundColor: Colors.redAccent[600],
+                        title: Text(
+                          "Request: ",
+                          style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
+                              color: Color(0xFF2B2D42)),
+                        ),
+                        //column inside pop up (details)
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "In need of: ",
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15.0,
+                                  color: Color(0xFF2B2D42)),
+                            ),
+                            Text(
+                              "Phone: ",
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15.0,
+                                  color: Color(0xFF2B2D42)),
+                            ),
+                            Text(
+                              "Date: ",
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15.0,
+                                  color: Color(0xFF2B2D42)),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
                 },
                 child: Text(
                   'View request.',
@@ -159,6 +208,12 @@ Widget rowelement(val) {
                   borderRadius: BorderRadius.circular(20.0)),
               onPressed: () {
                 print('Pressed accept request');
+                print('pressed log in');
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Chathome(), //go to blood dashboard
+                  ),
+                );
               },
               child: Text(
                 'Accept request.',

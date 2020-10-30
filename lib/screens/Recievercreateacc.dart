@@ -11,18 +11,19 @@ class RecieverCreateAcc extends StatefulWidget {
 class _RecieverCreateAccState extends State<RecieverCreateAcc> {
   //Text editing controllers and validators for verification
   final _regcon = TextEditingController();
+
   final _passcon = TextEditingController();
   final _mailcon = TextEditingController();
   final _confirmpasscon = TextEditingController();
   final _phonecon = TextEditingController();
-  // final _addresscon = TextEditingController();
+  final _addresscon = TextEditingController();
   final _namecon = TextEditingController();
   bool _validateReg = false;
   bool _validatePass = false;
   bool _validateEmail = false;
   bool _validateConPass = false;
   bool _validatePhone = false;
-  //bool _validateAddress = false;
+  bool _validateAddress = false;
   bool _validateName = false;
 
   @override
@@ -194,44 +195,44 @@ class _RecieverCreateAccState extends State<RecieverCreateAcc> {
                       height: 20.0,
                     ),
                     //*******************************************Address***********************************************
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     color: Colors.white,
-                    //     borderRadius: BorderRadius.circular(20),
-                    //   ),
-                    //   margin: EdgeInsets.symmetric(
-                    //     horizontal: 40,
-                    //   ),
-                    //   padding: EdgeInsets.all(10),
-                    //   // to scroll down
-                    //   child: new SingleChildScrollView(
-                    //     scrollDirection: Axis.vertical,
-                    //     reverse: true,
-                    //     child: TextField(
-                    //       //controller
-                    //       controller: _addresscon,
-                    //       //for multiple lines
-                    //       maxLines: null,
-                    //       cursorColor: Color(0xFF2B2D42),
-                    //       decoration: InputDecoration(
-                    //         border: InputBorder.none,
-                    //         hintText: "Address",
-                    //         hintStyle: TextStyle(
-                    //             fontFamily: 'Montserrat',
-                    //             fontWeight: FontWeight.bold,
-                    //             fontSize: 15.0,
-                    //             color: Color(0x802B2D42)),
-                    //         //error message
-                    //         errorText: _validateAddress
-                    //             ? 'Enter a valid address.'
-                    //             : null,
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
-                    // SizedBox(
-                    //   height: 20.0,
-                    // ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 40,
+                      ),
+                      padding: EdgeInsets.all(10),
+                      // to scroll down
+                      child: new SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        reverse: true,
+                        child: TextField(
+                          //controller
+                          controller: _addresscon,
+                          //for multiple lines
+                          maxLines: null,
+                          cursorColor: Color(0xFF2B2D42),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Address",
+                            hintStyle: TextStyle(
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15.0,
+                                color: Color(0x802B2D42)),
+                            //error message
+                            errorText: _validateAddress
+                                ? 'Enter a valid address.'
+                                : null,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
                     //*******************************************password*******************************************************************
                     Container(
                       decoration: BoxDecoration(
@@ -344,18 +345,19 @@ class _RecieverCreateAccState extends State<RecieverCreateAcc> {
                                 _validatePhone = false;
                               }
                               //validating for address
-                              // if (_addresscon.text.isEmpty) {
-                              //   _validateAddress = true;
-                              // } else {
-                              //   _validateAddress = false;
-                              // }
+                              if (_addresscon.text.isEmpty) {
+                                _validateAddress = true;
+                              } else {
+                                _validateAddress = false;
+                              }
                               if (_namecon.text.isEmpty) {
                                 _validateName = true;
                               } else {
                                 _validateName = false;
                               }
                               // only goes to success page if all validators are false.
-                              if (_validateReg == false &&
+                              if (_validateAddress == false &&
+                                  _validateReg == false &&
                                   _validateName == false &&
                                   _validatePhone == false &&
                                   _validateConPass == false &&

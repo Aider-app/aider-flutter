@@ -161,19 +161,11 @@ Widget predon(BuildContext context, val) {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Recipient name: ",
+                          "Donated to: ",
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
-                              color: Color(0xFF2B2D42)),
-                        ),
-                        Text(
-                          "Phone: ",
-                          style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
+                              fontSize: 15.0,
                               color: Color(0xFF2B2D42)),
                         ),
                         Text(
@@ -181,7 +173,23 @@ Widget predon(BuildContext context, val) {
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
+                              fontSize: 15.0,
+                              color: Color(0xFF2B2D42)),
+                        ),
+                        Text(
+                          "Phone: ",
+                          style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15.0,
+                              color: Color(0xFF2B2D42)),
+                        ),
+                        Text(
+                          "Location: ",
+                          style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15.0,
                               color: Color(0xFF2B2D42)),
                         ),
                         Text(
@@ -189,7 +197,7 @@ Widget predon(BuildContext context, val) {
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
+                              fontSize: 15.0,
                               color: Color(0xFF2B2D42)),
                         ),
                       ],

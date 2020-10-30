@@ -6,11 +6,11 @@ class DonorDetails extends StatefulWidget {
 }
 
 class _DonorDetailsState extends State<DonorDetails> {
-  final _description = TextEditingController();
-  bool _validatedescription = false;
-  final _quantity = TextEditingController();
-  bool _validatequantity = false;
-  int _value = 1;
+  // final _description = TextEditingController();
+  // bool _validatedescription = false;
+  // final _quantity = TextEditingController();
+  // bool _validatequantity = false;
+  // int _value = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

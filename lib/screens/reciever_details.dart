@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:aider/screens/recieverdash.dart';
 
-
 class RecipientDetails extends StatefulWidget {
   @override
   _RecipientDetailsState createState() => _RecipientDetailsState();
 }
 
 class _RecipientDetailsState extends State<RecipientDetails> {
- final _description = TextEditingController();
-  bool _validatedescription = false;
-  final _quantity = TextEditingController();
-  bool _validatequantity = false;
-  int _value = 1;
+//  final _description = TextEditingController();
+//   bool _validatedescription = false;
+//   final _quantity = TextEditingController();
+//   bool _validatequantity = false;
+//   int _value = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -159,19 +158,21 @@ class _RecipientDetailsState extends State<RecipientDetails> {
                   width: 100.0,
                   height: 50.0,
                   child: OutlineButton(
-                            // borderSide: BorderSide.none,
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(5.0)),
-                            onPressed: () {
-                              print("Pressed Address Edit");
-                            },
-                            child: Center(
-                              child: Text("Edit", style: TextStyle(
-                        fontSize: 20.0,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.bold,
-                      ),)
-                            )),
+                      // borderSide: BorderSide.none,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(5.0)),
+                      onPressed: () {
+                        print("Pressed Address Edit");
+                      },
+                      child: Center(
+                          child: Text(
+                        "Edit",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ))),
                 ),
               ],
             )));
