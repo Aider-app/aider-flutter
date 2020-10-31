@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:aider/screens/donordash.dart';
 
-
 class DonorDetails extends StatefulWidget {
   @override
   _DonorDetailsState createState() => _DonorDetailsState();
 }
 
 class _DonorDetailsState extends State<DonorDetails> {
-final _description = TextEditingController();
+  final _description = TextEditingController();
   bool _validatedescription = false;
   final _quantity = TextEditingController();
   bool _validatequantity = false;
@@ -143,19 +142,21 @@ final _description = TextEditingController();
                   width: 100.0,
                   height: 50.0,
                   child: OutlineButton(
-                            // borderSide: BorderSide.none,
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(5.0)),
-                            onPressed: () {
-                              print("Pressed Edit");
-                            },
-                            child: Center(
-                              child: Text("Edit", style: TextStyle(
-                        fontSize: 20.0,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.bold,
-                      ),)
-                            )),
+                      // borderSide: BorderSide.none,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(5.0)),
+                      onPressed: () {
+                        print("Pressed Edit");
+                      },
+                      child: Center(
+                          child: Text(
+                        "Edit",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ))),
                 ),
               ],
             )));
