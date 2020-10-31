@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:aider/screens/gmap.dart';
+//import 'package:aider/screens/gmap.dart';
+import 'package:geolocator/geolocator.dart';
 
 void main() {
   runApp(MaterialApp(home: MakeRequest()));
@@ -17,6 +18,13 @@ class _MakeRequestState extends State<MakeRequest> {
   final _quantity = TextEditingController();
   bool _validatequantity = false;
   int _value = 1;
+  //taking current location
+  void _getCurrentLocation() async {
+    final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    print(position); //longitude and latitude
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -254,11 +262,12 @@ class _MakeRequestState extends State<MakeRequest> {
                               color: Color(0xFF2B2D42),
                               onPressed: () {
                                 print('Pressed Location');
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => Gmap(),
-                                  ),
-                                );
+                                _getCurrentLocation();
+                                // Navigator.of(context).push(
+                                //   MaterialPageRoute(
+                                //     builder: (context) => Gmap(),
+                                //   ),
+                                // );
                               },
                               child: Icon(
                                 Icons.add_location_alt_rounded,
