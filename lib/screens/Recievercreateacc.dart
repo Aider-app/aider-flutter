@@ -1,7 +1,7 @@
 import 'package:aider/screens/Recregsuccess.dart';
 import 'package:flutter/material.dart';
-
-void main() => runApp(RecieverCreateAcc());
+import 'package:aider/networking/auth.dart';
+import 'package:flutter/scheduler.dart';
 
 class RecieverCreateAcc extends StatefulWidget {
   @override
@@ -11,7 +11,6 @@ class RecieverCreateAcc extends StatefulWidget {
 class _RecieverCreateAccState extends State<RecieverCreateAcc> {
   //Text editing controllers and validators for verification
   final _regcon = TextEditingController();
-
   final _passcon = TextEditingController();
   final _mailcon = TextEditingController();
   final _confirmpasscon = TextEditingController();
@@ -307,69 +306,93 @@ class _RecieverCreateAccState extends State<RecieverCreateAcc> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0)),
                           color: Color(0xFF2B2D42),
-                          onPressed: () {
-                            setState(() {
-                              //validating for registration number
-                              if (_regcon.text.isEmpty ||
-                                  _regcon.text.length < 8) {
-                                _validateReg = true;
-                              } else {
-                                _validateReg = false;
-                              }
-                              //validating for password
-                              if (_passcon.text.isEmpty ||
-                                  _passcon.text.length < 8) {
-                                _validatePass = true;
-                              } else {
-                                _validatePass = false;
-                              }
-                              //validating for email
-                              if (_mailcon.text.isEmpty ||
-                                  !_mailcon.text.contains('@')) {
-                                _validateEmail = true;
-                              } else {
-                                _validateEmail = false;
-                              }
-                              //validating for confirm password
-                              if ((_confirmpasscon.text != _passcon.text) ||
-                                  _confirmpasscon.text.length < 8) {
-                                _validateConPass = true;
-                              } else {
-                                _validateConPass = false;
-                              }
-                              //validating for phone number
-                              if (_phonecon.text.length < 10 ||
-                                  _phonecon.text.isEmpty) {
-                                _validatePhone = true;
-                              } else {
-                                _validatePhone = false;
-                              }
-                              //validating for address
-                              if (_addresscon.text.isEmpty) {
-                                _validateAddress = true;
-                              } else {
-                                _validateAddress = false;
-                              }
-                              if (_namecon.text.isEmpty) {
-                                _validateName = true;
-                              } else {
-                                _validateName = false;
-                              }
-                              // only goes to success page if all validators are false.
-                              if (_validateAddress == false &&
-                                  _validateReg == false &&
-                                  _validateName == false &&
-                                  _validatePhone == false &&
-                                  _validateConPass == false &&
-                                  _validatePass == false &&
-                                  _validateEmail == false) {
-                                Navigator.pushReplacement(
-                                    context,
+                          onPressed: () async {
+                            bool validated = false;
+                            setState(
+                              () {
+                                //validating for registration number
+                                if (_regcon.text.isEmpty) {
+                                  _validateReg = true;
+                                } else {
+                                  _validateReg = false;
+                                }
+                                //validating for password
+                                if (_passcon.text.isEmpty ||
+                                    _passcon.text.length < 8) {
+                                  _validatePass = true;
+                                } else {
+                                  _validatePass = false;
+                                }
+                                //validating for email
+                                if (_mailcon.text.isEmpty ||
+                                    !_mailcon.text.contains('@')) {
+                                  _validateEmail = true;
+                                } else {
+                                  _validateEmail = false;
+                                }
+                                //validating for confirm password
+                                if ((_confirmpasscon.text != _passcon.text) ||
+                                    _confirmpasscon.text.length < 8) {
+                                  _validateConPass = true;
+                                } else {
+                                  _validateConPass = false;
+                                }
+                                //validating for phone number
+                                if (_phonecon.text.length < 10 ||
+                                    _phonecon.text.isEmpty) {
+                                  _validatePhone = true;
+                                } else {
+                                  _validatePhone = false;
+                                }
+                                //validating for address
+                                if (_addresscon.text.isEmpty) {
+                                  _validateAddress = true;
+                                } else {
+                                  _validateAddress = false;
+                                }
+                                if (_namecon.text.isEmpty) {
+                                  _validateName = true;
+                                } else {
+                                  _validateName = false;
+                                }
+                                // only goes to success page if all validators are false.
+                                if (_validateAddress == false &&
+                                    _validateReg == false &&
+                                    _validateName == false &&
+                                    _validatePhone == false &&
+                                    _validateConPass == false &&
+                                    _validatePass == false &&
+                                    _validateEmail == false) {
+                                  validated = true;
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              RecregSuccess()));
+                                  return null;
+                                }
+                              },
+                            );
+                            if (validated) {
+                              Map<String, dynamic> resp = await receiverreg(
+                                  _regcon.text,
+                                  _namecon.text,
+                                  _phonecon.text,
+                                  _mailcon.text,
+                                  _passcon.text);
+                              if (resp["status"] == 200) {
+                                SchedulerBinding.instance
+                                    .addPostFrameCallback((_) {
+                                  Navigator.of(context).push(
                                     MaterialPageRoute(
-                                        builder: (context) => RecregSuccess()));
-                                return null;
+                                      builder: (context) => RecregSuccess(),
+                                    ),
+                                  );
+                                });
+                              } else if (resp["status"] == 401) {
+                                createdialogbox(context, "User already exists");
                               }
-                            });
+                            }
                           },
                           child: Text(
                             'Create Account',
@@ -392,4 +415,21 @@ class _RecieverCreateAccState extends State<RecieverCreateAcc> {
       ),
     );
   }
+}
+
+createdialogbox(BuildContext context, String text) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+            backgroundColor: Colors.redAccent[600],
+            title: Text(
+              "Alert",
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ),
+            content: Text(
+              text,
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ));
+      });
 }

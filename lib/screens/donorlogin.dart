@@ -1,7 +1,7 @@
 import 'package:aider/screens/Donorcreateacc.dart';
 import 'package:aider/screens/recieverdash.dart';
 import 'package:aider/screens/donordash.dart';
-
+import 'package:aider/screens/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/networking/auth.dart';
 
@@ -48,7 +48,7 @@ class _DonorloginState extends State<Donorlogin> {
               children: <Widget>[
                 Center(
                   child: Text(
-                    'LOG IN',
+                    'DONOR LOG IN',
                     style: TextStyle(
                         fontFamily: 'Montserrat',
                         fontWeight: FontWeight.bold,
@@ -200,31 +200,31 @@ class _DonorloginState extends State<Donorlogin> {
                 SizedBox(
                   height: 60.0,
                 ),
-                // ButtonTheme(
-                //   minWidth: 50.0,
-                //   height: 60.0,
-                //   child: FlatButton(
-                //       shape: RoundedRectangleBorder(
-                //           borderRadius: BorderRadius.circular(20.0)),
-                //       color: Color(0xFF2B2D42),
-                //       onPressed: () {
-                //         print('Pressed recipient login');
-                //         Navigator.of(context).push(
-                //           MaterialPageRoute(
-                //             builder: (context) => Receiverlogin(),
-                //           ),
-                //         );
-                //       },
-                //       child: Text(
-                //         'Request Donations',
-                //         style: TextStyle(
-                //           fontFamily: 'Montserrat',
-                //           fontWeight: FontWeight.bold,
-                //           fontSize: 20.0,
-                //           color: Colors.white,
-                //         ),
-                //       )),
-                // ),
+                /*ButtonTheme(
+                  minWidth: 50.0,
+                  height: 60.0,
+                  child: FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0)),
+                      color: Color(0xFF2B2D42),
+                      onPressed: () {
+                        print('Pressed recipient login');
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => Receiverlogin(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Request Donations',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                          color: Colors.white,
+                        ),
+                      )),
+                ),*/
               ],
             ),
           ),

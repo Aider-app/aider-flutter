@@ -332,7 +332,7 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                             if (validated) {
                               Map<String, dynamic> resp = await donorreg(
                                   _mailcon.text,
-                                  int.parse(_phonecon.text),
+                                  _phonecon.text,
                                   _namecon.text,
                                   _passcon.text);
                               print(resp);
@@ -369,7 +369,8 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                           color: Color(0xFF2B2D42),
                           onPressed: () {
                             print('Pressed recipient login');
-                            Navigator.of(context).pushReplacement(
+                            Navigator.pushReplacement(
+                              context,
                               MaterialPageRoute(
                                 builder: (context) => RecieverCreateAcc(),
                               ),

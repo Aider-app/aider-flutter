@@ -2,8 +2,6 @@ import 'package:aider/screens/Login.dart';
 import 'package:flutter/material.dart';
 //import 'package:aider/screens/receiver-login.dart';
 
-void main() => runApp(RecregSuccess());
-
 class RecregSuccess extends StatefulWidget {
   @override
   _RecregSuccessState createState() => _RecregSuccessState();
