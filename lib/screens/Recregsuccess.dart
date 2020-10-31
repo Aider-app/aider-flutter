@@ -1,5 +1,6 @@
+import 'package:aider/screens/Login.dart';
 import 'package:flutter/material.dart';
-import 'package:aider/screens/receiver-login.dart';
+//import 'package:aider/screens/receiver-login.dart';
 
 void main() => runApp(RecregSuccess());
 
@@ -69,12 +70,9 @@ class _RecregSuccessState extends State<RecregSuccess> {
                         ),
                       ),
                     ),
-
                     SizedBox(
                       height: 40.0,
                     ),
-
-                    //Create acc button
                     ButtonTheme(
                       minWidth: 50.0,
                       height: 60.0,
@@ -85,8 +83,9 @@ class _RecregSuccessState extends State<RecregSuccess> {
                           //Go to login page
                           onPressed: () {
                             print('Pressed Log In...Return to login page.');
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Receiverlogin()));
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => Donorlogin()));
                           },
                           child: Text(
                             'Go to Log In',
