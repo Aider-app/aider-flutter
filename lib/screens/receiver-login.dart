@@ -1,6 +1,10 @@
 import 'package:aider/screens/recieverdash.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/Recievercreateacc.dart';
+import 'package:aider/networking/auth.dart';
+
+String loggeduser = "NA";
+String id = "NA";
 
 class Receiverlogin extends StatefulWidget {
   @override
@@ -8,6 +12,8 @@ class Receiverlogin extends StatefulWidget {
 }
 
 class _ReceiverloginState extends State<Receiverlogin> {
+  final _passcon = TextEditingController();
+  final _mailcon = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -48,6 +54,7 @@ class _ReceiverloginState extends State<Receiverlogin> {
                 ),
                 padding: EdgeInsets.all(10),
                 child: TextField(
+                  controller: _mailcon,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -73,6 +80,7 @@ class _ReceiverloginState extends State<Receiverlogin> {
                 ),
                 padding: EdgeInsets.all(10),
                 child: TextField(
+                  controller: _passcon,
                   obscureText: true,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
@@ -136,13 +144,26 @@ class _ReceiverloginState extends State<Receiverlogin> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0)),
                 color: Color(0xFF2B2D42),
-                onPressed: () {
-                  print('pressed log in');
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => Recieverdash(),
-                    ),
+                onPressed: () async {
+                  print(_mailcon.text);
+                  Map<String, dynamic> response = await login(
+                    _mailcon.text,
+                    _passcon.text,
                   );
+                  print(response);
+                  if (response["status"] == 200) {
+                    loggeduser = response["name"];
+                    id = response["org_id"];
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => Recieverdash(),
+                      ),
+                    );
+                  } else if (response["status"] == 403) {
+                    createdialogbox(context, "Incorrect username or password");
+                  } else {
+                    createdialogbox(context, "User does not exists");
+                  }
                 },
                 child: Text(
                   'Log In',
@@ -176,14 +197,14 @@ class _ReceiverloginState extends State<Receiverlogin> {
               //     ),
               //   ),
               // ),
-              FlatButton(
+              /*FlatButton(
                 color: Color(0xFF2B2D42),
                 textColor: Colors.white,
                 onPressed: () {
                   createdialogbox(context);
                 },
                 child: Text("PopUp"),
-              )
+              )*/
             ],
           ),
         ),
@@ -192,7 +213,7 @@ class _ReceiverloginState extends State<Receiverlogin> {
   }
 }
 
-createdialogbox(BuildContext context) {
+createdialogbox(BuildContext context, String text) {
   return showDialog(
       context: context,
       builder: (context) {

@@ -1,11 +1,12 @@
 import 'package:aider/screens/Donorcreateacc.dart';
-
+import 'package:aider/screens/recieverdash.dart';
 import 'package:aider/screens/donordash.dart';
 import 'package:aider/screens/receiver-login.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/networking/auth.dart';
 
 String loggeduser = "NA";
+String id = "NA";
 //import 'package:aider/screens/donorregsuccess.dart';
 
 void main() => runApp(Donorlogin());
@@ -156,16 +157,30 @@ class _DonorloginState extends State<Donorlogin> {
                       color: Color(0xFF2B2D42),
                       onPressed: () async {
                         print(_mailcon.text);
-                        Map<String, dynamic> response =
-                            await login(_mailcon.text, _passcon.text);
+                        Map<String, dynamic> response = await login(
+                          _mailcon.text,
+                          _passcon.text,
+                        );
                         print(response);
                         if (response["status"] == 200) {
-                          loggeduser = response["name"];
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => Donordash(),
-                            ),
-                          );
+                          if (response["role"] == "donor") {
+                            loggeduser = response["name"];
+                            print(loggeduser);
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => Donordash(),
+                              ),
+                            );
+                          } else {
+                            loggeduser = response["name"];
+                            print(loggeduser);
+                            id = response["org_id"];
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => Recieverdash(),
+                              ),
+                            );
+                          }
                         } else if (response["status"] == 403) {
                           createdialogbox(
                               context, "Incorrect username or password");

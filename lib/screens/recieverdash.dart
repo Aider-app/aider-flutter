@@ -1,5 +1,6 @@
 import 'package:aider/screens/add_request.dart';
 import 'package:aider/screens/prev_requests.dart';
+import 'package:aider/screens/donorlogin.dart';
 import 'package:flutter/material.dart';
 
 class Recieverdash extends StatefulWidget {
@@ -65,7 +66,7 @@ class _RecieverdashState extends State<Recieverdash> {
                           height: 20,
                         ),
                         Text(
-                          'Name',
+                          loggeduser,
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
@@ -82,7 +83,7 @@ class _RecieverdashState extends State<Recieverdash> {
                               width: 20.0,
                             ),
                             Text(
-                              'Id',
+                              id,
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,

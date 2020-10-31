@@ -2,7 +2,10 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 String url = 'https://tranquil-hollows-50478.herokuapp.com';
-/*Future<Map<String, dynamic>> */ login(String email, String password) async {
+/*Future<Map<String, dynamic>> */ login(
+  String email,
+  String password,
+) async {
   dynamic body = {
     "email": email,
     "password": password,
@@ -15,7 +18,7 @@ String url = 'https://tranquil-hollows-50478.herokuapp.com';
       body: encodedbody,
       headers: {'Content-Type': 'application/json'},
     );
-
+    print(jsonDecode(login.body));
     return jsonDecode(login.body);
   } catch (err) {
     print(err);
