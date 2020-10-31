@@ -1,3 +1,4 @@
+import 'package:aider/screens/Recievercreateacc.dart';
 import 'package:aider/screens/donorregsuccess.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/networking/auth.dart';
@@ -357,7 +358,32 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                           )),
                     ),
                     SizedBox(
-                      height: 20.0,
+                      height: 40.0,
+                    ),
+                    ButtonTheme(
+                      minWidth: 50.0,
+                      height: 60.0,
+                      child: FlatButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          color: Color(0xFF2B2D42),
+                          onPressed: () {
+                            print('Pressed recipient login');
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => RecieverCreateAcc(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'Create recipient account',
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
+                              color: Colors.white,
+                            ),
+                          )),
                     ),
                   ],
                 ),
