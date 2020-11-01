@@ -364,11 +364,6 @@ class _RecieverCreateAccState extends State<RecieverCreateAcc> {
                                     _validatePass == false &&
                                     _validateEmail == false) {
                                   validated = true;
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              RecregSuccess()));
                                   return null;
                                 }
                               },
@@ -390,7 +385,7 @@ class _RecieverCreateAccState extends State<RecieverCreateAcc> {
                                   );
                                 });
                               } else if (resp["status"] == 401) {
-                                createdialogbox(context, "User already exists");
+                                createdialogbox(context, resp["message"]);
                               }
                             }
                           },
