@@ -1,5 +1,7 @@
+import 'package:aider/screens/blood_accountdetails.dart';
 import 'package:aider/screens/bloodcreatereq.dart';
 import 'package:aider/screens/bloodprereq.dart';
+import 'package:aider/screens/blood_reclist.dart';
 import 'package:flutter/material.dart';
 
 class Blooddash extends StatefulWidget {
@@ -209,11 +211,11 @@ class _BlooddashState extends State<Blooddash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO My Account
                                 onPressed: () {
-                                  //   Navigator.of(context).push(
-                                  //    MaterialPageRoute(
-                                  //      builder: (context) => DonorCreateAcc(),
-                                  //  ),
-                                  //   );
+                                    Navigator.of(context).push(
+                                     MaterialPageRoute(
+                                       builder: (context) => BloodDetails(),
+                                   ),
+                                    );
                                 },
                                 padding: EdgeInsets.all(25.0),
                                 child: Icon(
@@ -256,7 +258,11 @@ class _BlooddashState extends State<Blooddash> {
                             borderRadius: BorderRadius.circular(20.0)),
                         color: Color(0xFF2B2D42),
                         onPressed: () {
-                          print('Pressed blood donation');
+                         Navigator.of(context).push(
+                                     MaterialPageRoute(
+                                       builder: (context) => BloodRecipientList(),
+                                   ),
+                                    );
                         },
                         child: Text(
                           'I want to donate',

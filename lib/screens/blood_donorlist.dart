@@ -1,15 +1,20 @@
-import 'package:aider/screens/chathome.dart';
+// import 'package:aider/screens/chathome.dart';
 import 'package:aider/screens/blooddash.dart';
 import 'package:flutter/material.dart';
 
+void main() => runApp(
+  MaterialApp(
+    home: DonationList()
+  )
+);
 
-class BloodRecipientList extends StatefulWidget {
+class DonationList extends StatefulWidget {
   @override
-  _BloodRecipientListState createState() => _BloodRecipientListState();
+  _DonationListState createState() => _DonationListState();
 }
 
-class _BloodRecipientListState extends State<BloodRecipientList> {
-  int val = 1;
+class _DonationListState extends State<DonationList> {
+int val = 1;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -68,7 +73,7 @@ class _BloodRecipientListState extends State<BloodRecipientList> {
                         height: 80,
                         child: Center(
                           child: Text(
-                            "Available Recipients",
+                            "Available Donors",
                             style: TextStyle(
                                 fontSize: 30.0,
                                 fontFamily: "Montserrat",
@@ -115,7 +120,7 @@ Widget rowelement(val, context) {
         Column(
           children: <Widget>[
             Text(
-              'Recipient #$val',
+              'Donor #$val',
               style: TextStyle(
                   fontFamily: 'Montserrat',
                   fontWeight: FontWeight.bold,
@@ -136,7 +141,7 @@ Widget rowelement(val, context) {
              SizedBox(
               height: 4.0,
             ),
-             Text(
+            Text(
               'Blood Group #$val',
               style: TextStyle(
                   fontFamily: 'Montserrat',
@@ -155,7 +160,7 @@ Widget rowelement(val, context) {
                       return AlertDialog(
                         backgroundColor: Colors.redAccent[600],
                         title: Text(
-                          "Request : ",
+                          "Donation : ",
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
@@ -168,14 +173,6 @@ Widget rowelement(val, context) {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Quantity : ",
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.0,
-                                  color: Color(0xFF2B2D42)),
-                            ),
                             Text(
                               "Phone : ",
                               style: TextStyle(
@@ -207,7 +204,7 @@ Widget rowelement(val, context) {
                   );
                 },
                 child: Text(
-                  'View Request',
+                  'View Details',
                   style: TextStyle(
                       decoration: TextDecoration.underline,
                       fontFamily: 'Montserrat',
@@ -229,14 +226,14 @@ Widget rowelement(val, context) {
               onPressed: () {
                 print('Pressed accept request');
                 print('pressed log in');
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => Chathome(), //go to blood dashboard
-                  ),
-                );
+                // Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (context) => Chathome(), //go to blood dashboard
+                //   ),
+                // );
               },
               child: Text(
-                'Accept Request',
+                'Sent Request',
                 style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
