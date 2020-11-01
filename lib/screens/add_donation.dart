@@ -1,12 +1,16 @@
 //import 'package:aider/screens/gmap.dart';
+import 'package:aider/screens/Login.dart';
 import 'package:aider/screens/rec_list.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:aider/networking/posts.dart';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 void main() {
   runApp(MaterialApp(home: MakeDonation()));
 }
+
+List items = ["Food Items", "Medicine", "Clothes"];
 
 class MakeDonation extends StatefulWidget {
   @override
@@ -19,11 +23,13 @@ class _MakeDonationState extends State<MakeDonation> {
   final _quantity = TextEditingController();
   bool _validatequantity = false;
   int _value = 1;
+  Position position;
   //*************************************taking current location****************
-  void _getCurrentLocation() async {
+  Future<Position> _getCurrentLocation() async {
     final position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-    print(position); //longitude and latitude
+    return position;
+    //print("inside function $position"); //longitude and latitude
   }
 
   @override
@@ -94,12 +100,36 @@ class _MakeDonationState extends State<MakeDonation> {
                       ),
                       padding: EdgeInsets.all(5.0),
                       child: DropdownButton(
-                          //  focusColor: Color(0x802B2D42),
-                          value: _value,
-                          items: [
-                            DropdownMenuItem(
+                        //  focusColor: Color(0x802B2D42),
+                        value: _value,
+                        items: [
+                          DropdownMenuItem(
+                            child: Text(
+                              items[0],
+                              style: TextStyle(
+                                color: Color(0x802B2D42),
+                                fontSize: 15.0,
+                                fontFamily: "Montserrat",
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            value: 1,
+                          ),
+                          DropdownMenuItem(
+                            child: Text(
+                              items[1],
+                              style: TextStyle(
+                                color: Color(0x802B2D42),
+                                fontSize: 15.0,
+                                fontFamily: "Montserrat",
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            value: 2,
+                          ),
+                          DropdownMenuItem(
                               child: Text(
-                                "Food Items",
+                                items[2],
                                 style: TextStyle(
                                   color: Color(0x802B2D42),
                                   fontSize: 15.0,
@@ -107,37 +137,14 @@ class _MakeDonationState extends State<MakeDonation> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              value: 1,
-                            ),
-                            DropdownMenuItem(
-                              child: Text(
-                                "Medicine",
-                                style: TextStyle(
-                                  color: Color(0x802B2D42),
-                                  fontSize: 15.0,
-                                  fontFamily: "Montserrat",
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              value: 2,
-                            ),
-                            DropdownMenuItem(
-                                child: Text(
-                                  "Clothes",
-                                  style: TextStyle(
-                                    color: Color(0x802B2D42),
-                                    fontSize: 15.0,
-                                    fontFamily: "Montserrat",
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                value: 3),
-                          ],
-                          onChanged: (value) {
-                            setState(() {
-                              _value = value;
-                            });
-                          }),
+                              value: 3),
+                        ],
+                        onChanged: (value) {
+                          setState(() {
+                            _value = value;
+                          });
+                        },
+                      ),
                     )
                   ],
                 ), // Select Type ends here
@@ -258,9 +265,9 @@ class _MakeDonationState extends State<MakeDonation> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0)),
                               color: Color(0xFF2B2D42),
-                              onPressed: () {
+                              onPressed: () async {
                                 print('Pressed Location');
-                                _getCurrentLocation();
+                                position = await _getCurrentLocation();
                                 // Navigator.of(context).push(
                                 //   MaterialPageRoute(
                                 //     builder: (context) => Gmap(),
@@ -282,7 +289,7 @@ class _MakeDonationState extends State<MakeDonation> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
                       color: Color(0xFF2B2D42),
-                      onPressed: () {
+                      onPressed: () async {
                         if (_description.text.isEmpty) {
                           _validatedescription = true;
                         } else {
@@ -295,11 +302,23 @@ class _MakeDonationState extends State<MakeDonation> {
                         }
                         if (_validatedescription == false &&
                             _validatequantity == false) {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => RecipientList(),
-                            ),
-                          );
+                          print(_description.text);
+                          print(_quantity.text);
+                          print(items[_value]);
+                          print(position.latitude);
+                          var response = await createpost(
+                              items[_value],
+                              _description.text,
+                              position.latitude,
+                              position.longitude,
+                              loginid);
+                          if (response["status"] == 200) {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => RecipientList(),
+                              ),
+                            );
+                          }
                         }
                       },
                       child: Text(

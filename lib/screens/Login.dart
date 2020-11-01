@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:aider/networking/auth.dart';
 
 String loggeduser = "NA";
+String loginid;
 String id = "NA";
 //import 'package:aider/screens/donorregsuccess.dart';
 
@@ -165,6 +166,7 @@ class _DonorloginState extends State<Donorlogin> {
                         if (response["status"] == 200) {
                           if (response["role"] == "donor") {
                             loggeduser = response["name"];
+                            loginid = response["email"];
                             print(loggeduser);
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
@@ -173,6 +175,7 @@ class _DonorloginState extends State<Donorlogin> {
                             );
                           } else {
                             loggeduser = response["name"];
+                            loginid = response["email"];
                             print(loggeduser);
                             id = response["org_id"];
                             Navigator.of(context).pushReplacement(
@@ -236,17 +239,19 @@ class _DonorloginState extends State<Donorlogin> {
 
 createdialogbox(BuildContext context, String text) {
   return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-            backgroundColor: Colors.redAccent[600],
-            title: Text(
-              "Alert",
-              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
-            ),
-            content: Text(
-              text,
-              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
-            ));
-      });
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        backgroundColor: Colors.redAccent[600],
+        title: Text(
+          "Alert",
+          style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+        ),
+        content: Text(
+          text,
+          style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+        ),
+      );
+    },
+  );
 }
