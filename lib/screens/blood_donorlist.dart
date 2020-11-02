@@ -2,11 +2,7 @@
 import 'package:aider/screens/blooddash.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(
-  MaterialApp(
-    home: DonationList()
-  )
-);
+void main() => runApp(MaterialApp(home: DonationList()));
 
 class DonationList extends StatefulWidget {
   @override
@@ -14,7 +10,7 @@ class DonationList extends StatefulWidget {
 }
 
 class _DonationListState extends State<DonationList> {
-int val = 1;
+  int val = 1;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -45,7 +41,7 @@ int val = 1;
             backgroundColor: Color(0xFF2B2D42),
             child: Icon(Icons.home_outlined),
             onPressed: () {
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => Blooddash(),
                 ),
@@ -138,7 +134,7 @@ Widget rowelement(val, context) {
                   fontSize: 15.0,
                   color: Color(0xFF2B2D42)),
             ),
-             SizedBox(
+            SizedBox(
               height: 4.0,
             ),
             Text(
@@ -226,7 +222,7 @@ Widget rowelement(val, context) {
               onPressed: () {
                 print('Pressed accept request');
                 print('pressed log in');
-                // Navigator.of(context).push(
+                // Navigator.of(context).pushReplacement(
                 //   MaterialPageRoute(
                 //     builder: (context) => Chathome(), //go to blood dashboard
                 //   ),

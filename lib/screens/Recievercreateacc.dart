@@ -378,7 +378,7 @@ class _RecieverCreateAccState extends State<RecieverCreateAcc> {
                               if (resp["status"] == 200) {
                                 SchedulerBinding.instance
                                     .addPostFrameCallback((_) {
-                                  Navigator.of(context).push(
+                                  Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) => RecregSuccess(),
                                     ),

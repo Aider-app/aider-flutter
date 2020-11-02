@@ -85,8 +85,9 @@ class _BloodregsuccessState extends State<Bloodregsuccess> {
                           //Go to login page
                           onPressed: () {
                             print('Pressed Log In...Return to login page.');
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Bloodlogin()));
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => Bloodlogin()));
                           },
                           child: Text(
                             'Go to Log In',

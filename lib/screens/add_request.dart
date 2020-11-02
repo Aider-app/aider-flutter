@@ -49,7 +49,7 @@ class _MakeRequestState extends State<MakeRequest> {
           backgroundColor: Color(0xFF2B2D42),
           child: Icon(Icons.home_outlined),
           onPressed: () {
-            // Navigator.of(context).push(
+            // Navigator.of(context).pushReplacement(
             //   MaterialPageRoute(
             //     builder: (context) => Donordash(),
             //   ),
@@ -263,7 +263,7 @@ class _MakeRequestState extends State<MakeRequest> {
                               onPressed: () {
                                 print('Pressed Location');
                                 _getCurrentLocation();
-                                // Navigator.of(context).push(
+                                // Navigator.of(context).pushReplacement(
                                 //   MaterialPageRoute(
                                 //     builder: (context) => Gmap(),
                                 //   ),
@@ -297,7 +297,7 @@ class _MakeRequestState extends State<MakeRequest> {
                         }
                         if (_validatedescription == false &&
                             _validatequantity == false) {
-                          // Navigator.of(context).push(
+                          //Navigator.of(context).pushReplacement(
                           //   MaterialPageRoute(
                           //     builder: (context) => RecipientList(),
                           //   ),

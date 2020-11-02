@@ -136,7 +136,7 @@ class _RecieverdashState extends State<Recieverdash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO create request
                                 onPressed: () {
-                                  Navigator.of(context).push(
+                                  Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) => MakeRequest(),
                                     ),
@@ -156,7 +156,7 @@ class _RecieverdashState extends State<Recieverdash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO PREVIOUS requests
                                 onPressed: () {
-                                  Navigator.of(context).push(
+                                  Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) => PrevRequests(),
                                     ),
@@ -210,7 +210,7 @@ class _RecieverdashState extends State<Recieverdash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO My Account
                                 onPressed: () {
-                                  //   Navigator.of(context).push(
+                                  //   Navigator.of(context).pushReplacement(
                                   //    MaterialPageRoute(
                                   //       builder: (context) => DonorCreateAcc(),
                                   //   ),

@@ -39,7 +39,7 @@ class _RecipientListState extends State<RecipientList> {
             backgroundColor: Color(0xFF2B2D42),
             child: Icon(Icons.home_outlined),
             onPressed: () {
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => Donordash(),
                 ),
@@ -209,7 +209,7 @@ Widget rowelement(val, context) {
               onPressed: () {
                 print('Pressed accept request');
                 print('pressed log in');
-                Navigator.of(context).push(
+                Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) => Chathome(), //go to blood dashboard
                   ),

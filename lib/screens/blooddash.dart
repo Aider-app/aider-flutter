@@ -137,7 +137,7 @@ class _BlooddashState extends State<Blooddash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO create request
                                 onPressed: () {
-                                  Navigator.of(context).push(
+                                  Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) => Bloodcreatereq(),
                                     ),
@@ -157,7 +157,7 @@ class _BlooddashState extends State<Blooddash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO PREVIOUS requests
                                 onPressed: () {
-                                  Navigator.of(context).push(
+                                  Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) => Bloodprevreq(),
                                     ),
@@ -211,11 +211,11 @@ class _BlooddashState extends State<Blooddash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO My Account
                                 onPressed: () {
-                                    Navigator.of(context).push(
-                                     MaterialPageRoute(
-                                       builder: (context) => BloodDetails(),
-                                   ),
-                                    );
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (context) => BloodDetails(),
+                                    ),
+                                  );
                                 },
                                 padding: EdgeInsets.all(25.0),
                                 child: Icon(
@@ -258,11 +258,11 @@ class _BlooddashState extends State<Blooddash> {
                             borderRadius: BorderRadius.circular(20.0)),
                         color: Color(0xFF2B2D42),
                         onPressed: () {
-                         Navigator.of(context).push(
-                                     MaterialPageRoute(
-                                       builder: (context) => BloodRecipientList(),
-                                   ),
-                                    );
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => BloodRecipientList(),
+                            ),
+                          );
                         },
                         child: Text(
                           'I want to donate',
