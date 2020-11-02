@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:aider/screens/blooddash.dart';
-
-void main() => runApp(
-  MaterialApp(
-    home: BloodDetails()
-  )
-);
+import 'package:aider/screens/blood_accountedit.dart';
 
 class BloodDetails extends StatefulWidget {
   @override
@@ -151,7 +146,11 @@ final _description = TextEditingController();
                             shape: new RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(5.0)),
                             onPressed: () {
-                              print("Pressed Edit");
+                            Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Blood_AccountDetails(),
+                              ),
+                            );
                             },
                             child: Center(
                               child: Text("Edit", style: TextStyle(
