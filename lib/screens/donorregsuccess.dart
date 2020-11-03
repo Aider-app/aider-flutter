@@ -85,8 +85,9 @@ class _DregSuccessState extends State<DregSuccess> {
                           //Go to login page
                           onPressed: () {
                             print('Pressed Log In...Return to login page.');
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Donorlogin()));
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => Donorlogin()));
                           },
                           child: Text(
                             'Go to Log In',

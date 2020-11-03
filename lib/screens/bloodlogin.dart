@@ -94,7 +94,7 @@ class _BloodloginState extends State<Bloodlogin> {
                           borderRadius: BorderRadius.circular(20.0)),
                       //GO TO CREATE NEW ACC
                       onPressed: () {
-                        Navigator.of(context).push(
+                        Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (context) => BloodcreateAcc(),
                           ),

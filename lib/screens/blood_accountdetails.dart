@@ -8,7 +8,7 @@ class BloodDetails extends StatefulWidget {
 }
 
 class _BloodDetailsState extends State<BloodDetails> {
-final _description = TextEditingController();
+  final _description = TextEditingController();
   bool _validatedescription = false;
   final _quantity = TextEditingController();
   bool _validatequantity = false;
@@ -37,7 +37,7 @@ final _description = TextEditingController();
           backgroundColor: Color(0xFF2B2D42),
           child: Icon(Icons.home_outlined),
           onPressed: () {
-            Navigator.of(context).push(
+            Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) => Blooddash(),
               ),
@@ -119,7 +119,7 @@ final _description = TextEditingController();
                     SizedBox(width: 16.7)
                   ],
                 ),
-                 SizedBox(height: 30.0),
+                SizedBox(height: 30.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -142,23 +142,25 @@ final _description = TextEditingController();
                   width: 100.0,
                   height: 50.0,
                   child: OutlineButton(
-                            // borderSide: BorderSide.none,
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(5.0)),
-                            onPressed: () {
-                            Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => Blood_AccountDetails(),
-                              ),
-                            );
-                            },
-                            child: Center(
-                              child: Text("Edit", style: TextStyle(
-                        fontSize: 20.0,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.bold,
-                      ),)
-                            )),
+                      // borderSide: BorderSide.none,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(5.0)),
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => Blood_AccountDetails(),
+                          ),
+                        );
+                      },
+                      child: Center(
+                          child: Text(
+                        "Edit",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ))),
                 ),
               ],
             )));

@@ -268,7 +268,7 @@ class _MakeDonationState extends State<MakeDonation> {
                               onPressed: () async {
                                 print('Pressed Location');
                                 position = await _getCurrentLocation();
-                                // Navigator.of(context).push(
+                                // Navigator.of(context).pushReplacement(
                                 //   MaterialPageRoute(
                                 //     builder: (context) => Gmap(),
                                 //   ),
@@ -314,7 +314,7 @@ class _MakeDonationState extends State<MakeDonation> {
                               position.longitude,
                               loginid);
                           if (response["status"] == 200) {
-                            Navigator.of(context).push(
+                            Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
                                 builder: (context) => RecipientList(),
                               ),

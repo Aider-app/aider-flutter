@@ -1,3 +1,4 @@
+import 'package:aider/screens/reciever_edit.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/recieverdash.dart';
 
@@ -36,7 +37,7 @@ class _RecipientDetailsState extends State<RecipientDetails> {
           backgroundColor: Color(0xFF2B2D42),
           child: Icon(Icons.home_outlined),
           onPressed: () {
-            Navigator.of(context).push(
+            Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) => Recieverdash(),
               ),
@@ -162,7 +163,12 @@ class _RecipientDetailsState extends State<RecipientDetails> {
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(5.0)),
                       onPressed: () {
-                        print("Pressed Address Edit");
+                        print("Pressed Edit");
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => RecieverEdit(),
+                          ),
+                        );
                       },
                       child: Center(
                           child: Text(

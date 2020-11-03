@@ -1,7 +1,7 @@
 import 'package:aider/screens/Donorcreateacc.dart';
 import 'package:aider/screens/recieverdash.dart';
 import 'package:aider/screens/donordash.dart';
-import 'package:aider/screens/Login.dart';
+//import 'package:aider/screens/Login.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/networking/auth.dart';
 
@@ -115,7 +115,7 @@ class _DonorloginState extends State<Donorlogin> {
                                 borderRadius: BorderRadius.circular(20.0)),
                             //GO TO CREATE NEW ACC
                             onPressed: () {
-                              Navigator.of(context).push(
+                              Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
                                   builder: (context) => DonorCreateAcc(),
                                 ),
@@ -209,7 +209,7 @@ class _DonorloginState extends State<Donorlogin> {
                       color: Color(0xFF2B2D42),
                       onPressed: () {
                         print('Pressed recipient login');
-                        Navigator.of(context).push(
+                        Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (context) => Receiverlogin(),
                           ),

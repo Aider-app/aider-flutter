@@ -8,7 +8,7 @@ class RecieverEdit extends StatefulWidget {
 }
 
 class _RecieverEditState extends State<RecieverEdit> {
-final _description = TextEditingController();
+  final _description = TextEditingController();
   bool _validatedescription = false;
   final _quantity = TextEditingController();
   bool _validatequantity = false;
@@ -37,7 +37,7 @@ final _description = TextEditingController();
           backgroundColor: Color(0xFF2B2D42),
           child: Icon(Icons.home_outlined),
           onPressed: () {
-            Navigator.of(context).push(
+            Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) => Recieverdash(),
               ),
@@ -82,21 +82,20 @@ final _description = TextEditingController();
                       width: 150.0,
                       height: 18.0,
                       child: TextField(
-                            controller: _description,
-                            maxLines: null,
-                            cursorColor: Color(0xFF2B2D42),
-                            decoration: InputDecoration(
-                              hintText: "Enter New Name",
-                              hintStyle: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.0,
-                                  color: Color(0x802B2D42)),
-                              errorText: _validatedescription
-                                  ? 'Enter New Name'
-                                  : null,
-                            ),
-                          ),
+                        controller: _description,
+                        maxLines: null,
+                        cursorColor: Color(0xFF2B2D42),
+                        decoration: InputDecoration(
+                          hintText: "Enter New Name",
+                          hintStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15.0,
+                              color: Color(0x802B2D42)),
+                          errorText:
+                              _validatedescription ? 'Enter New Name' : null,
+                        ),
+                      ),
                     ),
                     SizedBox(
                         width:
@@ -122,21 +121,21 @@ final _description = TextEditingController();
                       width: 150.0,
                       height: 20.0,
                       child: TextField(
-                            controller: _description,
-                            maxLines: null,
-                            cursorColor: Color(0xFF2B2D42),
-                            decoration: InputDecoration(
-                              hintText: "Enter New Number",
-                              hintStyle: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.0,
-                                  color: Color(0x802B2D42)),
-                              errorText: _validatedescription
-                                  ? 'Enter Valid Number'
-                                  : null,
-                            ),
-                          ),
+                        controller: _description,
+                        maxLines: null,
+                        cursorColor: Color(0xFF2B2D42),
+                        decoration: InputDecoration(
+                          hintText: "Enter New Number",
+                          hintStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15.0,
+                              color: Color(0x802B2D42)),
+                          errorText: _validatedescription
+                              ? 'Enter Valid Number'
+                              : null,
+                        ),
+                      ),
                     ),
                     SizedBox(
                         width:
@@ -162,26 +161,25 @@ final _description = TextEditingController();
                       width: 150.0,
                       height: 20.0,
                       child: TextField(
-                            controller: _description,
-                            maxLines: null,
-                            cursorColor: Color(0xFF2B2D42),
-                            decoration: InputDecoration(
-                              hintText: "Enter New Email",
-                              hintStyle: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.0,
-                                  color: Color(0x802B2D42)),
-                              errorText: _validatedescription
-                                  ? 'Enter Valid Email'
-                                  : null,
-                            ),
-                          ),
+                        controller: _description,
+                        maxLines: null,
+                        cursorColor: Color(0xFF2B2D42),
+                        decoration: InputDecoration(
+                          hintText: "Enter New Email",
+                          hintStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15.0,
+                              color: Color(0x802B2D42)),
+                          errorText:
+                              _validatedescription ? 'Enter Valid Email' : null,
+                        ),
+                      ),
                     ),
                     SizedBox(width: 114.0),
                   ],
                 ),
-                 SizedBox(height: 35.0),
+                SizedBox(height: 35.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -199,21 +197,20 @@ final _description = TextEditingController();
                       width: 150.0,
                       height: 20.0,
                       child: TextField(
-                            controller: _description,
-                            maxLines: null,
-                            cursorColor: Color(0xFF2B2D42),
-                            decoration: InputDecoration(
-                              hintText: "Enter New Address",
-                              hintStyle: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.0,
-                                  color: Color(0x802B2D42)),
-                              errorText: _validatedescription
-                                  ? 'Enter Address'
-                                  : null,
-                            ),
-                          ),
+                        controller: _description,
+                        maxLines: null,
+                        cursorColor: Color(0xFF2B2D42),
+                        decoration: InputDecoration(
+                          hintText: "Enter New Address",
+                          hintStyle: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15.0,
+                              color: Color(0x802B2D42)),
+                          errorText:
+                              _validatedescription ? 'Enter Address' : null,
+                        ),
+                      ),
                     ),
                     SizedBox(width: 50.0),
                   ],
@@ -223,22 +220,24 @@ final _description = TextEditingController();
                   width: 100.0,
                   height: 50.0,
                   child: OutlineButton(
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(5.0)),
-                            onPressed: () {
-                            Navigator.of(context).push(
-                             MaterialPageRoute(
-                              builder: (context) => RecipientDetails(),
-                              ),
-                             );
-                            },
-                            child: Center(
-                              child: Text("Save", style: TextStyle(
-                        fontSize: 20.0,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.bold,
-                      ),)
-                            )),
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(5.0)),
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => RecipientDetails(),
+                          ),
+                        );
+                      },
+                      child: Center(
+                          child: Text(
+                        "Save",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ))),
                 ),
               ],
             )));
