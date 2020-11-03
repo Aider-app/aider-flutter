@@ -1,5 +1,5 @@
 //import 'package:aider/screens/Donorcreateacc.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'package:aider/screens/add_donation.dart';
 import 'package:aider/screens/donor_details.dart';
 import 'package:aider/screens/prev_donations.dart';
@@ -138,7 +138,7 @@ class _DonordashState extends State<Donordash> {
                               color: Color(0xFF2B2D42),
                               //GO TO ADD A NEW DONATION
                               onPressed: () {
-                                Navigator.of(context).pushReplacement(
+                                Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (context) => MakeDonation(),
                                   ),
@@ -159,7 +159,7 @@ class _DonordashState extends State<Donordash> {
                               //GO TO PREVIOUS DONATIONS
                               onPressed: () {
                                 print('Pressed previous donations');
-                                Navigator.of(context).pushReplacement(
+                                Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (context) => PrevDonation(),
                                   ),
@@ -212,7 +212,7 @@ class _DonordashState extends State<Donordash> {
                               color: Color(0xFF2B2D42),
                               //GO TO My Account
                               onPressed: () {
-                                Navigator.of(context).pushReplacement(
+                                Navigator.of(context).push(
                                   MaterialPageRoute(
                                     builder: (context) => DonorDetails(),
                                   ),
@@ -233,6 +233,7 @@ class _DonordashState extends State<Donordash> {
                               //GO TO donate to cmrdf
                               onPressed: () {
                                 print('Pressed cmrdf');
+                                _launchURL();
                               },
                               padding: EdgeInsets.all(25.0),
                               child: Icon(
@@ -300,5 +301,14 @@ class _DonordashState extends State<Donordash> {
         ),
       ),
     );
+  }
+}
+
+_launchURL() async {
+  const url = 'https://donation.cmdrf.kerala.gov.in/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
