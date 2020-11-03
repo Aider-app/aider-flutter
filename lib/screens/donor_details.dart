@@ -1,3 +1,4 @@
+import 'package:aider/screens/donor_edit.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/donordash.dart';
 
@@ -36,7 +37,7 @@ class _DonorDetailsState extends State<DonorDetails> {
           backgroundColor: Color(0xFF2B2D42),
           child: Icon(Icons.home_outlined),
           onPressed: () {
-            Navigator.of(context).push(
+            Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) => Donordash(),
               ),
@@ -147,6 +148,11 @@ class _DonorDetailsState extends State<DonorDetails> {
                           borderRadius: new BorderRadius.circular(5.0)),
                       onPressed: () {
                         print("Pressed Edit");
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => DonorEdit(),
+                          ),
+                        );
                       },
                       child: Center(
                           child: Text(

@@ -43,7 +43,7 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
           backgroundColor: Color(0xFF2B2D42),
           child: Icon(Icons.home_outlined),
           onPressed: () {
-            Navigator.of(context).push(
+            Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (context) => Blooddash(),
               ),
@@ -311,7 +311,7 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                               color: Color(0xFF2B2D42),
                               onPressed: () {
                                 print('Pressed Location');
-                                Navigator.of(context).push(
+                                Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                     builder: (context) => Gmap(),
                                   ),

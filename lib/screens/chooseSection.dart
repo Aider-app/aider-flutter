@@ -42,7 +42,7 @@ class _ChooseSectionState extends State<ChooseSection> {
               color: Color(0xFF2B2D42),
               onPressed: () {
                 print('pressed');
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => Donorlogin()),
                 );
@@ -65,7 +65,7 @@ class _ChooseSectionState extends State<ChooseSection> {
               color: Color(0xFF2B2D42),
               onPressed: () {
                 print('pressed');
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => Bloodlogin()),
                 );

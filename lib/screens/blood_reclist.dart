@@ -2,7 +2,6 @@ import 'package:aider/screens/chathome.dart';
 import 'package:aider/screens/blooddash.dart';
 import 'package:flutter/material.dart';
 
-
 class BloodRecipientList extends StatefulWidget {
   @override
   _BloodRecipientListState createState() => _BloodRecipientListState();
@@ -40,7 +39,7 @@ class _BloodRecipientListState extends State<BloodRecipientList> {
             backgroundColor: Color(0xFF2B2D42),
             child: Icon(Icons.home_outlined),
             onPressed: () {
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => Blooddash(),
                 ),
@@ -133,10 +132,10 @@ Widget rowelement(val, context) {
                   fontSize: 15.0,
                   color: Color(0xFF2B2D42)),
             ),
-             SizedBox(
+            SizedBox(
               height: 4.0,
             ),
-             Text(
+            Text(
               'Blood Group #$val',
               style: TextStyle(
                   fontFamily: 'Montserrat',
@@ -229,7 +228,7 @@ Widget rowelement(val, context) {
               onPressed: () {
                 print('Pressed accept request');
                 print('pressed log in');
-                Navigator.of(context).push(
+                Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (context) => Chathome(), //go to blood dashboard
                   ),

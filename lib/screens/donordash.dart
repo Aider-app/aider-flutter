@@ -138,7 +138,7 @@ class _DonordashState extends State<Donordash> {
                               color: Color(0xFF2B2D42),
                               //GO TO ADD A NEW DONATION
                               onPressed: () {
-                                Navigator.of(context).push(
+                                Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                     builder: (context) => MakeDonation(),
                                   ),
@@ -159,7 +159,7 @@ class _DonordashState extends State<Donordash> {
                               //GO TO PREVIOUS DONATIONS
                               onPressed: () {
                                 print('Pressed previous donations');
-                                Navigator.of(context).push(
+                                Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                     builder: (context) => PrevDonation(),
                                   ),
@@ -212,7 +212,7 @@ class _DonordashState extends State<Donordash> {
                               color: Color(0xFF2B2D42),
                               //GO TO My Account
                               onPressed: () {
-                                Navigator.of(context).push(
+                                Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                     builder: (context) => DonorDetails(),
                                   ),
