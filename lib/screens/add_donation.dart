@@ -22,7 +22,7 @@ class _MakeDonationState extends State<MakeDonation> {
   bool _validatedescription = false;
   final _quantity = TextEditingController();
   bool _validatequantity = false;
-  int _value = 1;
+  int _value = 0;
   Position position;
   //*************************************taking current location****************
   Future<Position> _getCurrentLocation() async {
@@ -304,10 +304,11 @@ class _MakeDonationState extends State<MakeDonation> {
                             _validatequantity == false) {
                           print(_description.text);
                           print(_quantity.text);
-                          print(items[_value]);
+                          print(items[_value - 1]);
                           print(position.latitude);
+                          print(_value);
                           var response = await createpost(
-                              items[_value],
+                              items[(_value - 1)],
                               _description.text,
                               position.latitude,
                               position.longitude,
