@@ -191,7 +191,7 @@ class _DonordashState extends State<Donordash> {
                           ),
                           SizedBox(width: 20.0),
                           Text(
-                            'Previous Donations',
+                            'View requests',
                             style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
