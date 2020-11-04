@@ -115,7 +115,7 @@ class _DonorloginState extends State<Donorlogin> {
                                 borderRadius: BorderRadius.circular(20.0)),
                             //GO TO CREATE NEW ACC
                             onPressed: () {
-                              Navigator.of(context).pushReplacement(
+                              Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => DonorCreateAcc(),
                                 ),
