@@ -67,7 +67,7 @@ class _PrevRequestsState extends State<PrevRequests> {
                         height: 80,
                         child: Center(
                           child: Text(
-                            "Previous Requests",
+                            "PREVIOUS REQUESTS",
                             style: TextStyle(
                                 fontSize: 30.0,
                                 fontFamily: "Montserrat",

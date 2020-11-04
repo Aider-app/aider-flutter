@@ -67,7 +67,7 @@ class _BloodRecipientListState extends State<BloodRecipientList> {
                         height: 80,
                         child: Center(
                           child: Text(
-                            "Available Recipients",
+                            "AVAILABLE RECIPIENTS",
                             style: TextStyle(
                                 fontSize: 30.0,
                                 fontFamily: "Montserrat",

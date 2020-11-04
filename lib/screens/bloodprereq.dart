@@ -67,11 +67,13 @@ class _BloodprevreqState extends State<Bloodprevreq> {
                         height: 80,
                         child: Center(
                           child: Text(
-                            "Previous Requests",
+                            "PREVIOUS REQUESTS",
                             style: TextStyle(
-                                fontSize: 30.0,
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.bold),
+                              fontSize: 30.0,
+                              fontFamily: "Montserrat",
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF2B2D42),
+                            ),
                           ),
                         ),
                       ),
