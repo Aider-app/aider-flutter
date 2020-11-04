@@ -69,7 +69,7 @@ class _DonationListState extends State<DonationList> {
                         height: 80,
                         child: Center(
                           child: Text(
-                            "Available Donors",
+                            "AVAILABLE DONORS",
                             style: TextStyle(
                                 fontSize: 30.0,
                                 fontFamily: "Montserrat",

@@ -58,7 +58,7 @@ class _DonorDetailsState extends State<DonorDetails> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "My Account",
+                  "MY ACCOUNT",
                   style: TextStyle(
                       fontSize: 30.0,
                       fontFamily: "Montserrat",
@@ -73,9 +73,11 @@ class _DonorDetailsState extends State<DonorDetails> {
                     Text(
                       "Name : ",
                       style: TextStyle(
-                          fontSize: 20.0,
-                          fontFamily: "Montserrat",
-                          fontWeight: FontWeight.bold),
+                        fontSize: 20.0,
+                        fontFamily: "Montserrat",
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF2B2D42),
+                      ),
                     ),
                     SizedBox(
                         width:
@@ -94,6 +96,7 @@ class _DonorDetailsState extends State<DonorDetails> {
                         fontSize: 20.0,
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.bold,
+                        color: Color(0xFF2B2D42),
                       ),
                     ),
                     SizedBox(
@@ -112,6 +115,7 @@ class _DonorDetailsState extends State<DonorDetails> {
                         fontSize: 20.0,
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.bold,
+                        color: Color(0xFF2B2D42),
                       ),
                     ),
                     SizedBox(
@@ -131,6 +135,7 @@ class _DonorDetailsState extends State<DonorDetails> {
                         fontSize: 20.0,
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.bold,
+                        color: Color(0xFF2B2D42),
                       ),
                     ),
                     SizedBox(width: 202.0),
