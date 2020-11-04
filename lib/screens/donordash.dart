@@ -5,6 +5,7 @@ import 'package:aider/screens/donor_details.dart';
 import 'package:aider/screens/prev_donations.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/Login.dart';
+import 'package:aider/screens/rec_list.dart';
 
 class Donordash extends StatefulWidget {
   @override
@@ -85,7 +86,7 @@ class _DonordashState extends State<Donordash> {
                             width: 20.0,
                           ),
                           Text(
-                            'Rating',
+                            'Rating : $rating',
                             style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
@@ -161,7 +162,7 @@ class _DonordashState extends State<Donordash> {
                                 print('Pressed previous donations');
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => PrevDonation(),
+                                    builder: (context) => RecipientList(),
                                   ),
                                 );
                               },

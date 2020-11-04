@@ -1,16 +1,23 @@
 import 'package:aider/screens/Donorcreateacc.dart';
 import 'package:aider/screens/recieverdash.dart';
 import 'package:aider/screens/donordash.dart';
-
+import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/networking/auth.dart';
 
 String loggeduser = "NA";
 String loginid;
 String id = "NA";
+String rating = "0";
 //import 'package:aider/screens/donorregsuccess.dart';
-
+Position position;
 void main() => runApp(Donorlogin());
+Future<Position> _getCurrentLocation() async {
+  final positioncoord = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high);
+  position = positioncoord;
+  //print("inside function $position"); //longitude and latitude
+}
 
 class Donorlogin extends StatefulWidget {
   @override
@@ -20,6 +27,13 @@ class Donorlogin extends StatefulWidget {
 class _DonorloginState extends State<Donorlogin> {
   final _passcon = TextEditingController();
   final _mailcon = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    _getCurrentLocation();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -167,6 +181,7 @@ class _DonorloginState extends State<Donorlogin> {
                           if (response["role"] == "donor") {
                             loggeduser = response["name"];
                             loginid = response["email"];
+                            rating = response["rating"];
                             print(loggeduser);
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
