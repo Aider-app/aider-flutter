@@ -73,11 +73,12 @@ class _MakeDonationState extends State<MakeDonation> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Make a Donation",
+                  "MAKE A DONATION",
                   style: TextStyle(
                       fontSize: 30.0,
                       fontFamily: "Montserrat",
-                      fontWeight: FontWeight.bold),
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF2B2D42)),
                 ),
                 SizedBox(height: 80.0),
                 Row(
@@ -90,7 +91,8 @@ class _MakeDonationState extends State<MakeDonation> {
                       style: TextStyle(
                           fontSize: 20.0,
                           fontFamily: "Montserrat",
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF2B2D42)),
                     ),
                     SizedBox(width: 20.0),
                     Container(
@@ -159,10 +161,10 @@ class _MakeDonationState extends State<MakeDonation> {
                     Text(
                       "Description : ",
                       style: TextStyle(
-                        fontSize: 20.0,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.bold,
-                      ),
+                          fontSize: 20.0,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF2B2D42)),
                     ),
                     //SizedBox(width: 20),
                     Expanded(
@@ -205,10 +207,10 @@ class _MakeDonationState extends State<MakeDonation> {
                     Text(
                       "Quantity : ",
                       style: TextStyle(
-                        fontSize: 20.0,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.bold,
-                      ),
+                          fontSize: 20.0,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF2B2D42)),
                     ),
                     // SizedBox(width: 10.0),
                     Expanded(
@@ -248,13 +250,14 @@ class _MakeDonationState extends State<MakeDonation> {
 
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(width: 50),
+                    SizedBox(width: 90),
                     Text(
-                      "Choose Location : ",
+                      "Location : ",
                       style: TextStyle(
                         fontSize: 20.0,
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.bold,
+                        color: Color(0xFF2B2D42),
                       ),
                     ),
                     SizedBox(width: 30), //Choose Location SizedBox to be Edited

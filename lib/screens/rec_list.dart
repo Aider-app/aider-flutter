@@ -117,7 +117,7 @@ class _RecipientListState extends State<RecipientList> {
                         height: 80,
                         child: Center(
                           child: Text(
-                            "Available Recipients",
+                            "AVAILABLE RECIPIENTS",
                             style: TextStyle(
                                 fontSize: 30.0,
                                 fontFamily: "Montserrat",

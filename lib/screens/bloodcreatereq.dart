@@ -66,9 +66,11 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                 Text(
                   "CREATE NEW REQUEST",
                   style: TextStyle(
-                      fontSize: 30.0,
-                      fontFamily: "Montserrat",
-                      fontWeight: FontWeight.bold),
+                    fontSize: 30.0,
+                    fontFamily: "Montserrat",
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF2B2D42),
+                  ),
                 ),
                 SizedBox(height: 80.0),
                 Row(
@@ -79,9 +81,11 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                     Text(
                       "Select Blood group : ",
                       style: TextStyle(
-                          fontSize: 20.0,
-                          fontFamily: "Montserrat",
-                          fontWeight: FontWeight.bold),
+                        fontSize: 20.0,
+                        fontFamily: "Montserrat",
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF2B2D42),
+                      ),
                     ),
                     SizedBox(width: 10.0),
                     Container(
@@ -206,6 +210,7 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                         fontSize: 20.0,
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.bold,
+                        color: Color(0xFF2B2D42),
                       ),
                     ),
                     //SizedBox(width: 20),
@@ -252,6 +257,7 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                         fontSize: 20.0,
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.bold,
+                        color: Color(0xFF2B2D42),
                       ),
                     ),
                     // SizedBox(width: 10.0),
@@ -298,6 +304,7 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                         fontSize: 20.0,
                         fontFamily: "Montserrat",
                         fontWeight: FontWeight.bold,
+                        color: Color(0xFF2B2D42),
                       ),
                     ),
                     SizedBox(width: 30), //Choose Location SizedBox to be Edited

@@ -58,7 +58,7 @@ class _Blood_AccountDetailsState extends State<Blood_AccountDetails> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "My Account",
+                  "EDIT MY ACCOUNT",
                   style: TextStyle(
                       fontSize: 30.0,
                       fontFamily: "Montserrat",

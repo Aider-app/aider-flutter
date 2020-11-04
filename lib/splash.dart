@@ -33,33 +33,35 @@ class _SplashState extends State<Splash> {
   Tween<double> _scaleTween = Tween<double>(begin: 1, end: 2);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Container(
-              color: Color(0x608d99ae),
-              //   decoration: BoxDecoration(
-              //       color: Color(0xFFEDF2F4),
-              //       image: DecorationImage(
-              //         image: AssetImage('images/bg_stripes.png'),
-              //       )),
-            ),
-            Center(
-              child: TweenAnimationBuilder(
-                tween: _scaleTween,
-                duration: Duration(milliseconds: 700),
-                builder: (context, scale, child) {
-                  return Transform.scale(scale: scale, child: child);
-                },
-                child: Container(
-                  height: 200,
-                  child: Image(image: AssetImage('images/logosplash.png')),
-                ),
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                color: Color(0x608d99ae),
+                //   decoration: BoxDecoration(
+                //       color: Color(0xFFEDF2F4),
+                //       image: DecorationImage(
+                //         image: AssetImage('images/bg_stripes.png'),
+                //       )),
               ),
-            )
-          ],
+              Center(
+                child: TweenAnimationBuilder(
+                  tween: _scaleTween,
+                  duration: Duration(milliseconds: 700),
+                  builder: (context, scale, child) {
+                    return Transform.scale(scale: scale, child: child);
+                  },
+                  child: Container(
+                    height: 200,
+                    child: Image(image: AssetImage('images/logosplash.png')),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
