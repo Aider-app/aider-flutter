@@ -1,4 +1,5 @@
-import 'package:aider/screens/chooseSection.dart';
+//import 'package:aider/screens/chooseSection.dart';
+import 'package:aider/splash.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +17,7 @@ void main() {
           ),
         ),
       ),*/
-      body: ChooseSection(),
+      body: Splash(),
     ),
   ));
 }
