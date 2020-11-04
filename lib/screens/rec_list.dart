@@ -1,6 +1,9 @@
 import 'package:aider/screens/chathome.dart';
 import 'package:aider/screens/donordash.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/widgets/rowelement.dart';
+import 'package:aider/networking/posts.dart';
+import 'package:aider/screens/Login.dart';
 
 class RecipientList extends StatefulWidget {
   @override
@@ -9,6 +12,53 @@ class RecipientList extends StatefulWidget {
 
 class _RecipientListState extends State<RecipientList> {
   int val = 1;
+  List<Widget> list = [];
+  List<Widget> l = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    fetchposts();
+    super.initState();
+  }
+
+  fetchposts() async {
+    var posts = await getposts(
+      position.latitude,
+      position.longitude,
+      "true",
+    );
+    for (int i = 0; i < posts.length; i++) {
+      l.add(
+        rowelement(
+            posts[i]["data"]["item_type"],
+            posts[i]["data"]["item_name"],
+            posts[i]["data"]["publisher_id"],
+            posts[i]["data"]["post_id"],
+            posts[i]["distance"],
+            posts[i]["data"]["quantity"],
+            context),
+      );
+      l.add(
+        SizedBox(height: 20.0),
+      );
+    }
+    ;
+
+    setState(() {
+      list = l;
+      /*if (l.length == 0) {
+        list = [
+          rowelement("loading", "loading", "loading", "loading", "loading",
+              "loading", context)
+        ];
+      } else {
+        list = l;
+      }*/
+    });
+    // print("inside rec_list");
+    // print(l);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -79,7 +129,8 @@ class _RecipientListState extends State<RecipientList> {
                     Expanded(
                         child: SingleChildScrollView(
                       child: Column(
-                        children: [
+                        children:
+                            list /*[
                           SizedBox(height: 20.0),
                           rowelement(1, context),
                           SizedBox(height: 20.0),
@@ -95,7 +146,8 @@ class _RecipientListState extends State<RecipientList> {
                           SizedBox(height: 20.0),
                           rowelement(7, context),
                           SizedBox(height: 20.0),
-                        ],
+                        ]*/
+                        ,
                       ),
                     ))
                   ],
@@ -103,128 +155,4 @@ class _RecipientListState extends State<RecipientList> {
               ))),
     );
   }
-}
-
-Widget rowelement(val, context) {
-  return Container(
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Column(
-          children: <Widget>[
-            Text(
-              'Recipient #$val',
-              style: TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.0,
-                  color: Color(0xFF2B2D42)),
-            ),
-            SizedBox(
-              height: 8.0,
-            ),
-            Text(
-              'Location #$val',
-              style: TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.0,
-                  color: Color(0xFF2B2D42)),
-            ),
-            FlatButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                onPressed: () {
-                  print('Pressed view request');
-                  return showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        backgroundColor: Colors.redAccent[600],
-                        title: Text(
-                          "Request: ",
-                          style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20.0,
-                              color: Color(0xFF2B2D42)),
-                        ),
-                        //column inside pop up (details)
-                        content: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "In need of: ",
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.0,
-                                  color: Color(0xFF2B2D42)),
-                            ),
-                            Text(
-                              "Phone: ",
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.0,
-                                  color: Color(0xFF2B2D42)),
-                            ),
-                            Text(
-                              "Date: ",
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.0,
-                                  color: Color(0xFF2B2D42)),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  );
-                },
-                child: Text(
-                  'View request.',
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15.0,
-                      color: Color(0xFF2B2D42)),
-                )),
-          ],
-        ),
-        SizedBox(
-          width: 50,
-        ),
-        Container(
-          child: FlatButton(
-              height: 60.0,
-              color: Color(0xFF2B2D42),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0)),
-              onPressed: () {
-                print('Pressed accept request');
-                print('pressed log in');
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => Chathome(), //go to blood dashboard
-                  ),
-                );
-              },
-              child: Text(
-                'Accept request.',
-                style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17.0,
-                    color: Color(0xFFFFFFFF)),
-              )),
-        ),
-      ],
-    ),
-  );
 }

@@ -23,7 +23,7 @@ class _MakeDonationState extends State<MakeDonation> {
   final _quantity = TextEditingController();
   bool _validatequantity = false;
   int _value;
-  Position position;
+
   //*************************************taking current location****************
   Future<Position> _getCurrentLocation() async {
     final position = await Geolocator.getCurrentPosition(
@@ -316,8 +316,12 @@ class _MakeDonationState extends State<MakeDonation> {
                               _description.text,
                               position.latitude,
                               position.longitude,
-                              loginid);
-                          print(response["result"]["publisher_id"]);
+                              loginid,
+                              "false",
+                              int.parse(_quantity.text));
+                          // print(response["result"]["publisher_id"]);
+                          print("pressed submit");
+
                           if (response["status"] == 200) {
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(

@@ -1,5 +1,7 @@
 //import 'package:aider/screens/donorlogin.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/widgets/prevdon.dart';
+import 'package:aider/widgets/rowelement.dart';
 
 class PrevDonation extends StatefulWidget {
   @override
@@ -62,9 +64,9 @@ class _PrevDonationState extends State<PrevDonation> {
                         height: 80,
                         child: Center(
                           child: Text(
-                            "PREVIOUS DONATIONS",
+                            "\nRequests",
                             style: TextStyle(
-                                fontSize: 30.0,
+                                fontSize: 29.0,
                                 fontFamily: "Montserrat",
                                 fontWeight: FontWeight.bold),
                           ),
@@ -76,11 +78,17 @@ class _PrevDonationState extends State<PrevDonation> {
                       child: Column(
                         children: [
                           SizedBox(height: 20.0),
-                          predon(context, 1),
-                          SizedBox(height: 20.0),
-                          predon(context, 2),
-                          SizedBox(height: 20.0),
-                          predon(context, 3),
+                          rowelement(
+                            "loading",
+                            "loading",
+                            "loading",
+                            "loading",
+                            "loading",
+                            "loading",
+                            context,
+                          ),
+
+                          /* predon(context, 3),
                           SizedBox(height: 20.0),
                           predon(context, 4),
                           SizedBox(height: 20.0),
@@ -99,7 +107,7 @@ class _PrevDonationState extends State<PrevDonation> {
                           predon(context, 11),
                           SizedBox(height: 20.0),
                           predon(context, 12),
-                          SizedBox(height: 20.0),
+                          SizedBox(height: 20.0),*/
                         ],
                       ),
                     ))
@@ -111,111 +119,4 @@ class _PrevDonationState extends State<PrevDonation> {
 }
 
 //function for each row
-Widget predon(BuildContext context, val) {
-  return Container(
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        SizedBox(
-          width: 50.0,
-        ),
-        Text(
-          'Donation #$val',
-          style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.bold,
-              fontSize: 20.0,
-              color: Color(0xFF2B2D42)),
-        ),
-        SizedBox(
-          width: 50.0,
-        ),
-        FlatButton(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)),
-            onPressed: () {
-              print('Details');
-              return showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    backgroundColor: Colors.redAccent[600],
-                    title: Text(
-                      "Details: ",
-                      style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                          color: Color(0xFF2B2D42)),
-                    ),
-                    //column inside pop up (details)
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Donated to: ",
-                          style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15.0,
-                              color: Color(0xFF2B2D42)),
-                        ),
-                        Text(
-                          "Donated items: ",
-                          style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15.0,
-                              color: Color(0xFF2B2D42)),
-                        ),
-                        Text(
-                          "Phone: ",
-                          style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15.0,
-                              color: Color(0xFF2B2D42)),
-                        ),
-                        Text(
-                          "Location: ",
-                          style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15.0,
-                              color: Color(0xFF2B2D42)),
-                        ),
-                        Text(
-                          "Date: ",
-                          style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15.0,
-                              color: Color(0xFF2B2D42)),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              );
-            },
-            child: Text(
-              'Details',
-              style: TextStyle(
-                  decoration: TextDecoration.underline,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15.0,
-                  color: Color(0xFF2B2D42)),
-            )),
-        SizedBox(
-          width: 50,
-        ),
-      ],
-    ),
-  );
-}
-
 //createdialogbox(BuildContext context) {}

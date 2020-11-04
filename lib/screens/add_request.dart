@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
 //import 'package:aider/screens/gmap.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:aider/networking/posts.dart';
+import 'package:aider/screens/Login.dart';
+import 'package:aider/screens/recieverdash.dart';
 
 void main() {
   runApp(MaterialApp(home: MakeRequest()));
 }
+
+List items = ["Food Items", "Medicine", "Clothes"];
 
 class MakeRequest extends StatefulWidget {
   @override
@@ -19,10 +24,11 @@ class _MakeRequestState extends State<MakeRequest> {
   bool _validatequantity = false;
   int _value = 1;
   //taking current location
-  void _getCurrentLocation() async {
+  Future<Position> _getCurrentLocation() async {
     final position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-    print(position); //longitude and latitude
+    return position;
+    //print("inside function $position"); //longitude and latitude
   }
 
   @override
@@ -267,9 +273,9 @@ class _MakeRequestState extends State<MakeRequest> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0)),
                               color: Color(0xFF2B2D42),
-                              onPressed: () {
+                              onPressed: () async {
                                 print('Pressed Location');
-                                _getCurrentLocation();
+                                position = await _getCurrentLocation();
                                 // Navigator.of(context).pushReplacement(
                                 //   MaterialPageRoute(
                                 //     builder: (context) => Gmap(),
@@ -291,7 +297,7 @@ class _MakeRequestState extends State<MakeRequest> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
                       color: Color(0xFF2B2D42),
-                      onPressed: () {
+                      onPressed: () async {
                         if (_description.text.isEmpty) {
                           _validatedescription = true;
                         } else {
@@ -309,6 +315,23 @@ class _MakeRequestState extends State<MakeRequest> {
                           //     builder: (context) => RecipientList(),
                           //   ),
                           // );
+                          var response = await createpost(
+                              items[(_value - 1)],
+                              _description.text,
+                              position.latitude,
+                              position.longitude,
+                              loginid,
+                              "true",
+                              int.parse(_quantity.text));
+                          print(response);
+                          if (response["status"] == 200) {
+                            print("success");
+                            //Navigator.pop(context);
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                              builder: (context) => Recieverdash(),
+                            ));
+                          }
                         }
                       },
                       child: Text(
@@ -324,4 +347,21 @@ class _MakeRequestState extends State<MakeRequest> {
               ],
             )));
   }
+}
+
+createdialogbox(BuildContext context, String text) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+            backgroundColor: Colors.redAccent[600],
+            title: Text(
+              "Alert",
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ),
+            content: Text(
+              text,
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ));
+      });
 }
