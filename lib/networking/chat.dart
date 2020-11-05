@@ -35,7 +35,25 @@ getchat(int id) async {
     );
     dynamic decodedresponse = jsonDecode(response.body);
     print(decodedresponse);
+    return decodedresponse;
   } catch (err) {
     print(err);
+  }
+}
+
+send_message(int chat_id, String message, String author) async {
+  dynamic body = {"chat_id": chat_id, "message": message, "author": author};
+  dynamic encodedbody = jsonEncode(body);
+  try {
+    Response response = await post(
+      "$url/chat/sendmsg",
+      body: encodedbody,
+      headers: {'Content-Type': 'application/json'},
+    );
+    dynamic decodedresponse = jsonDecode(response.body);
+    print(decodedresponse);
+    return decodedresponse;
+  } catch (e) {
+    print(e);
   }
 }

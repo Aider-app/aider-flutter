@@ -107,6 +107,7 @@ Widget rowelement(
                     MaterialPageRoute(
                       builder: (context) => Chatscreen(
                         chatid: response["response"]["chat_id"],
+                        receiverid: response["response"]["receiver_id"],
                       ), //Chathome(), //go to blood dashboard
                     ),
                   );
