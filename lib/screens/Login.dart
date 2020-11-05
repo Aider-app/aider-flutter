@@ -9,6 +9,7 @@ String loggeduser = "NA";
 String loginid;
 String id = "NA";
 String rating = "0";
+String contact = "NA";
 //import 'package:aider/screens/donorregsuccess.dart';
 Position position;
 void main() => runApp(Donorlogin());
@@ -182,6 +183,7 @@ class _DonorloginState extends State<Donorlogin> {
                             loggeduser = response["name"];
                             loginid = response["email"];
                             rating = response["rating"];
+                            contact = response["phone"];
                             print(loggeduser);
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
@@ -193,6 +195,8 @@ class _DonorloginState extends State<Donorlogin> {
                             loginid = response["email"];
                             print(loggeduser);
                             id = response["org_id"];
+                            contact = response["phone"];
+                            print(contact);
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
                                 builder: (context) => Recieverdash(),

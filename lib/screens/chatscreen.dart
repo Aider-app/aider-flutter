@@ -1,13 +1,22 @@
 import 'package:aider/screens/chathome.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/networking/chat.dart';
 
 class Chatscreen extends StatefulWidget {
+  final chatid;
+  Chatscreen({this.chatid});
   @override
   _ChatscreenState createState() => _ChatscreenState();
 }
 
 class _ChatscreenState extends State<Chatscreen> {
   final _message = TextEditingController(); //for typed messages
+  @override
+  void initState() {
+    // TODO: implement initState
+    getchat(widget.chatid);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +36,8 @@ class _ChatscreenState extends State<Chatscreen> {
             ),
             child: Center(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
+                //crossAxisAlignment: CrossAxisAlignment.center,
+                //mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   //namebar
                   Center(
@@ -40,9 +49,7 @@ class _ChatscreenState extends State<Chatscreen> {
                           children: [
                             FlatButton(
                                 onPressed: () {
-                                  Navigator.of(context).pushReplacement(
-                                      MaterialPageRoute(
-                                          builder: (context) => Chathome()));
+                                  Navigator.of(context).pop();
                                 },
                                 child: Icon(
                                   Icons.arrow_back,
@@ -64,10 +71,15 @@ class _ChatscreenState extends State<Chatscreen> {
                   //namebar ends
                   //messages will be displayed here
                   Expanded(
-                    child: Center(
-                      child: Expanded(child: Container()), //messaging area
+                      child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text("hai bro"),
+                        Text("hai bro"),
+                      ],
                     ),
-                  ),
+                  )),
                   //messages area ends
                   //typing and sending area
                   Container(

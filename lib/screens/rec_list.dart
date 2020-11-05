@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:aider/widgets/rowelement.dart';
 import 'package:aider/networking/posts.dart';
 import 'package:aider/screens/Login.dart';
+import 'package:aider/screens/chatscreen.dart';
 
 class RecipientList extends StatefulWidget {
   @override
@@ -45,15 +46,15 @@ class _RecipientListState extends State<RecipientList> {
     ;
 
     setState(() {
-      list = l;
-      /*if (l.length == 0) {
+      //list = l;
+      if (l.length == 0) {
         list = [
           rowelement("loading", "loading", "loading", "loading", "loading",
               "loading", context)
         ];
       } else {
         list = l;
-      }*/
+      }
     });
     // print("inside rec_list");
     // print(l);
@@ -119,7 +120,7 @@ class _RecipientListState extends State<RecipientList> {
                           child: Text(
                             "AVAILABLE RECIPIENTS",
                             style: TextStyle(
-                                fontSize: 30.0,
+                                fontSize: 28.0,
                                 fontFamily: "Montserrat",
                                 fontWeight: FontWeight.bold),
                           ),

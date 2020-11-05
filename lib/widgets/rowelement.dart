@@ -1,5 +1,8 @@
+import 'package:aider/screens/chatscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/chathome.dart';
+import 'package:aider/screens/Login.dart';
+import 'package:aider/networking/chat.dart';
 
 Widget rowelement(
     item_type, item_name, publisher, post_id, distance, quantity, context) {
@@ -95,17 +98,22 @@ Widget rowelement(
               color: Color(0xFF2B2D42),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0)),
-              onPressed: () {
+              onPressed: () async {
                 print('Pressed accept request');
-
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => Chathome(), //go to blood dashboard
-                  ),
-                );
+                dynamic response = await acceptchat(publisher, loginid, "true");
+                print(response["status"]);
+                if (response["status"] == 200) {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => Chatscreen(
+                        chatid: response["response"]["chat_id"],
+                      ), //Chathome(), //go to blood dashboard
+                    ),
+                  );
+                }
               },
               child: Text(
-                'Accept request.',
+                'Chat',
                 style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,

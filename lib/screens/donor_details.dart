@@ -1,6 +1,7 @@
 import 'package:aider/screens/donor_edit.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/donordash.dart';
+import 'package:aider/screens/Login.dart';
 
 class DonorDetails extends StatefulWidget {
   @override
@@ -66,12 +67,12 @@ class _DonorDetailsState extends State<DonorDetails> {
                 ),
                 SizedBox(height: 80.0),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  //crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(width: 20.0),
+                    SizedBox(width: 38.0),
                     Text(
-                      "Name : ",
+                      "Name :$loggeduser",
                       style: TextStyle(
                         fontSize: 20.0,
                         fontFamily: "Montserrat",
@@ -81,17 +82,17 @@ class _DonorDetailsState extends State<DonorDetails> {
                     ),
                     SizedBox(
                         width:
-                            250.0), //sized box might have to remove while actual name is displayed
-                    SizedBox(width: 16.7)
+                            00.0), //sized box might have to remove while actual name is displayed
+                    SizedBox(width: 0 /*16.7*/)
                   ],
                 ),
                 SizedBox(height: 30),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     SizedBox(width: 38.0),
                     Text(
-                      "Rating : ",
+                      "Rating : $rating",
                       style: TextStyle(
                         fontSize: 20.0,
                         fontFamily: "Montserrat",
@@ -101,16 +102,16 @@ class _DonorDetailsState extends State<DonorDetails> {
                     ),
                     SizedBox(
                         width:
-                            279.0), //sized box might have to remove while actual name is displayed
+                            00.0), //sized box might have to remove while actual name is displayed
                   ],
                 ),
                 SizedBox(height: 30.0),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(width: 18),
+                    SizedBox(width: 38),
                     Text(
-                      "Phone : ",
+                      "Phone : $contact",
                       style: TextStyle(
                         fontSize: 20.0,
                         fontFamily: "Montserrat",
@@ -118,9 +119,8 @@ class _DonorDetailsState extends State<DonorDetails> {
                         color: Color(0xFF2B2D42),
                       ),
                     ),
-                    SizedBox(
-                        width:
-                            245.0), //sized box might have to remove while actual name is displayed
+                    SizedBox(width: 0
+                        /*245.0*/), //sized box might have to remove while actual name is displayed
                     SizedBox(width: 16.7)
                   ],
                 ),
@@ -130,7 +130,7 @@ class _DonorDetailsState extends State<DonorDetails> {
                   children: [
                     SizedBox(width: 38),
                     Text(
-                      "Email : ",
+                      "Email :\n $loginid ",
                       style: TextStyle(
                         fontSize: 20.0,
                         fontFamily: "Montserrat",
@@ -138,13 +138,13 @@ class _DonorDetailsState extends State<DonorDetails> {
                         color: Color(0xFF2B2D42),
                       ),
                     ),
-                    SizedBox(width: 202.0),
-                    SizedBox(width: 16.7)
+                    /* SizedBox(width: 202.0),
+                    SizedBox(width: 16.7)*/
                   ],
                 ),
                 SizedBox(height: 30.0),
                 SizedBox(height: 60.0),
-                Container(
+                /*Container(
                   width: 100.0,
                   height: 50.0,
                   child: OutlineButton(
@@ -168,7 +168,7 @@ class _DonorDetailsState extends State<DonorDetails> {
                           fontWeight: FontWeight.bold,
                         ),
                       ))),
-                ),
+                ),*/
               ],
             )));
   }
