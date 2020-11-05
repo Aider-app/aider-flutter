@@ -5,19 +5,21 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Scaffold(
-      /*appBar: AppBar(
-        backgroundColor: Color(0xFFEDF2F4),
-        elevation: 0,
-        title: Center(
-          child: Text(
-            "Aider",
-            style: TextStyle(
-                color: Colors.black, fontSize: 40, fontFamily: 'Montserrat'),
+    home: SafeArea(
+      child: Scaffold(
+        /*appBar: AppBar(
+          backgroundColor: Color(0xFFEDF2F4),
+          elevation: 0,
+          title: Center(
+            child: Text(
+              "Aider",
+              style: TextStyle(
+                  color: Colors.black, fontSize: 40, fontFamily: 'Montserrat'),
+            ),
           ),
-        ),
-      ),*/
-      body: Splash(),
+        ),*/
+        body: Splash(),
+      ),
     ),
   ));
 }
