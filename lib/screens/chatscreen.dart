@@ -1,21 +1,50 @@
 import 'package:aider/screens/chathome.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/networking/chat.dart';
+import 'package:aider/screens/Login.dart';
 
 class Chatscreen extends StatefulWidget {
   final chatid;
-  Chatscreen({this.chatid});
+  final receiverid;
+  Chatscreen({this.chatid, this.receiverid});
   @override
   _ChatscreenState createState() => _ChatscreenState();
 }
+
+List<Widget> messages = [];
+List<Widget> finalmessages = [
+  Text("No Messages"),
+];
 
 class _ChatscreenState extends State<Chatscreen> {
   final _message = TextEditingController(); //for typed messages
   @override
   void initState() {
     // TODO: implement initState
-    getchat(widget.chatid);
+    fetchmsg(widget.chatid);
     super.initState();
+  }
+
+  fetchmsg(int id) async {
+    finalmessages.clear();
+    dynamic message = await getchat(id);
+    List l = message["response"];
+    l.forEach(
+      (element) {
+        messages.add(
+          Text(
+            element["message"],
+            textAlign:
+                element["author"] == loginid ? TextAlign.end : TextAlign.start,
+          ),
+        );
+      },
+    );
+
+    setState(() {
+      finalmessages = messages;
+    });
+    print("messages : $messages");
   }
 
   @override
@@ -56,7 +85,7 @@ class _ChatscreenState extends State<Chatscreen> {
                                   color: Colors.white,
                                 )),
                             Text(
-                              'Name',
+                              widget.receiverid,
                               style: TextStyle(
                                   fontSize: 25.0,
                                   color: Color(0xffffffff),
@@ -74,45 +103,58 @@ class _ChatscreenState extends State<Chatscreen> {
                       child: Container(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text("hai bro"),
-                        Text("hai bro"),
-                      ],
+                      children: finalmessages,
                     ),
                   )),
                   //messages area ends
                   //typing and sending area
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    height: 70,
-                    child: Row(
-                      children: [
-                        IconButton(
-                            icon: Icon(
-                              Icons.image,
-                              color: Color(0xff2b2d42),
-                            ),
-                            onPressed: null),
-                        Expanded(
-                          child: TextField(
-                            controller: _message,
-                            decoration: InputDecoration.collapsed(
-                              hintText: 'Type your message',
-                              hintStyle: TextStyle(
-                                  fontSize: 15.0,
-                                  color: Color(0x802b2d42),
-                                  fontFamily: "Montserrat",
-                                  fontWeight: FontWeight.bold),
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(color: Color(0xff2b2d42)),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xffffffff),
+                          borderRadius: BorderRadius.circular(100)),
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      height: 50,
+                      child: Row(
+                        children: [
+                          IconButton(
+                              icon: Icon(
+                                Icons.message_outlined,
+                                color: Color(0xff2b2d42),
+                              ),
+                              onPressed: null),
+                          Expanded(
+                            child: TextField(
+                              controller: _message,
+                              decoration: InputDecoration.collapsed(
+                                hintText: 'Type your message',
+                                hintStyle: TextStyle(
+                                    fontSize: 15.0,
+                                    color: Color(0x802b2d42),
+                                    fontFamily: "Montserrat",
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
-                        ),
-                        IconButton(
+                          IconButton(
                             icon: Icon(
                               Icons.send,
                               color: Color(0xff2b2d42),
                             ),
-                            onPressed: null),
-                      ],
+                            onPressed: () async {
+                              print(_message.text);
+                              if (_message.text.isNotEmpty) {
+                                dynamic response = await send_message(
+                                    widget.chatid, _message.text, loginid);
+                                _message.clear();
+                              }
+                              await fetchmsg(widget.chatid);
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   //typing and sending area ends.
