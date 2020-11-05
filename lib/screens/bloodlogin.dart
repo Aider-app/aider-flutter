@@ -1,3 +1,4 @@
+import 'package:aider/networking/auth.dart';
 import 'package:aider/screens/bloodcreateacc.dart';
 import 'package:aider/screens/blooddash.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,10 @@ class Bloodlogin extends StatefulWidget {
 }
 
 class _BloodloginState extends State<Bloodlogin> {
+  final _bloodlogemail = TextEditingController();
+  final _bloodlogpass = TextEditingController();
+  bool _validateBloodemail = false;
+  bool _validateBloodpass = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +52,7 @@ class _BloodloginState extends State<Bloodlogin> {
               ),
               padding: EdgeInsets.all(10),
               child: TextField(
+                controller: _bloodlogemail,
                 cursorColor: Colors.black,
                 decoration: InputDecoration(
                   border: InputBorder.none,
@@ -56,6 +62,8 @@ class _BloodloginState extends State<Bloodlogin> {
                       fontWeight: FontWeight.bold,
                       fontSize: 15.0,
                       color: Color(0x802B2D42)),
+                  errorText:
+                      _validateBloodemail ? 'Enter a valid email.' : null,
                 ),
               ),
             ),
@@ -72,6 +80,7 @@ class _BloodloginState extends State<Bloodlogin> {
               ),
               padding: EdgeInsets.all(10),
               child: TextField(
+                controller: _bloodlogpass,
                 obscureText: true,
                 cursorColor: Colors.black,
                 decoration: InputDecoration(
@@ -82,6 +91,7 @@ class _BloodloginState extends State<Bloodlogin> {
                       fontWeight: FontWeight.bold,
                       fontSize: 15.0,
                       color: Color(0x802B2D42)),
+                  errorText: _validateBloodpass ? 'Enter a valid email.' : null,
                 ),
               ),
             ),
@@ -136,12 +146,31 @@ class _BloodloginState extends State<Bloodlogin> {
                   borderRadius: BorderRadius.circular(20.0)),
               color: Color(0xFF2B2D42),
               onPressed: () {
-                print('pressed log in');
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => Blooddash(), //go to blood dashboard
-                  ),
-                );
+                setState(() {
+                  //validating for password
+                  if (_bloodlogpass.text.isEmpty ||
+                      _bloodlogpass.text.length < 8) {
+                    _validateBloodpass = true;
+                  } else {
+                    _validateBloodpass = false;
+                  }
+                  //validating for email
+                  if (_bloodlogemail.text.isEmpty ||
+                      !_bloodlogemail.text.contains('@')) {
+                    _validateBloodemail = true;
+                  } else {
+                    _validateBloodemail = false;
+                  }
+                  print('pressed log in');
+                  if (_validateBloodemail == false &&
+                      _validateBloodpass == false) {
+                    bloodlog(_bloodlogemail.text, _bloodlogpass.text);
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => Blooddash(), //go to blood dashboard
+                    ));
+                    return null;
+                  }
+                });
               },
               child: Text(
                 'Log In',
