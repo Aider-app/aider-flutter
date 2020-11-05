@@ -1,5 +1,7 @@
+import 'package:aider/networking/auth.dart';
 import 'package:aider/screens/BloodregSuccess.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 class BloodcreateAcc extends StatefulWidget {
   @override
@@ -14,7 +16,7 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
   final _phonecon = TextEditingController();
   final _addresscon = TextEditingController();
   final _namecon = TextEditingController();
-  //final _bloodcon = TextEditingController();
+  final _bloodcon = TextEditingController();
   //bool _validateBlood = false;
   bool _validatePass = false;
   bool _validateEmail = false;
@@ -23,6 +25,15 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
   bool _validateAddress = false;
   bool _validateName = false;
   int _value = 1;
+
+  List<String> bldgrp = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+  Position position;
+  Future<Position> _getCurrentLocation() async {
+    final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    return position;
+    //print("inside function $position"); //longitude and latitude
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,6 +140,7 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                                 ),
                                 padding: EdgeInsets.all(10),
                                 child: DropdownButton(
+
                                     //  focusColor: Color(0x802B2D42),
                                     value: _value,
                                     items: [
@@ -227,6 +239,7 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                                       setState(() {
                                         _value = value;
                                       });
+                                      _bloodcon.text = bldgrp[value - 1];
                                     }),
                               ),
                             ],
@@ -410,7 +423,8 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(20.0)),
                                 color: Color(0xFF2B2D42),
-                                onPressed: () {
+                                onPressed: () async {
+                                  position = await _getCurrentLocation();
                                   setState(() {
                                     //validating for password
                                     if (_passcon.text.isEmpty ||
@@ -459,6 +473,15 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                                         _validateConPass == false &&
                                         _validatePass == false &&
                                         _validateEmail == false) {
+                                      bloodreg(
+                                          _mailcon.text,
+                                          _phonecon.text,
+                                          _addresscon.text,
+                                          _bloodcon.text,
+                                          position.latitude,
+                                          position.longitude,
+                                          _passcon.text,
+                                          _namecon.text);
                                       print(_namecon.text.characters);
                                       Navigator.pushReplacement(
                                           context,

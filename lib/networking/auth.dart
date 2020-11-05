@@ -70,3 +70,53 @@ Future<Map<String, dynamic>> receiverreg(String reg, String name, String mobile,
     print(err);
   }
 }
+
+Future<Map<String, dynamic>> bloodlog(String email, String password) async {
+  dynamic body = {
+    "email": email,
+    "password": password,
+  };
+  var encodedbody = jsonEncode(body);
+  try {
+    Response response = await post(
+      '$url/users/blood/login',
+      body: encodedbody,
+      headers: {'Content-Type': 'application/json'},
+    );
+    return jsonDecode(response.body);
+  } catch (err) {
+    print(err);
+  }
+}
+
+Future<Map<String, dynamic>> bloodreg(
+    String email,
+    String contact,
+    String address,
+    String blood_group,
+    double latitude,
+    double longitude,
+    String password,
+    String name) async {
+  dynamic body = {
+    "email": email,
+    "contact": contact,
+    "address": address,
+    "blood_group": blood_group,
+    "latitude": latitude,
+    "longitude": longitude,
+    "password": password,
+    "name": name,
+  };
+  var encodedbody = jsonEncode(body);
+  try {
+    Response response = await post(
+      '$url/users/blood/register',
+      body: encodedbody,
+      headers: {'Content-Type': 'application/json'},
+    );
+    return jsonDecode(response.body);
+  } catch (err) {
+    print(err);
+  }
+}
