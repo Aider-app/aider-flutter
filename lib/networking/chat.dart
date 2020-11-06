@@ -57,3 +57,20 @@ send_message(int chat_id, String message, String author) async {
     print(e);
   }
 }
+
+getconnections(String email) async {
+  dynamic body = {"email": email};
+  dynamic encodedbody = jsonEncode(body);
+  try {
+    Response response = await post(
+      '$url/chat/getconnections',
+      body: encodedbody,
+      headers: {'Content-Type': 'application/json'},
+    );
+    dynamic decodedresponse = jsonDecode(response.body);
+    print(decodedresponse);
+    return decodedresponse;
+  } catch (e) {
+    print(e);
+  }
+}
