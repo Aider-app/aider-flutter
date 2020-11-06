@@ -1,6 +1,8 @@
 import 'package:aider/screens/chatscreen.dart';
 import 'package:aider/screens/donordash.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/networking/chat.dart';
+import 'package:aider/screens/Login.dart';
 
 class Chathome extends StatefulWidget {
   @override
@@ -8,6 +10,47 @@ class Chathome extends StatefulWidget {
 }
 
 class _ChathomeState extends State<Chathome> {
+  List<Widget> messages = [];
+  List<Widget> finalmessages = [
+    Text("No Messages"),
+  ];
+  @override
+  void initState() {
+    fetchconnection(loginid);
+    super.initState();
+  }
+
+  fetchconnection(email) async {
+    finalmessages.clear();
+    dynamic connections = await getconnections(email);
+    List l = connections["response"];
+    print(connections["response"].length);
+    l.forEach(
+      (element) {
+        messages.add(
+          chatsection(element["sender_id"], element["chat_id"], context),
+        );
+      },
+    );
+    setState(() {
+      finalmessages = messages;
+    });
+    /*for (int i = 0; i < connections["response"].length; i++) {
+      l.add(chatsection(connections["response"][i]["sender_id"], context));
+    }
+    print("printing\n $l");
+    setState(() {
+      //list = l;
+      if (l.length == 0) {
+        list = [
+          chatsection("loading", context),
+        ];
+      } else {
+        list = l;
+      }
+    });*/
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,11 +76,7 @@ class _ChathomeState extends State<Chathome> {
         backgroundColor: Color(0xFF2B2D42),
         child: Icon(Icons.home_outlined),
         onPressed: () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => Donordash(),
-            ),
-          );
+          Navigator.of(context).pop();
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -71,14 +110,14 @@ class _ChathomeState extends State<Chathome> {
               ),
               Expanded(
                   child: SingleChildScrollView(
-                child: Column(
-                  children: [
+                child: Column(children: finalmessages
+                    /*list*/ /*[
                     SizedBox(height: 20.0),
-                    chatsection(1, context),
+                    /*chatsection("1", context),
                     // SizedBox(height: 20.0),
-                    chatsection(2, context),
+                    chatsection("2", context),*/
                     // SizedBox(height: 20.0),
-                    chatsection(3, context),
+                    /* chatsection("3", context),
                     // SizedBox(height: 20.0),
                     chatsection(4, context),
                     // SizedBox(height: 20.0),
@@ -98,10 +137,10 @@ class _ChathomeState extends State<Chathome> {
                     // SizedBox(height: 20.0),
                     chatsection(12, context),
                     // SizedBox(height: 20.0),
-                    chatsection(13, context),
+                    chatsection(13, context),*/
                     SizedBox(height: 20.0),
-                  ],
-                ),
+                  ],*/
+                    ),
               )),
             ],
           ),
@@ -111,7 +150,7 @@ class _ChathomeState extends State<Chathome> {
   }
 }
 
-Widget chatsection(val, context) {
+Widget chatsection(name, id, context) {
   return Container(
     height: 90,
     decoration: BoxDecoration(
@@ -119,19 +158,22 @@ Widget chatsection(val, context) {
     ),
     child: FlatButton(
       onPressed: () {
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => Chatscreen()));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => Chatscreen(
+                  chatid: id,
+                  receiverid: name,
+                )));
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Name #$val',
+                name,
                 style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
@@ -142,7 +184,7 @@ Widget chatsection(val, context) {
                 height: 8.0,
               ),
               Text(
-                'Message #$val',
+                'Message ',
                 style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
@@ -151,11 +193,9 @@ Widget chatsection(val, context) {
               ),
             ],
           ),
-          SizedBox(
-            width: 240,
-          ),
+
           //unread message notif
-          Container(
+          /* Container(
             height: 30,
             width: 35,
             decoration: BoxDecoration(
@@ -172,7 +212,7 @@ Widget chatsection(val, context) {
                     color: Color(0xFFFFFFFF)),
               ),
             ),
-          ),
+          ),*/
         ],
       ),
     ),

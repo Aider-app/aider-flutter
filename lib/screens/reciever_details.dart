@@ -1,6 +1,7 @@
 import 'package:aider/screens/reciever_edit.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/recieverdash.dart';
+import 'package:aider/screens/Login.dart';
 
 class RecipientDetails extends StatefulWidget {
   @override
@@ -53,7 +54,8 @@ class _RecipientDetailsState extends State<RecipientDetails> {
               decoration: BoxDecoration(
                   color: Color(0xFFEDF2F4),
                   image: DecorationImage(
-                      image: AssetImage('images/background.jpg'))),
+                      image: AssetImage('images/background.jpg'),
+                      fit: BoxFit.fill)),
               width: double.infinity,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -68,12 +70,12 @@ class _RecipientDetailsState extends State<RecipientDetails> {
                   ),
                   SizedBox(height: 80.0),
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    //crossAxisAlignment: CrossAxisAlignment.baseline,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SizedBox(width: 20.0),
+                      SizedBox(width: 38.0),
                       Text(
-                        "Name : ",
+                        "Name : $loggeduser",
                         style: TextStyle(
                             fontSize: 20.0,
                             fontFamily: "Montserrat",
@@ -81,17 +83,17 @@ class _RecipientDetailsState extends State<RecipientDetails> {
                       ),
                       SizedBox(
                           width:
-                              250.0), //sized box might have to remove while actual name is displayed
+                              0.0), //sized box might have to remove while actual name is displayed
                       SizedBox(width: 16.7)
                     ],
                   ),
                   SizedBox(height: 30),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SizedBox(width: 10.0),
+                      SizedBox(width: 38.0),
                       Text(
-                        "ID : ",
+                        "ID : $id",
                         style: TextStyle(
                           fontSize: 20.0,
                           fontFamily: "Montserrat",
@@ -100,26 +102,7 @@ class _RecipientDetailsState extends State<RecipientDetails> {
                       ),
                       SizedBox(
                           width:
-                              290.0), //sized box might have to remove while actual name is displayed
-                    ],
-                  ),
-                  SizedBox(height: 30.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(width: 18),
-                      Text(
-                        "Phone : ",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontFamily: "Montserrat",
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                          width:
-                              245.0), //sized box might have to remove while actual name is displayed
-                      SizedBox(width: 16.7)
+                              0.0), //sized box might have to remove while actual name is displayed
                     ],
                   ),
                   SizedBox(height: 30.0),
@@ -128,19 +111,32 @@ class _RecipientDetailsState extends State<RecipientDetails> {
                     children: [
                       SizedBox(width: 38),
                       Text(
-                        "Email : ",
+                        "Phone : $contact",
                         style: TextStyle(
                           fontSize: 20.0,
                           fontFamily: "Montserrat",
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(width: 202.0),
-                      SizedBox(width: 16.7)
                     ],
                   ),
                   SizedBox(height: 30.0),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(width: 38),
+                      Text(
+                        "Email : $loginid",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 30.0),
+                  /* Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       SizedBox(width: 38),
@@ -152,12 +148,10 @@ class _RecipientDetailsState extends State<RecipientDetails> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(width: 179.0),
-                      SizedBox(width: 16.7)
                     ],
-                  ),
+                  ),*/
                   SizedBox(height: 60.0),
-                  Container(
+                  /* Container(
                     width: 100.0,
                     height: 50.0,
                     child: OutlineButton(
@@ -181,7 +175,7 @@ class _RecipientDetailsState extends State<RecipientDetails> {
                             fontWeight: FontWeight.bold,
                           ),
                         ))),
-                  ),
+                  ),*/
                 ],
               ))),
     );
