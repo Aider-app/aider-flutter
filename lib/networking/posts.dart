@@ -1,7 +1,5 @@
-import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
-import 'package:aider/widgets/rowelement.dart';
 
 String url = 'https://tranquil-hollows-50478.herokuapp.com';
 createpost(String itemtype, String item_name, double latitude, double longitude,

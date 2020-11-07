@@ -1,4 +1,3 @@
-import 'package:aider/screens/chathome.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/networking/chat.dart';
 import 'package:aider/screens/Login.dart';

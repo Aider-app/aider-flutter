@@ -85,7 +85,7 @@ class _BlooddashState extends State<Blooddash> {
                               width: 20.0,
                             ),
                             Text(
-                              '$bloodgrp',
+                              '$bloodgrp ve',
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
@@ -138,7 +138,7 @@ class _BlooddashState extends State<Blooddash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO create request
                                 onPressed: () {
-                                  Navigator.of(context).pushReplacement(
+                                  Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) => Bloodcreatereq(),
                                     ),
@@ -158,7 +158,7 @@ class _BlooddashState extends State<Blooddash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO PREVIOUS requests
                                 onPressed: () {
-                                  Navigator.of(context).pushReplacement(
+                                  Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) => Bloodprevreq(),
                                     ),
@@ -212,7 +212,7 @@ class _BlooddashState extends State<Blooddash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO My Account
                                 onPressed: () {
-                                  Navigator.of(context).pushReplacement(
+                                  Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) => BloodDetails(),
                                     ),
@@ -251,7 +251,7 @@ class _BlooddashState extends State<Blooddash> {
                     height: 40.0,
                   ),
                   //*******************************blood donation******************************
-                  ButtonTheme(
+                 /* ButtonTheme(
                     minWidth: 50.0,
                     height: 60.0,
                     child: FlatButton(
@@ -259,7 +259,7 @@ class _BlooddashState extends State<Blooddash> {
                             borderRadius: BorderRadius.circular(20.0)),
                         color: Color(0xFF2B2D42),
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(
+                          Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => BloodRecipientList(),
                             ),
@@ -274,7 +274,7 @@ class _BlooddashState extends State<Blooddash> {
                             color: Colors.white,
                           ),
                         )),
-                  ),
+                  ),*/
                 ],
               ),
             ),

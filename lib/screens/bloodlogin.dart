@@ -162,7 +162,7 @@ class _BloodloginState extends State<Bloodlogin> {
                   bloodloggeduser = response["name"];
                   bloodloginid = response["email"];
                   bloodcontact = response["phone"];
-                  bloodgrp = response["blood_group"];
+                  bloodgrp = response["bloodgroup"];
                   print(bloodloggeduser);
                   print(bloodgrp);
                   Navigator.of(context).pushReplacement(
@@ -170,7 +170,7 @@ class _BloodloginState extends State<Bloodlogin> {
                       builder: (context) => Blooddash(),
                     ),
                   );
-                } else if (response["status"] == 403) {
+                } else if (response["status"] == 401) {
                   createdialogbox(context, "Incorrect username or password.");
                 } else {
                   createdialogbox(context, "User does not exist.");

@@ -25,6 +25,7 @@ String url = 'https://tranquil-hollows-50478.herokuapp.com';
   }
 }
 
+// ignore: missing_return
 Future<Map<String, dynamic>> donorreg(
     String email, String contact, String name, String password) async {
   dynamic body = {
@@ -48,6 +49,7 @@ Future<Map<String, dynamic>> donorreg(
   }
 }
 
+// ignore: missing_return
 Future<Map<String, dynamic>> receiverreg(String reg, String name, String mobile,
     String email, String password) async {
   dynamic body = {
@@ -71,11 +73,9 @@ Future<Map<String, dynamic>> receiverreg(String reg, String name, String mobile,
   }
 }
 
+// ignore: missing_return
 Future<Map<String, dynamic>> bloodlog(String email, String password) async {
-  dynamic body = {
-    "email": email,
-    "password": password,
-  };
+  dynamic body = {"email": email, "password": password};
   var encodedbody = jsonEncode(body);
   try {
     Response response = await post(
@@ -90,10 +90,12 @@ Future<Map<String, dynamic>> bloodlog(String email, String password) async {
   }
 }
 
+// ignore: missing_return
 Future<Map<String, dynamic>> bloodreg(
     String email,
     String contact,
     String address,
+    // ignore: non_constant_identifier_names
     String blood_group,
     double latitude,
     double longitude,
@@ -107,7 +109,7 @@ Future<Map<String, dynamic>> bloodreg(
     "latitude": latitude,
     "longitude": longitude,
     "password": password,
-    "name": name,
+    "name": name
   };
   var encodedbody = jsonEncode(body);
   try {
