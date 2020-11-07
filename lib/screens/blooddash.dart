@@ -1,5 +1,6 @@
 import 'package:aider/screens/blood_accountdetails.dart';
 import 'package:aider/screens/bloodcreatereq.dart';
+import 'package:aider/screens/bloodlogin.dart';
 import 'package:aider/screens/bloodprereq.dart';
 import 'package:aider/screens/blood_reclist.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +68,7 @@ class _BlooddashState extends State<Blooddash> {
                           height: 20,
                         ),
                         Text(
-                          'Name',
+                          '$bloodloggeduser',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
@@ -84,7 +85,7 @@ class _BlooddashState extends State<Blooddash> {
                               width: 20.0,
                             ),
                             Text(
-                              'Bld grp',
+                              '$bloodgrp',
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
