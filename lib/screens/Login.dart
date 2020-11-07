@@ -47,10 +47,21 @@ class _DonorloginState extends State<Donorlogin> {
       },
       child: SafeArea(
         child: Scaffold(
-          // appBar: AppBar(
-          //   title: Image.asset('images/logo.png',),
-          //   backgroundColor: Color(0xFFEDF2F4),
-          // ),
+          /* appBar: AppBar(
+            backgroundColor: Color(0xFFEDF2F4),
+            elevation: 0,
+            title: Text(
+              "Aider",
+              style: TextStyle(
+                  color: Colors.black, fontSize: 30, fontFamily: 'Montserrat'),
+            ),
+          ),*/
+          /*appBar: AppBar(
+            title: Image.asset(
+              'images/logo.png',
+            ),
+            backgroundColor: Color(0xFFEDF2F4),
+          ),*/
           resizeToAvoidBottomInset: false,
           body: Container(
             decoration: BoxDecoration(

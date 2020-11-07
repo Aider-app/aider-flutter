@@ -83,6 +83,7 @@ Future<Map<String, dynamic>> bloodlog(String email, String password) async {
       body: encodedbody,
       headers: {'Content-Type': 'application/json'},
     );
+    print(jsonDecode(response.body));
     return jsonDecode(response.body);
   } catch (err) {
     print(err);

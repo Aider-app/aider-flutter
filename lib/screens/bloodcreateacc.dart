@@ -121,10 +121,10 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SizedBox(
-                                width: 35,
+                                width: 0,
                               ),
                               Text(
-                                "Select Blood group : ",
+                                "Blood group :",
                                 style: TextStyle(
                                     fontSize: 20.0,
                                     fontFamily: "Montserrat",
@@ -138,7 +138,7 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                                 margin: EdgeInsets.symmetric(
                                   horizontal: 40,
                                 ),
-                                padding: EdgeInsets.all(10),
+                                padding: EdgeInsets.all(8),
                                 child: DropdownButton(
 
                                     //  focusColor: Color(0x802B2D42),

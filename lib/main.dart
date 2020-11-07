@@ -7,7 +7,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     home: SafeArea(
       child: Scaffold(
-        /*appBar: AppBar(
+        /* appBar: AppBar(
           backgroundColor: Color(0xFFEDF2F4),
           elevation: 0,
           title: Center(
