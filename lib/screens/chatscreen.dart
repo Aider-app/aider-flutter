@@ -1,4 +1,3 @@
-import 'package:aider/screens/chathome.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/networking/chat.dart';
 import 'package:aider/screens/Login.dart';
@@ -32,6 +31,11 @@ class _ChatscreenState extends State<Chatscreen> {
     l.forEach(
       (element) {
         messages.add(
+          SizedBox(
+            height: 10,
+          ),
+        );
+        messages.add(
           Text(
             element["message"],
             textAlign:
@@ -51,10 +55,12 @@ class _ChatscreenState extends State<Chatscreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // appBar: AppBar(
-        //   title: Image.asset('images/logo.png',),
-        //   backgroundColor: Color(0xFFEDF2F4),
-        // ),
+        /*appBar: AppBar(
+          title: Image.asset(
+            'images/logo.png',
+          ),
+          backgroundColor: Color(0xFFEDF2F4),
+        ),*/
         resizeToAvoidBottomInset: true,
         body: Container(
             decoration: BoxDecoration(
@@ -100,12 +106,16 @@ class _ChatscreenState extends State<Chatscreen> {
                   //namebar ends
                   //messages will be displayed here
                   Expanded(
-                      child: Container(
-                    child: Column(
+                    child: SingleChildScrollView(
+                        child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: finalmessages,
-                    ),
-                  )),
+                    ) /*Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: finalmessages,
+                      ),*/
+                        ),
+                  ),
                   //messages area ends
                   //typing and sending area
                   Container(

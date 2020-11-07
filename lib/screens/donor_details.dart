@@ -1,6 +1,4 @@
-import 'package:aider/screens/donor_edit.dart';
 import 'package:flutter/material.dart';
-import 'package:aider/screens/donordash.dart';
 import 'package:aider/screens/Login.dart';
 
 class DonorDetails extends StatefulWidget {
@@ -38,11 +36,7 @@ class _DonorDetailsState extends State<DonorDetails> {
           backgroundColor: Color(0xFF2B2D42),
           child: Icon(Icons.home_outlined),
           onPressed: () {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                builder: (context) => Donordash(),
-              ),
-            );
+            Navigator.of(context).pop();
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -138,6 +132,7 @@ class _DonorDetailsState extends State<DonorDetails> {
                         color: Color(0xFF2B2D42),
                       ),
                     ),
+
                     /* SizedBox(width: 202.0),
                     SizedBox(width: 16.7)*/
                   ],

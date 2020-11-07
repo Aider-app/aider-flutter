@@ -90,11 +90,7 @@ class _RecipientListState extends State<RecipientList> {
             backgroundColor: Color(0xFF2B2D42),
             child: Icon(Icons.home_outlined),
             onPressed: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => Donordash(),
-                ),
-              );
+              Navigator.of(context).pop();
             },
           ),
           floatingActionButtonLocation:

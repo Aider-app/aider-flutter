@@ -103,7 +103,7 @@ Widget rowelement(
                 dynamic response = await acceptchat(publisher, loginid, "true");
                 print(response["status"]);
                 if (response["status"] == 200) {
-                  Navigator.of(context).pushReplacement(
+                  Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => Chatscreen(
                         chatid: response["response"]["chat_id"],
