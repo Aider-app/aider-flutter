@@ -25,6 +25,7 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
   bool _validateAddress = false;
   bool _validateName = false;
   int _value = 1;
+  bool validated = false;
 
   List<String> bldgrp = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
   Position position;
@@ -473,6 +474,7 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                                         _validateConPass == false &&
                                         _validatePass == false &&
                                         _validateEmail == false) {
+                                      validated = true;
                                       bloodreg(
                                           _mailcon.text,
                                           _phonecon.text,
@@ -483,14 +485,34 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                                           _passcon.text,
                                           _namecon.text);
                                       print(_namecon.text.characters);
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Bloodregsuccess()));
+
                                       return null;
                                     }
                                   });
+                                  if (validated) {
+                                    Map<String, dynamic> resp = await bloodreg(
+                                        _mailcon.text,
+                                        _phonecon.text,
+                                        _addresscon.text,
+                                        _bloodcon.text,
+                                        position.latitude,
+                                        position.longitude,
+                                        _passcon.text,
+                                        _namecon.text);
+                                    print(resp);
+                                    if (resp["status"] == 200) {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              Bloodregsuccess(),
+                                        ),
+                                      );
+                                    } else if (resp["status"] == 401) {
+                                      createdialogbox(
+                                          context, "User already exists");
+                                    }
+                                  }
                                 },
                                 child: Text(
                                   'Create Account',
@@ -516,4 +538,21 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
       ),
     );
   }
+}
+
+createdialogbox(BuildContext context, String text) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+            backgroundColor: Colors.redAccent[600],
+            title: Text(
+              "Alert",
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ),
+            content: Text(
+              text,
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ));
+      });
 }
