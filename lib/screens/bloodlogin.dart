@@ -2,6 +2,12 @@ import 'package:aider/networking/auth.dart';
 import 'package:aider/screens/bloodcreateacc.dart';
 import 'package:aider/screens/blooddash.dart';
 import 'package:flutter/material.dart';
+//import 'package:http/http.dart';
+
+String bloodloggeduser = "NA";
+String bloodgrp = "NA";
+String bloodloginid = 'NA';
+String bloodcontact = 'NA';
 
 class Bloodlogin extends StatefulWidget {
   @override
@@ -145,32 +151,30 @@ class _BloodloginState extends State<Bloodlogin> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0)),
               color: Color(0xFF2B2D42),
-              onPressed: () {
-                setState(() {
-                  //validating for password
-                  if (_bloodlogpass.text.isEmpty ||
-                      _bloodlogpass.text.length < 8) {
-                    _validateBloodpass = true;
-                  } else {
-                    _validateBloodpass = false;
-                  }
-                  //validating for email
-                  if (_bloodlogemail.text.isEmpty ||
-                      !_bloodlogemail.text.contains('@')) {
-                    _validateBloodemail = true;
-                  } else {
-                    _validateBloodemail = false;
-                  }
-                  print('pressed log in');
-                  if (_validateBloodemail == false &&
-                      _validateBloodpass == false) {
-                    bloodlog(_bloodlogemail.text, _bloodlogpass.text);
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => Blooddash(), //go to blood dashboard
-                    ));
-                    return null;
-                  }
-                });
+              onPressed: () async {
+                print(_bloodlogemail.text);
+                Map<String, dynamic> response = await bloodlog(
+                  _bloodlogemail.text,
+                  _bloodlogpass.text,
+                );
+                print(response);
+                if (response["status"] == 200) {
+                  bloodloggeduser = response["name"];
+                  bloodloginid = response["email"];
+                  bloodcontact = response["phone"];
+                  bloodgrp = response["blood_group"];
+                  print(bloodloggeduser);
+                  print(bloodgrp);
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => Blooddash(),
+                    ),
+                  );
+                } else if (response["status"] == 403) {
+                  createdialogbox(context, "Incorrect username or password.");
+                } else {
+                  createdialogbox(context, "User does not exist.");
+                }
               },
               child: Text(
                 'Log In',
@@ -204,14 +208,6 @@ class _BloodloginState extends State<Bloodlogin> {
             //     ),
             //   ),
             // ),
-            FlatButton(
-              color: Color(0xFF2B2D42),
-              textColor: Colors.white,
-              onPressed: () {
-                createdialogbox(context);
-              },
-              child: Text("PopUp"),
-            )
           ],
         ),
       ),
@@ -219,7 +215,7 @@ class _BloodloginState extends State<Bloodlogin> {
   }
 }
 
-createdialogbox(BuildContext context) {
+createdialogbox(BuildContext context, String text) {
   return showDialog(
       context: context,
       builder: (context) {
@@ -230,7 +226,7 @@ createdialogbox(BuildContext context) {
               style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
             ),
             content: Text(
-              "The credentials you have entered already belongs to an account. Try Again",
+              text,
               style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
             ));
       });
