@@ -87,7 +87,7 @@ class _ChatscreenState extends State<Chatscreen> {
                             Text(
                               widget.receiverid,
                               style: TextStyle(
-                                  fontSize: 25.0,
+                                  fontSize: 16.0,
                                   color: Color(0xffffffff),
                                   fontFamily: "Montserrat",
                                   fontWeight: FontWeight.bold),

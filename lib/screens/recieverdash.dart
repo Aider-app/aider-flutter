@@ -2,6 +2,8 @@ import 'package:aider/screens/add_request.dart';
 import 'package:aider/screens/prev_requests.dart';
 import 'package:aider/screens/Login.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/screens/reciever_details.dart';
+import 'package:aider/screens/chathome.dart';
 
 class Recieverdash extends StatefulWidget {
   @override
@@ -158,7 +160,7 @@ class _RecieverdashState extends State<Recieverdash> {
                                 onPressed: () {
                                   Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                      builder: (context) => PrevRequests(),
+                                      builder: (context) => Chathome(),
                                     ),
                                   );
                                 },
@@ -210,6 +212,12 @@ class _RecieverdashState extends State<Recieverdash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO My Account
                                 onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            RecipientDetails(),
+                                      ));
                                   //   Navigator.of(context).pushReplacement(
                                   //    MaterialPageRoute(
                                   //       builder: (context) => DonorCreateAcc(),
