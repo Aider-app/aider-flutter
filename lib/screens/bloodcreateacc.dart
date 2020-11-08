@@ -475,15 +475,15 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                                         _validatePass == false &&
                                         _validateEmail == false) {
                                       validated = true;
-                                      bloodreg(
-                                          _mailcon.text,
-                                          _phonecon.text,
-                                          _addresscon.text,
-                                          _bloodcon.text,
-                                          position.latitude,
-                                          position.longitude,
-                                          _passcon.text,
-                                          _namecon.text);
+                                      // bloodreg(
+                                      //     _mailcon.text,
+                                      //     _phonecon.text,
+                                      //     _addresscon.text,
+                                      //     _bloodcon.text,
+                                      //     position.latitude,
+                                      //     position.longitude,
+                                      //     _passcon.text,
+                                      //     _namecon.text);
                                       print(_namecon.text.characters);
 
                                       return null;
