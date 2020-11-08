@@ -6,6 +6,7 @@ import 'package:aider/screens/prev_donations.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/Login.dart';
 import 'package:aider/screens/rec_list.dart';
+import 'package:aider/screens/aboutsection.dart';
 
 class Donordash extends StatefulWidget {
   @override
@@ -215,7 +216,8 @@ class _DonordashState extends State<Donordash> {
                               onPressed: () {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => DonorDetails(),
+                                    builder: (context) =>
+                                        Best(), //DonorDetails(),
                                   ),
                                 );
                               },
