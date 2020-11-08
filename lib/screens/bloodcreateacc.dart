@@ -490,6 +490,7 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                                     }
                                   });
                                   if (validated) {
+                                    print("Validated");
                                     Map<String, dynamic> resp = await bloodreg(
                                         _mailcon.text,
                                         _phonecon.text,

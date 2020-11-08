@@ -118,6 +118,7 @@ Future<Map<String, dynamic>> bloodreg(
       body: encodedbody,
       headers: {'Content-Type': 'application/json'},
     );
+    print(jsonDecode(response.body));
     return jsonDecode(response.body);
   } catch (err) {
     print(err);
