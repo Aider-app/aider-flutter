@@ -2,8 +2,9 @@ import 'package:aider/screens/add_request.dart';
 import 'package:aider/screens/prev_requests.dart';
 import 'package:aider/screens/Login.dart';
 import 'package:flutter/material.dart';
-import 'package:aider/screens/reciever_details.dart';
+//import 'package:aider/screens/reciever_details.dart';
 import 'package:aider/screens/chathome.dart';
+import 'package:aider/screens/aboutsection-receiver.dart';
 
 class Recieverdash extends StatefulWidget {
   @override
@@ -215,8 +216,7 @@ class _RecieverdashState extends State<Recieverdash> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            RecipientDetails(),
+                                        builder: (context) => Best(),
                                       ));
                                   //   Navigator.of(context).pushReplacement(
                                   //    MaterialPageRoute(
