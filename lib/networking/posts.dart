@@ -47,7 +47,7 @@ getposts(String email, double latitude, double longitude, String role) async {
         body: encodedbody, headers: {'Content-Type': 'application/json'});
     dynamic decodedbody = jsonDecode(response.body);
     //print(jsonDecode(response.body));
-    print(decodedbody[0]);
+    print(decodedbody);
     return (decodedbody);
   } catch (err) {
     print(err);

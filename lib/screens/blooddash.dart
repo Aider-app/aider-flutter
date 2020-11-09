@@ -160,7 +160,8 @@ class _BlooddashState extends State<Blooddash> {
                                 onPressed: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => Bloodprevreq(),
+                                      builder: (context) =>
+                                          BloodRecipientList(),
                                     ),
                                   );
                                 },
@@ -251,7 +252,7 @@ class _BlooddashState extends State<Blooddash> {
                     height: 40.0,
                   ),
                   //*******************************blood donation******************************
-                 /* ButtonTheme(
+                  /* ButtonTheme(
                     minWidth: 50.0,
                     height: 60.0,
                     child: FlatButton(
