@@ -9,6 +9,8 @@ class BloodRecipientList extends StatefulWidget {
 
 class _BloodRecipientListState extends State<BloodRecipientList> {
   int val = 1;
+  List<Widget> list = [];
+  List<Widget> l = [];
   @override
   Widget build(BuildContext context) {
     return SafeArea(

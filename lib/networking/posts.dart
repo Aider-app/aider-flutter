@@ -90,3 +90,19 @@ bloodcreatepost(String blood_group, int quantity, double latitude,
     print(err);
   }
 }
+
+getbloodposts(String email, double latitude, double longitude) async {
+  dynamic body = {"email": email, "latitude": latitude, "longitude": longitude};
+  dynamic encodedbody = jsonEncode(body);
+  try {
+    Response response = await post(
+      '$url/posts/bloodpost',
+      body: encodedbody,
+      headers: {'Content-Type': 'application/json'},
+    );
+    print(jsonDecode(response.body));
+    return jsonDecode(response.body);
+  } catch (e) {
+    print(e);
+  }
+}
