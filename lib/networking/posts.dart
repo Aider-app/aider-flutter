@@ -66,3 +66,27 @@ getmyposts(String email) async {
     print(e);
   }
 }
+
+bloodcreatepost(String blood_group, int quantity, double latitude,
+    double longitude, String publisher_id) async {
+  dynamic body = {
+    "blood_group": blood_group,
+    "quantity": quantity,
+    "latitude": latitude,
+    "longitude": longitude,
+    "publisher_id": publisher_id
+  };
+  dynamic encodedbody = jsonEncode(body);
+  try {
+    Response response = await post(
+      '$url/posts/bloodcreate',
+      body: encodedbody,
+      headers: {'Content-Type': 'application/json'},
+    );
+    print(jsonDecode(response.body));
+
+    return jsonDecode(response.body);
+  } catch (err) {
+    print(err);
+  }
+}
