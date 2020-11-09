@@ -1,8 +1,12 @@
+import 'package:aider/networking/posts.dart';
+import 'package:aider/screens/blood_reclist.dart';
 import 'package:aider/screens/blooddash.dart';
-import 'package:aider/screens/bloodwillbenotified.dart';
+import 'package:aider/screens/bloodlogin.dart';
+//import 'package:aider/screens/bloodwillbenotified.dart';
 import 'package:flutter/material.dart';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:aider/screens/gmap.dart';
+//import 'package:aider/screens/gmap.dart';
+import 'package:geolocator/geolocator.dart';
 
 void main() {
   runApp(MaterialApp(home: Bloodcreatereq()));
@@ -18,7 +22,20 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
   bool _validatedescription = false;
   final _quantity = TextEditingController();
   bool _validatequantity = false;
+  final _bloodconreq = TextEditingController();
+  bool _validatebld = false;
   int _value = 1;
+  bool validate = false;
+
+  List<String> bldgrp = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+  Position position;
+  Future<Position> _getCurrentLocation() async {
+    final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    return position;
+    //print("inside function $position"); //longitude and latitude
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -193,6 +210,7 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                             setState(() {
                               _value = value;
                             });
+                            _bloodconreq.text = bldgrp[value - 1];
                           }),
                     )
                   ],
@@ -282,7 +300,7 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15.0,
                                 color: Color(0x802B2D42)),
-                            errorText: _validatedescription
+                            errorText: _validatequantity
                                 ? 'Enter the quantity.'
                                 : null,
                           ),
@@ -292,46 +310,49 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                   ],
                 ), //Quantity ends here
                 SizedBox(height: 50.0),
-                Row(
-                  //Row contains Choose Location and Button
+                // Row(
+                //   //Row contains Choose Location and Button
 
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(width: 50),
-                    Text(
-                      "Choose Location : ",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF2B2D42),
-                      ),
-                    ),
-                    SizedBox(width: 30), //Choose Location SizedBox to be Edited
-                    Container(
-                      child: ButtonTheme(
-                          minWidth: 50.0,
-                          height: 50.0,
-                          child: FlatButton(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0)),
-                              color: Color(0xFF2B2D42),
-                              onPressed: () {
-                                print('Pressed Location');
-                                Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                    builder: (context) => Gmap(),
-                                  ),
-                                );
-                              },
-                              child: Icon(
-                                Icons.add_location_alt_rounded,
-                                color: Colors.white,
-                              ))),
-                    ),
-                  ],
-                ), //Button ends here
-                SizedBox(height: 60.0),
+                //   mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //     SizedBox(width: 50),
+                //     Text(
+                //       "Choose Location : ",
+                //       style: TextStyle(
+                //         fontSize: 20.0,
+                //         fontFamily: "Montserrat",
+                //         fontWeight: FontWeight.bold,
+                //         color: Color(0xFF2B2D42),
+                //       ),
+                //     ),
+                //     SizedBox(width: 30), //Choose Location SizedBox to be Edited
+                // Container(
+                //   child: ButtonTheme(
+                //       minWidth: 50.0,
+                //       height: 50.0,
+                //       child: FlatButton(
+                //           shape: RoundedRectangleBorder(
+                //               borderRadius: BorderRadius.circular(20.0)),
+                //           color: Color(0xFF2B2D42),
+                //           onPressed: () async {
+                //             print('Pressed Location');
+                //            // position = await _getCurrentLocation();
+                //             print(position.latitude);
+                //             print(position.longitude);
+                //             // Navigator.of(context).pushReplacement(
+                //             //   MaterialPageRoute(
+                //             //     builder: (context) => Gmap(),
+                //             //   ),
+                //             // );
+                //           },
+                //           child: Icon(
+                //             Icons.add_location_alt_rounded,
+                //             color: Colors.white,
+                //           ))),
+                // ),
+                //   ],
+                // ), //Button ends here
+                SizedBox(height: 30.0),
                 ButtonTheme(
                   minWidth: 50.0,
                   height: 60.0,
@@ -339,25 +360,56 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
                       color: Color(0xFF2B2D42),
-                      onPressed: () {
-                        if (_description.text.isEmpty) {
-                          _validatedescription = true;
-                        } else {
-                          _validatedescription = false;
+                      onPressed: () async {
+                        position = await _getCurrentLocation();
+                        setState(() {
+                          if (_description.text.isEmpty) {
+                            _validatedescription = true;
+                          } else {
+                            _validatedescription = false;
+                          }
+                          if (_quantity.text.isEmpty) {
+                            _validatequantity = true;
+                          } else {
+                            _validatequantity = false;
+                          }
+                          if (_validatedescription == false &&
+                              _validatequantity == false) {
+                            validate = true;
+                            // bloodcreatepost(
+                            //     _bloodconreq.text,
+                            //     int.parse(_quantity.text),
+                            //     position.latitude,
+                            //     position.longitude,
+                            //     bloodloginid);
+                            return null;
+                          }
+                        });
+                        if (validate) {
+                          print("Validated");
+                          var resp = await bloodcreatepost(
+                              _bloodconreq.text,
+                              int.parse(_quantity.text),
+                              position.latitude,
+                              position.longitude,
+                              bloodloginid);
+                          print(resp);
+
+                          if (resp["status"] == 200) {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BloodRecipientList()),
+                            );
+                          } else if (resp["status"] == 401) {
+                            createdialogbox(context, "User already exists");
+                          }
                         }
-                        if (_quantity.text.isEmpty) {
-                          _validatequantity = true;
-                        } else {
-                          _validatequantity = false;
-                        }
-                        if (_validatedescription == false &&
-                            _validatequantity == false) {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => Bloodrequestnotify(),
-                            ),
-                          );
-                        }
+                        // Navigator.of(context).pushReplacement(
+                        //   MaterialPageRoute(
+                        //     builder: (context) => Bloodrequestnotify(),
+                        //   ),
+                        // );
                       },
                       child: Text(
                         'Submit',
@@ -372,4 +424,21 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
               ],
             )));
   }
+}
+
+createdialogbox(BuildContext context, String text) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+            backgroundColor: Colors.redAccent[600],
+            title: Text(
+              "Alert",
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ),
+            content: Text(
+              text,
+              style: TextStyle(fontFamily: "Montserrat-Bold.ttf"),
+            ));
+      });
 }
