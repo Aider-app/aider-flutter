@@ -3,11 +3,13 @@ import 'dart:convert';
 //import 'package:aider/widgets/rowelement.dart';
 
 String url = 'https://tranquil-hollows-50478.herokuapp.com';
-acceptchat(String receiverid, String myid, String isaccepted) async {
+acceptchat(
+    String receiverid, String myid, String isaccepted, int post_id) async {
   dynamic body = {
     "sender_id": myid,
     "receiver_id": receiverid,
     "accepted": isaccepted,
+    "post_id": post_id
   };
   dynamic encodedbody = jsonEncode(body);
   try {
