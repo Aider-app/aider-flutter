@@ -238,9 +238,9 @@ class _BestState extends State<Best> {
             children: [
               SizedBox(width: 38),
               Text(
-                "Email :\n $loginid", //Add \n $loginid
+                "Email :\n$loginid", //Add \n $loginid
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 17.0,
                   fontFamily: "Montserrat",
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF2B2D42),
@@ -300,50 +300,7 @@ class _BestState extends State<Best> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      SizedBox(width: 20),
-                      Column(
-                        children: [
-                          Text(
-                            "Post #1",
-                            style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                                color: Color(0xFF2B2D42)),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 50,
-                      ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
-                        //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
-                        color: Color(0xFF2B2D42),
-                        onPressed: () {
-                          print('pressed');
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (context) => Donorlogin()),
-                          // );
-                        },
-                        child: Text(
-                          'Delete',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                ],
+                children: [postlist("hello", context)],
               ),
 
               //unread message notif
@@ -368,5 +325,50 @@ class _BestState extends State<Best> {
             ],
           ),
         ));
+  }
+
+  Row postlist(String posttitle, String id) {
+    return Row(
+      children: [
+        SizedBox(width: 20),
+        Column(
+          children: [
+            Text(
+              "Post #1",
+              style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                  color: Color(0xFF2B2D42)),
+            ),
+          ],
+        ),
+        SizedBox(
+          width: 50,
+        ),
+        FlatButton(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
+          color: Color(0xFF2B2D42),
+          onPressed: () {
+            print('pressed');
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => Donorlogin()),
+            // );
+          },
+          child: Text(
+            'Delete',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 15,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

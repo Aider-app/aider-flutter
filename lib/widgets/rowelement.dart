@@ -100,7 +100,8 @@ Widget rowelement(
                   borderRadius: BorderRadius.circular(20.0)),
               onPressed: () async {
                 print('Pressed accept request');
-                dynamic response = await acceptchat(publisher, loginid, "true");
+                dynamic response =
+                    await acceptchat(publisher, loginid, "true", post_id);
                 print(response["status"]);
                 if (response["status"] == 200) {
                   Navigator.of(context).push(

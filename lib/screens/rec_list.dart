@@ -24,6 +24,7 @@ class _RecipientListState extends State<RecipientList> {
 
   fetchposts() async {
     var posts = await getposts(
+      loginid,
       position.latitude,
       position.longitude,
       "true",

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/Login.dart';
+import 'package:http/http.dart';
 
 class Best extends StatefulWidget {
   @override
@@ -150,7 +151,7 @@ class _BestState extends State<Best> {
                                   bottomRight: Radius.circular(10),
                                   bottomLeft: Radius.circular(10))),
                           child: PageView(
-                            children: <Widget>[details(), posts(context)],
+                            children: <Widget>[details(), Posts()],
                             controller: pageController,
                             onPageChanged: whenPageChanges,
                             // physics: NeverScrollableScrollPhysics(),
@@ -238,9 +239,9 @@ class _BestState extends State<Best> {
             children: [
               SizedBox(width: 38),
               Text(
-                "Email :\n $loginid", //Add \n $loginid
+                "Email :\n$loginid", //Add \n $loginid
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 18.0,
                   fontFamily: "Montserrat",
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF2B2D42),
@@ -279,92 +280,77 @@ class _BestState extends State<Best> {
           ),*/
         ]);
   }
+}
 
-  Widget posts(context) {
+class Posts extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(children: [
+      Posttile(
+        name: "hi",
+        id: 10,
+      ),
+      Posttile(
+        name: "hello",
+        id: 20,
+      )
+    ]);
+  }
+}
+
+class Posttile extends StatelessWidget {
+  final String name;
+  final int id;
+  Posttile({this.name, this.id});
+  @override
+  Widget build(BuildContext context) {
     return Container(
+        margin: EdgeInsets.symmetric(vertical: 1),
+        width: double.infinity,
         decoration: BoxDecoration(
-          border: Border.all(color: Color(0xff2b2d42)),
+          color: Color(0xFFEDF2F4),
         ),
-        child: FlatButton(
-          onPressed: () {
-            // Navigator.of(context).push(MaterialPageRoute(
-            //     builder: (context) => Chatscreen(
-            //           chatid: id,
-            //           receiverid: name,
-            //         )));
-          },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
+            children: [
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      SizedBox(width: 20),
-                      Column(
-                        children: [
-                          Text(
-                            "Post #1",
-                            style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                                color: Color(0xFF2B2D42)),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: 50,
-                      ),
-                      FlatButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
-                        //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
-                        color: Color(0xFF2B2D42),
-                        onPressed: () {
-                          print('pressed');
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (context) => Donorlogin()),
-                          // );
-                        },
-                        child: Text(
-                          'Delete',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
+                  Text(
+                    name,
+                    style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,
+                        color: Color(0xFF2B2D42)),
+                  ),
                 ],
               ),
-
-              //unread message notif
-              /* Container(
-            height: 30,
-            width: 35,
-            decoration: BoxDecoration(
-              color: Color(0xff2b2d42),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: Center(
-              child: Text(
-                '$val',
-                style: TextStyle(
+              FlatButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
+                //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
+                color: Color(0xFF2B2D42),
+                onPressed: () {
+                  print('pressed');
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => Donorlogin()),
+                  // );
+                },
+                child: Text(
+                  'Delete',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
-                    fontSize: 10.0,
-                    color: Color(0xFFFFFFFF)),
+                  ),
+                ),
               ),
-            ),
-          ),*/
             ],
           ),
         ));
