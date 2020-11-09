@@ -9,6 +9,7 @@ String bloodloggeduser = "NA";
 String bloodgrp = "NA";
 String bloodloginid = 'NA';
 String bloodcontact = 'NA';
+bool iswilling = false;
 
 class Bloodlogin extends StatefulWidget {
   @override
@@ -164,6 +165,7 @@ class _BloodloginState extends State<Bloodlogin> {
                   bloodloginid = response["email"];
                   bloodcontact = response["phone"];
                   bloodgrp = response["bloodgroup"];
+                  iswilling = response["iswilling"];
                   print(bloodloggeduser);
                   print(bloodgrp);
                   Navigator.of(context).pushReplacement(

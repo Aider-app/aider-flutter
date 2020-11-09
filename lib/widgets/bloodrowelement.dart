@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:aider/screens/chathome.dart';
 import 'package:aider/screens/Login.dart';
 import 'package:aider/networking/chat.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Widget rowelement(
     item_type, item_name, publisher, post_id, distance, quantity, context) {
@@ -101,8 +102,9 @@ Widget rowelement(
                 color: Color(0xFF2B2D42),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0)),
-                onPressed: () async {
+                onPressed: () {
                   print('Pressed accept request');
+                  launch("tel://$contact");
                   /*dynamic response =
                       await acceptchat(publisher, loginid, "true", post_id);
                   print(response["status"]);

@@ -13,7 +13,7 @@ class _BloodDetailsState extends State<BloodDetails> {
   final _quantity = TextEditingController();
   bool _validatequantity = false;
   int _value = 1;
-  bool isswitched = false;
+  bool isswitched = iswilling;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
