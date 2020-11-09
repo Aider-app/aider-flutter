@@ -1,5 +1,6 @@
 import 'package:aider/screens/bloodlogin.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/networking/auth.dart';
 
 class BloodDetails extends StatefulWidget {
   @override
@@ -150,8 +151,10 @@ class _BloodDetailsState extends State<BloodDetails> {
                     activeColor: Color(0xFF2B2D42),
                     activeTrackColor: Color(0x7A2B2D42),
                     value: isswitched,
-                    onChanged: (value) {
+                    onChanged: (value) async {
                       print(value);
+                      dynamic response =
+                          await becomedonor(bloodloginid, value.toString());
                       setState(() {
                         isswitched = value;
                       });

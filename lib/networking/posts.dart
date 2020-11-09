@@ -47,7 +47,7 @@ getposts(String email, double latitude, double longitude, String role) async {
         body: encodedbody, headers: {'Content-Type': 'application/json'});
     dynamic decodedbody = jsonDecode(response.body);
     //print(jsonDecode(response.body));
-    print(decodedbody[0]);
+    print(decodedbody);
     return (decodedbody);
   } catch (err) {
     print(err);
@@ -88,5 +88,21 @@ bloodcreatepost(String blood_group, int quantity, double latitude,
     return jsonDecode(response.body);
   } catch (err) {
     print(err);
+  }
+}
+
+getbloodposts(String email, double latitude, double longitude) async {
+  dynamic body = {"email": email, "latitude": latitude, "longitude": longitude};
+  dynamic encodedbody = jsonEncode(body);
+  try {
+    Response response = await post(
+      '$url/posts/bloodpost',
+      body: encodedbody,
+      headers: {'Content-Type': 'application/json'},
+    );
+    print(jsonDecode(response.body));
+    return jsonDecode(response.body);
+  } catch (e) {
+    print(e);
   }
 }

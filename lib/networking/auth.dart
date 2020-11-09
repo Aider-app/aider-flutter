@@ -124,3 +124,23 @@ Future<Map<String, dynamic>> bloodreg(
     print(err);
   }
 }
+
+becomedonor(String email, String value) async {
+  dynamic body = {
+    "email": email,
+    "value": value,
+  };
+  dynamic encodedbody = jsonEncode(body);
+  try {
+    Response response = await post(
+      '$url/posts/becomedonor',
+      headers: {'Content-Type': 'application/json'},
+      body: encodedbody,
+    );
+    print(response.body);
+    print(jsonDecode(response.body));
+    return jsonDecode(response.body);
+  } catch (e) {
+    print(e);
+  }
+}

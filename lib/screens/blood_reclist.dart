@@ -1,6 +1,12 @@
+import 'package:aider/screens/bloodlogin.dart';
 import 'package:aider/screens/chathome.dart';
 import 'package:aider/screens/blooddash.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/networking/posts.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:aider/widgets/bloodrowelement.dart';
+
+Position position;
 
 class BloodRecipientList extends StatefulWidget {
   @override
@@ -9,6 +15,66 @@ class BloodRecipientList extends StatefulWidget {
 
 class _BloodRecipientListState extends State<BloodRecipientList> {
   int val = 1;
+  List<Widget> list = [];
+  List<Widget> l = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    fetchposts();
+    super.initState();
+  }
+
+  Future<Position> _getCurrentLocation() async {
+    final positioncoord = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    position = positioncoord;
+    //print("inside function $position"); //longitude and latitude
+  }
+
+  fetchposts() async {
+    await _getCurrentLocation();
+    var posts = await getbloodposts(
+      bloodloginid,
+      position.latitude,
+      position.longitude,
+    );
+    print(posts["message"].length);
+    if (posts["status"] == 200) {
+      for (int i = 0; i < posts["message"].length; i++) {
+        l.add(
+          rowelement(
+              posts["message"][i]["data"]["email"],
+              posts["message"][i]["data"]["name"],
+              posts["message"][i]["data"]["address"],
+              posts["message"][i]["data"]["blood_group"],
+              posts["message"][i]["distance"],
+              posts["message"][i]["data"]["post_id"],
+              context),
+        );
+        l.add(
+          SizedBox(height: 20.0),
+        );
+      }
+      ;
+    }
+
+    setState(() {
+      //list = l;
+      if (l.length == 0) {
+        list = [
+          Text(
+            "No Donors Found",
+            textAlign: TextAlign.center,
+          )
+        ];
+      } else {
+        list = l;
+      }
+    });
+    // print("inside rec_list");
+    // print(l);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -67,7 +133,7 @@ class _BloodRecipientListState extends State<BloodRecipientList> {
                         height: 80,
                         child: Center(
                           child: Text(
-                            "AVAILABLE RECIPIENTS",
+                            "AVAILABLE DONORS",
                             style: TextStyle(
                                 fontSize: 30.0,
                                 fontFamily: "Montserrat",
@@ -79,7 +145,9 @@ class _BloodRecipientListState extends State<BloodRecipientList> {
                     Expanded(
                         child: SingleChildScrollView(
                       child: Column(
-                        children: [
+                        children:
+                            list /*[
+                          Text("hi")
                           SizedBox(height: 20.0),
                           rowelement(1, context),
                           SizedBox(height: 20.0),
@@ -95,7 +163,8 @@ class _BloodRecipientListState extends State<BloodRecipientList> {
                           SizedBox(height: 20.0),
                           rowelement(7, context),
                           SizedBox(height: 20.0),
-                        ],
+                        ]*/
+                        ,
                       ),
                     ))
                   ],
@@ -105,7 +174,7 @@ class _BloodRecipientListState extends State<BloodRecipientList> {
   }
 }
 
-Widget rowelement(val, context) {
+/*Widget rowelement(val, context) {
   return Container(
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -247,3 +316,4 @@ Widget rowelement(val, context) {
     ),
   );
 }
+*/
