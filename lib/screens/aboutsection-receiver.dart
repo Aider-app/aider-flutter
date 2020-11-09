@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/Login.dart';
+import 'package:rating_dialog/rating_dialog.dart';
 
 class Best extends StatefulWidget {
   @override
@@ -160,10 +161,152 @@ class _BestState extends State<Best> {
                     ),
                   ],
                 ),
-              )
+              ),
+              SizedBox(height: 50),
+              Container(
+                child: FlatButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
+                  color: Color(0xFF2B2D42),
+                  onPressed: () {
+                    print('pressed');
+                    createdialogbox(context);
+                  },
+                  child: Text(
+                    'Rate donors',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
             ],
           )),
     );
+  }
+
+  createdialogbox(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+              backgroundColor: Colors.redAccent[600],
+              title: Text("Donors:",
+                  style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: Color(0xff2b2d42))),
+              content: Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text('donor1',
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                  color: Color(0xff2b2d42))),
+                          SizedBox(width: 50.0),
+                          FlatButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
+                            color: Color(0xFF2B2D42),
+                            onPressed: () {
+                              print('pressed');
+                              //*********************************Rating dialogue box*********************** */
+                              _showrating();
+                            },
+                            child: Text(
+                              'Rate',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      //*************second donor***************** */
+                      Row(
+                        children: [
+                          Text('donor1',
+                              style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                  color: Color(0xff2b2d42))),
+                          SizedBox(width: 50.0),
+                          FlatButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
+                            color: Color(0xFF2B2D42),
+                            onPressed: () {
+                              print('pressed');
+                              //*********************************Rating dialogue box*********************** */
+                              _showrating();
+                            },
+                            child: Text(
+                              'Rate',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ));
+        });
+  }
+
+  void _showrating() {
+    showDialog(
+        context: context,
+        barrierDismissible: true, // set to false if you want to force a rating
+        builder: (context) {
+          return RatingDialog(
+            icon: Icon(
+              Icons.star,
+              color: Color(0xff2b2d42),
+              size: 50.0,
+            ),
+            //your own image/icon widget
+            title: "Rating",
+            description: "Rate your donor.",
+            submitButton: "SUBMIT",
+            // alternativeButton:
+            //    "Contact us instead?", // optional
+            // positiveComment:
+            //    "We are so happy to hear :)", // optional
+            // negativeComment:
+            //    "We're sad to hear :(", // optional
+            // accentColor: Colors.red, // optional
+            onSubmitPressed: (int rating) {
+              print("onSubmitPressed: rating = $rating");
+              // TODO: open the app's page on Google Play / Apple App Store
+            },
+            //  onAlternativePressed: () {
+            //  print("onAlternativePressed: do something");
+            // TODO: maybe you want the user to contact you instead of rating a bad review
+            //  },
+          );
+        });
   }
 
   void dispose() {
@@ -200,7 +343,7 @@ class _BestState extends State<Best> {
             children: [
               SizedBox(width: 38.0),
               Text(
-                "Org Id :$id", //Add  $rating
+                "Organization Id : $id", //Add  $rating
                 style: TextStyle(
                   fontSize: 20.0,
                   fontFamily: "Montserrat",
@@ -219,7 +362,7 @@ class _BestState extends State<Best> {
             children: [
               SizedBox(width: 38),
               Text(
-                "Phone :$contact", // $contact
+                "Phone : $contact", // $contact
                 style: TextStyle(
                   fontSize: 20.0,
                   fontFamily: "Montserrat",
@@ -240,7 +383,7 @@ class _BestState extends State<Best> {
               Text(
                 "Email :\n$loginid", //Add \n $loginid
                 style: TextStyle(
-                  fontSize: 17.0,
+                  fontSize: 20.0,
                   fontFamily: "Montserrat",
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF2B2D42),
