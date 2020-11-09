@@ -392,7 +392,8 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                               int.parse(_quantity.text),
                               position.latitude,
                               position.longitude,
-                              bloodloginid);
+                              bloodloginid,
+                              _description.text);
                           print(resp);
 
                           if (resp["status"] == 200) {

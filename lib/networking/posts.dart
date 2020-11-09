@@ -68,13 +68,14 @@ getmyposts(String email) async {
 }
 
 bloodcreatepost(String blood_group, int quantity, double latitude,
-    double longitude, String publisher_id) async {
+    double longitude, String publisher_id, String description) async {
   dynamic body = {
     "blood_group": blood_group,
     "quantity": quantity,
     "latitude": latitude,
     "longitude": longitude,
-    "publisher_id": publisher_id
+    "publisher_id": publisher_id,
+    "description": description
   };
   dynamic encodedbody = jsonEncode(body);
   try {
