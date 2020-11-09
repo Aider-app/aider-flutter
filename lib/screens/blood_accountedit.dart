@@ -226,7 +226,7 @@ class _Blood_AccountDetailsState extends State<Blood_AccountDetails> {
                       onPressed: () {
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                            builder: (context) => BloodDetails(),
+                            builder: (context) => BloodAccountDetails(),
                           ),
                         );
                       },

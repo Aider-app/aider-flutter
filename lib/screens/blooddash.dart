@@ -1,3 +1,4 @@
+import 'package:aider/screens/aboutsection-receiver.dart';
 import 'package:aider/screens/blood_accountdetails.dart';
 import 'package:aider/screens/bloodcreatereq.dart';
 import 'package:aider/screens/bloodlogin.dart';
@@ -215,7 +216,7 @@ class _BlooddashState extends State<Blooddash> {
                                 onPressed: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => BloodDetails(),
+                                      builder: (context) => BloodAccountDetails(),
                                     ),
                                   );
                                 },
