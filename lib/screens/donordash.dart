@@ -158,7 +158,7 @@ class _DonordashState extends State<Donordash> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0)),
                               color: Color(0xFF2B2D42),
-                              //GO TO PREVIOUS DONATIONS
+                              //GO TO view DONATIONS
                               onPressed: () {
                                 print('Pressed previous donations');
                                 Navigator.of(context).push(
@@ -181,7 +181,7 @@ class _DonordashState extends State<Donordash> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(width: 20.0),
+                          //  SizedBox(width: 20.0),
                           Text(
                             'New Donations',
                             style: TextStyle(
@@ -190,7 +190,7 @@ class _DonordashState extends State<Donordash> {
                                 fontSize: 15.0,
                                 color: Color(0xFF2B2D42)),
                           ),
-                          SizedBox(width: 20.0),
+                          SizedBox(width: 40.0),
                           Text(
                             'View requests',
                             style: TextStyle(

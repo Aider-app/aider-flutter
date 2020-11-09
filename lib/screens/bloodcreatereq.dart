@@ -310,49 +310,49 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                   ],
                 ), //Quantity ends here
                 SizedBox(height: 50.0),
-                Row(
-                  //Row contains Choose Location and Button
+                // Row(
+                //   //Row contains Choose Location and Button
 
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(width: 50),
-                    Text(
-                      "Choose Location : ",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF2B2D42),
-                      ),
-                    ),
-                    SizedBox(width: 30), //Choose Location SizedBox to be Edited
-                    Container(
-                      child: ButtonTheme(
-                          minWidth: 50.0,
-                          height: 50.0,
-                          child: FlatButton(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0)),
-                              color: Color(0xFF2B2D42),
-                              onPressed: () async {
-                                print('Pressed Location');
-                                position = await _getCurrentLocation();
-                                print(position.latitude);
-                                print(position.longitude);
-                                // Navigator.of(context).pushReplacement(
-                                //   MaterialPageRoute(
-                                //     builder: (context) => Gmap(),
-                                //   ),
-                                // );
-                              },
-                              child: Icon(
-                                Icons.add_location_alt_rounded,
-                                color: Colors.white,
-                              ))),
-                    ),
-                  ],
-                ), //Button ends here
-                SizedBox(height: 60.0),
+                //   mainAxisAlignment: MainAxisAlignment.start,
+                //   children: [
+                //     SizedBox(width: 50),
+                //     Text(
+                //       "Choose Location : ",
+                //       style: TextStyle(
+                //         fontSize: 20.0,
+                //         fontFamily: "Montserrat",
+                //         fontWeight: FontWeight.bold,
+                //         color: Color(0xFF2B2D42),
+                //       ),
+                //     ),
+                //     SizedBox(width: 30), //Choose Location SizedBox to be Edited
+                // Container(
+                //   child: ButtonTheme(
+                //       minWidth: 50.0,
+                //       height: 50.0,
+                //       child: FlatButton(
+                //           shape: RoundedRectangleBorder(
+                //               borderRadius: BorderRadius.circular(20.0)),
+                //           color: Color(0xFF2B2D42),
+                //           onPressed: () async {
+                //             print('Pressed Location');
+                //            // position = await _getCurrentLocation();
+                //             print(position.latitude);
+                //             print(position.longitude);
+                //             // Navigator.of(context).pushReplacement(
+                //             //   MaterialPageRoute(
+                //             //     builder: (context) => Gmap(),
+                //             //   ),
+                //             // );
+                //           },
+                //           child: Icon(
+                //             Icons.add_location_alt_rounded,
+                //             color: Colors.white,
+                //           ))),
+                // ),
+                //   ],
+                // ), //Button ends here
+                SizedBox(height: 30.0),
                 ButtonTheme(
                   minWidth: 50.0,
                   height: 60.0,
