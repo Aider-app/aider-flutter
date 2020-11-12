@@ -12,7 +12,7 @@ createpost(String itemtype, String item_name, double latitude, double longitude,
     "longitude": longitude,
     "publisher_id": publisher_id,
     "isrequirement": isrequirement,
-    "quantity": quantity
+    "quantity": quantity,
   };
   dynamic encodedbody = jsonEncode(body);
 
