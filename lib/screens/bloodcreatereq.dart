@@ -395,7 +395,6 @@ class _BloodcreatereqState extends State<Bloodcreatereq> {
                               bloodloginid,
                               _description.text);
                           print(resp);
-
                           if (resp["status"] == 200) {
                             Navigator.pushReplacement(
                               context,
