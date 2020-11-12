@@ -124,3 +124,33 @@ deletmypost(int post_id) async {
     print(e);
   }
 }
+
+bloodgetmyposts(String email) async {
+  dynamic body = {"email": email};
+  dynamic encodedbody = jsonEncode(body);
+  try {
+    Response response = await post('$url/posts/getmybloodpost',
+        body: encodedbody, headers: {'Content-Type': 'application/json'});
+    dynamic decodedbody = jsonDecode(response.body);
+    print("decoded body posts\n $decodedbody");
+    return (decodedbody);
+  } catch (e) {
+    print(e);
+  }
+}
+
+blooddeletepost(int post_id) async {
+  dynamic body = {"postid": post_id};
+  dynamic encodedbody = jsonEncode(body);
+  try {
+    Response response = await post(
+      '$url/posts/blooddeletemypost',
+      body: encodedbody,
+      headers: {'Content-Type': 'application/json'},
+    );
+    print(jsonDecode(response.body));
+    return jsonDecode(response.body);
+  } catch (e) {
+    print(e);
+  }
+}

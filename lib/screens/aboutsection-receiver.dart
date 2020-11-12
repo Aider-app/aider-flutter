@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:aider/screens/Login.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:aider/networking/posts.dart';
+//import 'package:aider/networking/rating.dart';
 
 class Best extends StatefulWidget {
   @override
@@ -329,7 +330,8 @@ class _BestState extends State<Best> {
             //    "We're sad to hear :(", // optional
             // accentColor: Colors.red, // optional
             onSubmitPressed: (int rating) {
-              print("onSubmitPressed: rating = $rating");
+              // print("onSubmitPressed: rating = $rating");
+
               // TODO: open the app's page on Google Play / Apple App Store
             },
             //  onAlternativePressed: () {
