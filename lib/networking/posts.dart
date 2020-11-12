@@ -61,6 +61,7 @@ getmyposts(String email) async {
     Response response = await post('$url/posts/getmyposts',
         body: encodedbody, headers: {'Content-Type': 'application/json'});
     dynamic decodedbody = jsonDecode(response.body);
+    print("decoded body posts\n $decodedbody");
     return (decodedbody);
   } catch (e) {
     print(e);
@@ -68,13 +69,14 @@ getmyposts(String email) async {
 }
 
 bloodcreatepost(String blood_group, int quantity, double latitude,
-    double longitude, String publisher_id) async {
+    double longitude, String publisher_id, String description) async {
   dynamic body = {
     "blood_group": blood_group,
     "quantity": quantity,
     "latitude": latitude,
     "longitude": longitude,
-    "publisher_id": publisher_id
+    "publisher_id": publisher_id,
+    "description": description
   };
   dynamic encodedbody = jsonEncode(body);
   try {
@@ -97,6 +99,22 @@ getbloodposts(String email, double latitude, double longitude) async {
   try {
     Response response = await post(
       '$url/posts/bloodpost',
+      body: encodedbody,
+      headers: {'Content-Type': 'application/json'},
+    );
+    print(jsonDecode(response.body));
+    return jsonDecode(response.body);
+  } catch (e) {
+    print(e);
+  }
+}
+
+deletmypost(int post_id) async {
+  dynamic body = {"postid": post_id};
+  dynamic encodedbody = jsonEncode(body);
+  try {
+    Response response = await post(
+      '$url/posts/deletemypost',
       body: encodedbody,
       headers: {'Content-Type': 'application/json'},
     );

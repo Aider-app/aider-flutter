@@ -4,14 +4,21 @@ import 'package:aider/screens/blooddash.dart';
 import 'package:aider/screens/bloodlogin.dart';
 import 'package:http/http.dart';
 
-
 class BloodAccountDetails extends StatefulWidget {
   @override
   _BloodAccountDetailsState createState() => _BloodAccountDetailsState();
 }
 
+//class _BloodDetailsState extends State<BloodDetails> {
+
 class _BloodAccountDetailsState extends State<BloodAccountDetails> {
   int getPageIndex = 0;
+  final _description = TextEditingController();
+  bool _validatedescription = false;
+  final _quantity = TextEditingController();
+  bool _validatequantity = false;
+  int _value = 1;
+  bool isswitched = iswilling;
   PageController pageController;
   whenPageChanges(int pageIndex) {
     setState(() {
@@ -183,7 +190,7 @@ class _BloodAccountDetailsState extends State<BloodAccountDetails> {
             children: [
               SizedBox(width: 38.0),
               Text(
-                "Name : $bloodloggeduser", 
+                "Name : $bloodloggeduser",
                 style: TextStyle(
                   fontSize: 20.0,
                   fontFamily: "Montserrat",
@@ -203,14 +210,14 @@ class _BloodAccountDetailsState extends State<BloodAccountDetails> {
             children: [
               SizedBox(width: 38.0),
               Text(
-                  "Blood Group : $bloodgrp",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontFamily: "Montserrat",
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF2B2D42),
-                  ),
+                "Blood Group : $bloodgrp",
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontFamily: "Montserrat",
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF2B2D42),
                 ),
+              ),
               SizedBox(
                   width:
                       00.0), //sized box might have to remove while actual name is displayed
@@ -241,9 +248,9 @@ class _BloodAccountDetailsState extends State<BloodAccountDetails> {
             children: [
               SizedBox(width: 38),
               Text(
-                "Email :\n$bloodloginid", 
+                "Email :\n$bloodloginid",
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 17.0,
                   fontFamily: "Montserrat",
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF2B2D42),

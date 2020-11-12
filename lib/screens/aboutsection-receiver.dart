@@ -2,11 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/Login.dart';
 import 'package:rating_dialog/rating_dialog.dart';
+import 'package:aider/networking/posts.dart';
 
 class Best extends StatefulWidget {
   @override
   _BestState createState() => _BestState();
 }
+
+List<Widget> postlist = [];
 
 class _BestState extends State<Best> {
   int getPageIndex = 0;
@@ -17,6 +20,34 @@ class _BestState extends State<Best> {
       this.getPageIndex = pageIndex;
     });
   }
+
+  /* Function refresh() {
+    fetchpost(loginid);
+  }
+
+  fetchpost(email) async {
+    postlist.clear();
+    List<Widget> temp = [];
+    var response = await getmyposts(email);
+    print(response);
+    if (response["status"] == 200) {
+      response["message"].forEach((data) {
+        print(data["post_id"]);
+        temp.add(
+          Posttile(
+            name: data["item_name"],
+            id: data["post_id"],
+            refresh: refresh(),
+          ),
+        );
+      });
+    } else if (response["status"] == 401) {
+      temp.add(Text("No posts yet!"));
+    }
+    setState(() {
+      postlist = temp;
+    });
+  }*/
 
   void initState() {
     super.initState();
@@ -424,26 +455,60 @@ class _BestState extends State<Best> {
   }
 }
 
-class Posts extends StatelessWidget {
+class Posts extends StatefulWidget {
+  @override
+  _PostsState createState() => _PostsState();
+}
+
+class _PostsState extends State<Posts> {
+  Function refresh() {
+    fetchpost(loginid);
+  }
+
+  fetchpost(email) async {
+    postlist.clear();
+    List<Widget> temp = [];
+    var response = await getmyposts(email);
+    print(response);
+    if (response["status"] == 200) {
+      response["message"].forEach((data) {
+        print(data["post_id"]);
+        temp.add(
+          Posttile(
+            name: data["item_name"],
+            id: data["post_id"],
+            refresh: refresh(),
+          ),
+        );
+      });
+    } else if (response["status"] == 401) {
+      temp.add(Center(
+          child: Text("No posts yet!",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))));
+    }
+    setState(() {
+      postlist = temp;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    fetchpost(loginid);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
-      Posttile(
-        name: "hi",
-        id: 10,
-      ),
-      Posttile(
-        name: "hello",
-        id: 20,
-      )
-    ]);
+    return ListView(children: postlist);
   }
 }
 
 class Posttile extends StatelessWidget {
   final String name;
   final int id;
-  Posttile({this.name, this.id});
+  final Function refresh;
+  Posttile({this.name, this.id, this.refresh});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -476,8 +541,10 @@ class Posttile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0)),
                 //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
                 color: Color(0xFF2B2D42),
-                onPressed: () {
+                onPressed: () async {
                   print('pressed');
+                  var response = await deletmypost(id);
+                  refresh;
                   // Navigator.push(
                   //   context,
                   //   MaterialPageRoute(builder: (context) => Donorlogin()),

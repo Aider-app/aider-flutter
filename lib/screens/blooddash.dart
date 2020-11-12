@@ -180,18 +180,18 @@ class _BlooddashState extends State<Blooddash> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(width: 20.0),
+                            //SizedBox(width: 20.0),
                             Text(
-                              'Create Request',
+                              'Post Request',
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15.0,
                                   color: Color(0xFF2B2D42)),
                             ),
-                            SizedBox(width: 40.0),
+                            SizedBox(width: 75.0),
                             Text(
-                              'Previous Requests',
+                              'Requests',
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
