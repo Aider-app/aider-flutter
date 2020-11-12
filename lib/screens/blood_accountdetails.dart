@@ -1,3 +1,5 @@
+import 'package:aider/networking/posts.dart';
+import 'package:aider/screens/donorlogin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/blooddash.dart';
@@ -8,6 +10,8 @@ class BloodAccountDetails extends StatefulWidget {
   @override
   _BloodAccountDetailsState createState() => _BloodAccountDetailsState();
 }
+
+List<Widget> postlist = [];
 
 //class _BloodDetailsState extends State<BloodDetails> {
 
@@ -291,26 +295,61 @@ class _BloodAccountDetailsState extends State<BloodAccountDetails> {
   }
 }
 
-class Posts extends StatelessWidget {
+class Posts extends StatefulWidget {
+  @override
+  _PostsState createState() => _PostsState();
+}
+
+class _PostsState extends State<Posts> {
+  @override
+  void initState() {
+    // widget.fetchpost(bloodloginid);
+    fetchpost(bloodloginid);
+    // TODO: implement initState
+    super.initState();
+  }
+
+  Function refresh() {
+    fetchpost(bloodloginid);
+  }
+
+  fetchpost(email) async {
+    postlist.clear();
+    List<Widget> temp = [];
+    var response = await bloodgetmyposts(email);
+    print(response);
+    if (response["status"] == 200) {
+      response["message"].forEach((data) {
+        print(data["post_id"]);
+        temp.add(
+          Posttile(
+            name: data["bloodgrp"],
+            id: data["bloodloginid"],
+            refresh: refresh(),
+          ),
+        );
+      });
+    } else if (response["status"] == 401) {
+      temp.add(Center(
+          child: Text("No posts yet!",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))));
+    }
+    setState(() {
+      postlist = temp;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
-      Posttile(
-        name: "hi",
-        id: 10,
-      ),
-      Posttile(
-        name: "hello",
-        id: 20,
-      )
-    ]);
+    return ListView(children: postlist);
   }
 }
 
 class Posttile extends StatelessWidget {
   final String name;
   final int id;
-  Posttile({this.name, this.id});
+  final Function refresh;
+  Posttile({this.name, this.id, this.refresh});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -343,12 +382,13 @@ class Posttile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0)),
                 //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
                 color: Color(0xFF2B2D42),
-                onPressed: () {
+                onPressed: () async {
                   print('pressed');
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => Donorlogin()),
-                  // );
+                  print(id);
+                  var response = await blooddeletepost(id);
+                  print(bloodloginid);
+                  refresh;
+                  // getpost(bloodloginid);
                 },
                 child: Text(
                   'Delete',
