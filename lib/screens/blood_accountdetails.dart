@@ -250,7 +250,7 @@ class _BloodAccountDetailsState extends State<BloodAccountDetails> {
               Text(
                 "Email :\n$bloodloginid",
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 17.0,
                   fontFamily: "Montserrat",
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF2B2D42),

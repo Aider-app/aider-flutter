@@ -139,7 +139,7 @@ class _RecieverdashState extends State<Recieverdash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO create request
                                 onPressed: () {
-                                  Navigator.of(context).pushReplacement(
+                                  Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) => MakeRequest(),
                                     ),
@@ -159,7 +159,7 @@ class _RecieverdashState extends State<Recieverdash> {
                                 color: Color(0xFF2B2D42),
                                 //GO TO PREVIOUS requests
                                 onPressed: () {
-                                  Navigator.of(context).pushReplacement(
+                                  Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) => Chathome(),
                                     ),
