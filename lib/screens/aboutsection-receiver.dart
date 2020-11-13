@@ -1,9 +1,13 @@
+import 'package:aider/networking/rating.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/Login.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:aider/networking/posts.dart';
+import 'package:aider/networking/chat.dart';
+
 //import 'package:aider/networking/rating.dart';
+List<Widget> ratelist = [];
 
 class Best extends StatefulWidget {
   @override
@@ -22,34 +26,6 @@ class _BestState extends State<Best> {
     });
   }
 
-  /* Function refresh() {
-    fetchpost(loginid);
-  }
-
-  fetchpost(email) async {
-    postlist.clear();
-    List<Widget> temp = [];
-    var response = await getmyposts(email);
-    print(response);
-    if (response["status"] == 200) {
-      response["message"].forEach((data) {
-        print(data["post_id"]);
-        temp.add(
-          Posttile(
-            name: data["item_name"],
-            id: data["post_id"],
-            refresh: refresh(),
-          ),
-        );
-      });
-    } else if (response["status"] == 401) {
-      temp.add(Text("No posts yet!"));
-    }
-    setState(() {
-      postlist = temp;
-    });
-  }*/
-
   void initState() {
     super.initState();
     pageController = PageController();
@@ -59,6 +35,52 @@ class _BestState extends State<Best> {
     print(pageIndex);
 
     pageController.jumpToPage(pageIndex);
+  }
+
+  getconn(String email, int post_id) async {
+    var response = await getraters(email, post_id);
+    print(response["message"]);
+    List<Widget> temp = [];
+    if (response["status"] == 200) {
+      response["message"].forEach((data) {
+        temp.add(Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(data["name"],
+                style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17.0,
+                    color: Color(0xff2b2d42))),
+            FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
+              color: Color(0xFF2B2D42),
+              onPressed: () {
+                print('pressed');
+                //*********************************Rating dialogue box*********************** */
+                _showrating(data["post_id"], data["rating_id"], loginid);
+              },
+              child: Text(
+                'Rate',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ));
+      });
+    } else {
+      temp.add(Text("No contacts found"));
+    }
+    setState(() {
+      ratelist = temp;
+    });
   }
 
   @override
@@ -183,7 +205,13 @@ class _BestState extends State<Best> {
                                   bottomRight: Radius.circular(10),
                                   bottomLeft: Radius.circular(10))),
                           child: PageView(
-                            children: <Widget>[details(), Posts()],
+                            children: <Widget>[
+                              details(),
+                              Posts(
+                                getconn: getconn,
+                                ratingdialog: createdialogbox,
+                              )
+                            ],
                             controller: pageController,
                             onPageChanged: whenPageChanges,
                             // physics: NeverScrollableScrollPhysics(),
@@ -195,15 +223,17 @@ class _BestState extends State<Best> {
                 ),
               ),
               SizedBox(height: 50),
-              Container(
+              /* Container(
                 child: FlatButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0)),
                   //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
                   color: Color(0xFF2B2D42),
-                  onPressed: () {
+                  onPressed: () async {
                     print('pressed');
-                    createdialogbox(context);
+                    getconn(loginid, 103);
+                    // print(response);
+                    // createdialogbox(context);
                   },
                   child: Text(
                     'Rate donors',
@@ -215,7 +245,7 @@ class _BestState extends State<Best> {
                     ),
                   ),
                 ),
-              ),
+              ),*/
             ],
           )),
     );
@@ -235,79 +265,13 @@ class _BestState extends State<Best> {
                       color: Color(0xff2b2d42))),
               content: Expanded(
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text('donor1',
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
-                                  color: Color(0xff2b2d42))),
-                          SizedBox(width: 50.0),
-                          FlatButton(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
-                            color: Color(0xFF2B2D42),
-                            onPressed: () {
-                              print('pressed');
-                              //*********************************Rating dialogue box*********************** */
-                              _showrating();
-                            },
-                            child: Text(
-                              'Rate',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      //*************second donor***************** */
-                      Row(
-                        children: [
-                          Text('donor1',
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
-                                  color: Color(0xff2b2d42))),
-                          SizedBox(width: 50.0),
-                          FlatButton(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
-                            color: Color(0xFF2B2D42),
-                            onPressed: () {
-                              print('pressed');
-                              //*********************************Rating dialogue box*********************** */
-                              _showrating();
-                            },
-                            child: Text(
-                              'Rate',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+                  child: Column(children: ratelist),
                 ),
               ));
         });
   }
 
-  void _showrating() {
+  void _showrating(int post_id, int rating_id, String rater_id) {
     showDialog(
         context: context,
         barrierDismissible: true, // set to false if you want to force a rating
@@ -329,9 +293,11 @@ class _BestState extends State<Best> {
             // negativeComment:
             //    "We're sad to hear :(", // optional
             // accentColor: Colors.red, // optional
-            onSubmitPressed: (int rating) {
-              // print("onSubmitPressed: rating = $rating");
-
+            onSubmitPressed: (int rating) async {
+              print("onSubmitPressed: rating = $rating");
+              dynamic response =
+                  await giverating(rating_id, rater_id, rating, post_id);
+              print(response);
               // TODO: open the app's page on Google Play / Apple App Store
             },
             //  onAlternativePressed: () {
@@ -351,7 +317,7 @@ class _BestState extends State<Best> {
     return ListView(
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 30),
+          //SizedBox(height: 30),
           Row(
             children: [
               SizedBox(width: 38.0),
@@ -370,7 +336,7 @@ class _BestState extends State<Best> {
               width:
                   00.0), //sized box might have to remove while actual name is displayed
           SizedBox(width: 0 /*16.7*/),
-          SizedBox(height: 30),
+          SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -384,12 +350,10 @@ class _BestState extends State<Best> {
                   color: Color(0xFF2B2D42),
                 ),
               ),
-              SizedBox(
-                  width:
-                      00.0), //sized box might have to remove while actual name is displayed
+              //sized box might have to remove while actual name is displayed
             ],
           ),
-          SizedBox(height: 30.0),
+          SizedBox(height: 20.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -403,12 +367,11 @@ class _BestState extends State<Best> {
                   color: Color(0xFF2B2D42),
                 ),
               ),
-              SizedBox(width: 0
-                  /*245.0*/), //sized box might have to remove while actual name is displayed
-              SizedBox(width: 16.7)
+              //sized box might have to remove while actual name is displayed
+              // SizedBox(width: 20)
             ],
           ),
-          SizedBox(height: 30.0),
+          SizedBox(height: 20.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -416,7 +379,7 @@ class _BestState extends State<Best> {
               Text(
                 "Email :\n$loginid", //Add \n $loginid
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 17.0,
                   fontFamily: "Montserrat",
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF2B2D42),
@@ -426,38 +389,15 @@ class _BestState extends State<Best> {
                     SizedBox(width: 16.7)*/
             ],
           ),
-          SizedBox(height: 30.0),
-          /* Container(
-            width: 0.0,
-            height: 40.0,
-            child: OutlineButton(
-                splashColor: Color(0xFF2B2D42),
-                // borderSide: BorderSide.none,
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(5.0)),
-                onPressed: () {
-                  print("Pressed Edit");
-                  // Navigator.of(context).pushReplacement(
-                  //   MaterialPageRoute(
-                  //     builder: (context) => DonorEdit(),
-                  //   ),
-                  // );
-                },
-                child: Center(
-                    child: Text(
-                  "Edit",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontFamily: "Montserrat",
-                    fontWeight: FontWeight.bold,
-                  ),
-                ))),
-          ),*/
+          SizedBox(height: 20.0),
         ]);
   }
 }
 
 class Posts extends StatefulWidget {
+  final Function getconn;
+  final Function ratingdialog;
+  Posts({this.getconn, this.ratingdialog});
   @override
   _PostsState createState() => _PostsState();
 }
@@ -479,14 +419,21 @@ class _PostsState extends State<Posts> {
           Posttile(
             name: data["item_name"],
             id: data["post_id"],
-            refresh: refresh(),
+            refresh: refresh,
+            getconn: widget.getconn,
+            ratingdialog: widget.ratingdialog,
           ),
         );
       });
     } else if (response["status"] == 401) {
-      temp.add(Center(
-          child: Text("No posts yet!",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))));
+      temp.add(
+        Center(
+          child: Text(
+            "No posts yet!",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+      );
     }
     setState(() {
       postlist = temp;
@@ -510,7 +457,79 @@ class Posttile extends StatelessWidget {
   final String name;
   final int id;
   final Function refresh;
-  Posttile({this.name, this.id, this.refresh});
+  final Function getconn;
+  final Function ratingdialog;
+  Posttile({this.name, this.id, this.refresh, this.getconn, this.ratingdialog});
+  createdialogbox(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Colors.redAccent[600],
+          title: Text("Donors:",
+              style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                  color: Color(0xff2b2d42))),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SingleChildScrollView(
+                child: Column(children: ratelist),
+              ),
+              FlatButton(
+                child: Icon(Icons.arrow_right),
+                onPressed: () async {
+                  print("pressed");
+                  var response = await deletmypost(id);
+                  print(response);
+                  Navigator.pop(context);
+                  var resp = await deletmypost(id);
+                  await refresh();
+                },
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _showrating(int post_id, int rating_id, String rater_id, context) {
+    showDialog(
+        context: context,
+        barrierDismissible: true, // set to false if you want to force a rating
+        builder: (context) {
+          return RatingDialog(
+            icon: Icon(
+              Icons.star,
+              color: Color(0xff2b2d42),
+              size: 50.0,
+            ),
+            //your own image/icon widget
+            title: "Rating",
+            description: "Rate your donor.",
+            submitButton: "SUBMIT",
+            // alternativeButton: "Contact us instead?", // optional
+            //positiveComment: "We are so happy to hear :)", // optional
+            //negativeComment: "We're sad to hear :(", // optional
+            // accentColor: Colors.red, // optional
+            onSubmitPressed: (int rating) async {
+              print("onSubmitPressed: rating = $rating");
+              dynamic response =
+                  await giverating(rating_id, rater_id, rating, post_id);
+              print(response);
+              // TODO: open the app's page on Google Play / Apple App Store
+            },
+            //  onAlternativePressed: () {
+            //  print("onAlternativePressed: do something");
+            // TODO: maybe you want the user to contact you instead of rating a bad review
+            //  },
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -545,8 +564,11 @@ class Posttile extends StatelessWidget {
                 color: Color(0xFF2B2D42),
                 onPressed: () async {
                   print('pressed');
-                  var response = await deletmypost(id);
-                  refresh;
+                  var resp = await getconn(loginid, id);
+                  // ratingdialog(context);
+                  createdialogbox(context);
+                  //var response = await deletmypost(id);
+                  await refresh();
                   // Navigator.push(
                   //   context,
                   //   MaterialPageRoute(builder: (context) => Donorlogin()),

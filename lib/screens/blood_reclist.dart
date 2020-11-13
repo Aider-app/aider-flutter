@@ -19,7 +19,6 @@ class _BloodRecipientListState extends State<BloodRecipientList> {
   List<Widget> l = [];
   @override
   void initState() {
-    // TODO: implement initState
     fetchposts();
     super.initState();
   }
@@ -28,7 +27,6 @@ class _BloodRecipientListState extends State<BloodRecipientList> {
     final positioncoord = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     position = positioncoord;
-    //print("inside function $position"); //longitude and latitude
   }
 
   fetchposts() async {
@@ -59,7 +57,6 @@ class _BloodRecipientListState extends State<BloodRecipientList> {
     }
 
     setState(() {
-      //list = l;
       if (l.length == 0) {
         list = [
           Text(
@@ -71,8 +68,6 @@ class _BloodRecipientListState extends State<BloodRecipientList> {
         list = l;
       }
     });
-    // print("inside rec_list");
-    // print(l);
   }
 
   @override

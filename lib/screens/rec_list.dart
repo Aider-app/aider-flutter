@@ -50,8 +50,10 @@ class _RecipientListState extends State<RecipientList> {
       //list = l;
       if (l.length == 0) {
         list = [
-          rowelement("loading", "loading", "loading", "loading", "loading",
-              "loading", context)
+          Text(
+            "No posts yet",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          )
         ];
       } else {
         list = l;
