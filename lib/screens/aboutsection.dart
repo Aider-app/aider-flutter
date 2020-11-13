@@ -292,9 +292,7 @@ class Posts extends StatefulWidget {
 class _PostsState extends State<Posts> {
   @override
   void initState() {
-    // widget.fetchpost(loginid);
     fetchpost(loginid);
-    // TODO: implement initState
     super.initState();
   }
 
@@ -308,24 +306,28 @@ class _PostsState extends State<Posts> {
     var response = await getmyposts(email);
     print(response);
     if (response["status"] == 200) {
-      response["message"].forEach((data) {
-        print(data["post_id"]);
-        temp.add(
-          Posttile(
-            name: data["item_name"],
-            id: data["post_id"],
-            refresh: refresh(),
-          ),
-        );
-      });
+      response["message"].forEach(
+        (data) {
+          print(data["post_id"]);
+          temp.add(
+            Posttile(
+              name: data["item_name"],
+              id: data["post_id"],
+              refresh: refresh,
+            ),
+          );
+        },
+      );
     } else if (response["status"] == 401) {
       temp.add(Center(
           child: Text("No posts yet!",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))));
     }
-    setState(() {
-      postlist = temp;
-    });
+    setState(
+      () {
+        postlist = temp;
+      },
+    );
   }
 
   @override
@@ -376,7 +378,7 @@ class Posttile extends StatelessWidget {
                   print(id);
                   var response = await deletmypost(id);
                   print(loginid);
-                  refresh;
+                  await refresh();
                   // getpost(loginid);
                 },
                 child: Text(

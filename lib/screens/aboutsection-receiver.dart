@@ -351,7 +351,7 @@ class _BestState extends State<Best> {
     return ListView(
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 30),
+          //SizedBox(height: 30),
           Row(
             children: [
               SizedBox(width: 38.0),
@@ -370,7 +370,7 @@ class _BestState extends State<Best> {
               width:
                   00.0), //sized box might have to remove while actual name is displayed
           SizedBox(width: 0 /*16.7*/),
-          SizedBox(height: 30),
+          SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -384,12 +384,10 @@ class _BestState extends State<Best> {
                   color: Color(0xFF2B2D42),
                 ),
               ),
-              SizedBox(
-                  width:
-                      00.0), //sized box might have to remove while actual name is displayed
+              //sized box might have to remove while actual name is displayed
             ],
           ),
-          SizedBox(height: 30.0),
+          SizedBox(height: 20.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -403,12 +401,11 @@ class _BestState extends State<Best> {
                   color: Color(0xFF2B2D42),
                 ),
               ),
-              SizedBox(width: 0
-                  /*245.0*/), //sized box might have to remove while actual name is displayed
-              SizedBox(width: 16.7)
+              //sized box might have to remove while actual name is displayed
+              // SizedBox(width: 20)
             ],
           ),
-          SizedBox(height: 30.0),
+          SizedBox(height: 20.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -426,33 +423,7 @@ class _BestState extends State<Best> {
                     SizedBox(width: 16.7)*/
             ],
           ),
-          SizedBox(height: 30.0),
-          /* Container(
-            width: 0.0,
-            height: 40.0,
-            child: OutlineButton(
-                splashColor: Color(0xFF2B2D42),
-                // borderSide: BorderSide.none,
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(5.0)),
-                onPressed: () {
-                  print("Pressed Edit");
-                  // Navigator.of(context).pushReplacement(
-                  //   MaterialPageRoute(
-                  //     builder: (context) => DonorEdit(),
-                  //   ),
-                  // );
-                },
-                child: Center(
-                    child: Text(
-                  "Edit",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontFamily: "Montserrat",
-                    fontWeight: FontWeight.bold,
-                  ),
-                ))),
-          ),*/
+          SizedBox(height: 20.0),
         ]);
   }
 }
@@ -479,7 +450,7 @@ class _PostsState extends State<Posts> {
           Posttile(
             name: data["item_name"],
             id: data["post_id"],
-            refresh: refresh(),
+            refresh: refresh,
           ),
         );
       });
@@ -546,7 +517,7 @@ class Posttile extends StatelessWidget {
                 onPressed: () async {
                   print('pressed');
                   var response = await deletmypost(id);
-                  refresh;
+                  await refresh();
                   // Navigator.push(
                   //   context,
                   //   MaterialPageRoute(builder: (context) => Donorlogin()),

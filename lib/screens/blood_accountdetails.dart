@@ -1,10 +1,10 @@
 import 'package:aider/networking/posts.dart';
-import 'package:aider/screens/donorlogin.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/screens/blooddash.dart';
 import 'package:aider/screens/bloodlogin.dart';
-import 'package:http/http.dart';
+import 'package:aider/networking/auth.dart';
 
 class BloodAccountDetails extends StatefulWidget {
   @override
@@ -132,25 +132,26 @@ class _BloodAccountDetailsState extends State<BloodAccountDetails> {
                             ),
                           )),
                           BottomNavigationBarItem(
-                              icon: Container(
-                            decoration: BoxDecoration(
-                                color: getPageIndex == 1
-                                    ? Color(0xFF2B2D42)
-                                    : Color(0xFFEDF2F4),
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(10))),
-                            width: double.maxFinite,
-                            height: double.maxFinite,
-                            child: Center(
-                              child: Text(
-                                "My Posts",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontFamily: "Montserrat",
-                                    fontWeight: FontWeight.bold),
+                            icon: Container(
+                              decoration: BoxDecoration(
+                                  color: getPageIndex == 1
+                                      ? Color(0xFF2B2D42)
+                                      : Color(0xFFEDF2F4),
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(10))),
+                              width: double.maxFinite,
+                              height: double.maxFinite,
+                              child: Center(
+                                child: Text(
+                                  "My Posts",
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontFamily: "Montserrat",
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
-                          )),
+                          ),
                         ],
                       ),
                     ),
@@ -187,72 +188,86 @@ class _BloodAccountDetailsState extends State<BloodAccountDetails> {
 
   details() {
     return ListView(
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          SizedBox(height: 30),
-          Row(
-            children: [
-              SizedBox(width: 38.0),
-              Text(
-                "Name : $bloodloggeduser",
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF2B2D42),
-                ),
+      // crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        // SizedBox(height: 30),
+        Row(
+          children: [
+            SizedBox(width: 38.0),
+            Text(
+              "Name : $bloodloggeduser",
+              style: TextStyle(
+                fontSize: 20.0,
+                fontFamily: "Montserrat",
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF2B2D42),
               ),
-            ],
-          ),
-          SizedBox(
-              width:
-                  00.0), //sized box might have to remove while actual name is displayed
-          SizedBox(width: 0 /*16.7*/),
-          SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(width: 38.0),
-              Text(
-                "Blood Group : $bloodgrp",
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF2B2D42),
-                ),
+            ),
+          ],
+        ),
+        //sized box might have to remove while actual name is displayed
+
+        SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(width: 38.0),
+            Text(
+              "Blood Group : $bloodgrp",
+              style: TextStyle(
+                fontSize: 20.0,
+                fontFamily: "Montserrat",
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF2B2D42),
               ),
-              SizedBox(
-                  width:
-                      00.0), //sized box might have to remove while actual name is displayed
-            ],
-          ),
-          SizedBox(height: 30.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(width: 38),
-              Text(
-                "Phone : $bloodcontact",
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF2B2D42),
-                ),
+            ),
+            //sized box might have to remove while actual name is displayed
+          ],
+        ),
+        SizedBox(height: 20.0),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(width: 38),
+            Text(
+              "Phone : $bloodcontact",
+              style: TextStyle(
+                fontSize: 20.0,
+                fontFamily: "Montserrat",
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF2B2D42),
               ),
-              SizedBox(width: 0
-                  /*245.0*/), //sized box might have to remove while actual name is displayed
-              SizedBox(width: 16.7)
-            ],
-          ),
-          SizedBox(height: 30.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            ),
+          ],
+        ),
+        SizedBox(height: 20.0),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(width: 38),
+            Text(
+              "Email :\n$bloodloginid",
+              style: TextStyle(
+                fontSize: 17.0,
+                fontFamily: "Montserrat",
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF2B2D42),
+              ),
+            ),
+            /* SizedBox(width: 202.0),
+                    SizedBox(width: 16.7)*/
+          ],
+        ),
+        SizedBox(height: 20.0),
+
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 38),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(width: 38),
+              // SizedBox(width: 38),
               Text(
-                "Email :\n$bloodloginid",
+                "I want to donate ",
                 style: TextStyle(
                   fontSize: 17.0,
                   fontFamily: "Montserrat",
@@ -260,40 +275,28 @@ class _BloodAccountDetailsState extends State<BloodAccountDetails> {
                   color: Color(0xFF2B2D42),
                 ),
               ),
-              /* SizedBox(width: 202.0),
-                    SizedBox(width: 16.7)*/
+              Switch(
+                activeColor: Color(0xFF2B2D42),
+                value: isswitched,
+                onChanged: (value) async {
+                  var response = await becomedonor(bloodloginid, value);
+                  if (response["status"] == 200) {
+                    setState(() {
+                      isswitched = value;
+                      print(isswitched);
+                    });
+                  }
+                },
+              ),
             ],
           ),
-          SizedBox(height: 30.0),
-          /* Container(
-            width: 0.0,
-            height: 40.0,
-            child: OutlineButton(
-                splashColor: Color(0xFF2B2D42),
-                // borderSide: BorderSide.none,
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(5.0)),
-                onPressed: () {
-                  print("Pressed Edit");
-                  // Navigator.of(context).pushReplacement(
-                  //   MaterialPageRoute(
-                  //     builder: (context) => DonorEdit(),
-                  //   ),
-                  // );
-                },
-                child: Center(
-                    child: Text(
-                  "Edit",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontFamily: "Montserrat",
-                    fontWeight: FontWeight.bold,
-                  ),
-                ))),
-          ),*/
-        ]);
+        )
+      ],
+    );
   }
 }
+
+int i = 0;
 
 class Posts extends StatefulWidget {
   @override
@@ -303,9 +306,7 @@ class Posts extends StatefulWidget {
 class _PostsState extends State<Posts> {
   @override
   void initState() {
-    // widget.fetchpost(bloodloginid);
     fetchpost(bloodloginid);
-    // TODO: implement initState
     super.initState();
   }
 
@@ -315,24 +316,31 @@ class _PostsState extends State<Posts> {
 
   fetchpost(email) async {
     postlist.clear();
+    i += 1;
+    print("value of i is: $i");
     List<Widget> temp = [];
     var response = await bloodgetmyposts(email);
     print(response);
     if (response["status"] == 200) {
       response["message"].forEach((data) {
-        print(data["post_id"]);
+        // print(data["post_id"]);
         temp.add(
           Posttile(
-            name: data["bloodgrp"],
-            id: data["bloodloginid"],
-            refresh: refresh(),
+            name: data["blood_group"],
+            id: data["post_id"],
+            refresh: refresh,
           ),
         );
       });
     } else if (response["status"] == 401) {
-      temp.add(Center(
-          child: Text("No posts yet!",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))));
+      temp.add(
+        Center(
+          child: Text(
+            "No posts yet!",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+      );
     }
     setState(() {
       postlist = temp;
@@ -353,55 +361,56 @@ class Posttile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.symmetric(vertical: 1),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Color(0xFFEDF2F4),
+      margin: EdgeInsets.symmetric(vertical: 1),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Color(0xFFEDF2F4),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 10,
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 10,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  Text(
-                    name,
-                    style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0,
-                        color: Color(0xFF2B2D42)),
-                  ),
-                ],
-              ),
-              FlatButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
-                color: Color(0xFF2B2D42),
-                onPressed: () async {
-                  print('pressed');
-                  print(id);
-                  var response = await blooddeletepost(id);
-                  print(bloodloginid);
-                  refresh;
-                  // getpost(bloodloginid);
-                },
-                child: Text(
-                  'Delete',
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                Text(
+                  name,
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: Color(0xFF2B2D42)),
+                ),
+              ],
+            ),
+            FlatButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              //    padding: EdgeInsets.fromLTRB(29.5, 20, 29.5, 20),
+              color: Color(0xFF2B2D42),
+              onPressed: () async {
+                print('pressed');
+                // print(id);
+                var response = await blooddeletepost(id);
+                print(bloodloginid);
+                await refresh();
+                // getpost(bloodloginid);
+              },
+              child: Text(
+                'Delete',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -125,7 +125,7 @@ Future<Map<String, dynamic>> bloodreg(
   }
 }
 
-becomedonor(String email, String value) async {
+becomedonor(String email, bool value) async {
   dynamic body = {
     "email": email,
     "value": value,
