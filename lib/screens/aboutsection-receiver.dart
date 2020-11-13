@@ -60,7 +60,7 @@ class _BestState extends State<Best> {
               onPressed: () {
                 print('pressed');
                 //*********************************Rating dialogue box*********************** */
-                _showrating(data["post_id"], data["rating_id"], data["email"]);
+                _showrating(data["post_id"], data["rating_id"], loginid);
               },
               child: Text(
                 'Rate',
@@ -223,7 +223,7 @@ class _BestState extends State<Best> {
                 ),
               ),
               SizedBox(height: 50),
-              Container(
+              /* Container(
                 child: FlatButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0)),
@@ -245,7 +245,7 @@ class _BestState extends State<Best> {
                     ),
                   ),
                 ),
-              ),
+              ),*/
             ],
           )),
     );
