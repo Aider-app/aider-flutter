@@ -103,6 +103,7 @@ class _DonorloginState extends State<Donorlogin> {
                       suffixIcon: Icon(
                         Icons.mail,
                         size: 20.0,
+                        color: Color(0xFF2B2D42),
                       ),
                       hintStyle: TextStyle(
                           fontFamily: 'Montserrat',
@@ -132,6 +133,7 @@ class _DonorloginState extends State<Donorlogin> {
                         suffixIcon: Icon(
                           Icons.lock,
                           size: 20.0,
+                          color: Color(0xFF2B2D42),
                         ),
                         hintText: "Password",
                         hintStyle: TextStyle(
