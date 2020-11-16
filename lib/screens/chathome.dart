@@ -27,7 +27,8 @@ class _ChathomeState extends State<Chathome> {
     l.forEach(
       (element) {
         messages.add(
-          chatsection(element["sender_id"], element["chat_id"], context),
+          chatsection(element["name"], element["chat_id"],
+              element["avg_rating"], context),
         );
       },
     );
@@ -149,11 +150,21 @@ class _ChathomeState extends State<Chathome> {
   }
 }
 
-Widget chatsection(name, id, context) {
+Widget chatsection(name, id, rating, context) {
   return Container(
     height: 90,
     decoration: BoxDecoration(
-      border: Border.all(color: Color(0xff2b2d42)),
+      // border: Border.all(color: Color(0xff2b2d42)),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black38,
+          spreadRadius: 1,
+          blurRadius: 15,
+        )
+        //BoxShadow(color: Colors.red, spreadRadius: 2)
+      ],
+      borderRadius: BorderRadius.circular(20),
+      color: Color(0xFFFFFFFF),
     ),
     child: FlatButton(
       onPressed: () {
@@ -183,31 +194,31 @@ Widget chatsection(name, id, context) {
                 height: 8.0,
               ),
               Text(
-                'Message ',
+                'Rating : $rating',
                 style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
                     fontSize: 15.0,
-                    color: Color(0x802B2D42)),
+                    color: Color(0xb02B2D42)),
               ),
             ],
           ),
 
           //unread message notif
-          /* Container(
-            height: 30,
-            width: 35,
+          /*  Container(
+            height: 40,
+            width: 45,
             decoration: BoxDecoration(
               color: Color(0xff2b2d42),
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: Center(
               child: Text(
-                '$val',
+                '$rating ',
                 style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
-                    fontSize: 10.0,
+                    fontSize: 15.0,
                     color: Color(0xFFFFFFFF)),
               ),
             ),
