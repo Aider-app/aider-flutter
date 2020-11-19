@@ -89,7 +89,15 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
+                              border: Border.all(
+                                  color: Color(0x802B2D42), width: 2),
                               borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 5,
+                                    spreadRadius: 4)
+                              ],
                             ),
                             margin: EdgeInsets.symmetric(
                               horizontal: 40,
@@ -101,12 +109,13 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                               cursorColor: Color(0xFF2B2D42),
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Name",
-                                hintStyle: TextStyle(
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15.0,
-                                    color: Color(0x802B2D42)),
+                                labelText: "Name",
+                                labelStyle: TextStyle(
+                                  color: Color(0xFF2B2D42),
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15.0,
+                                ),
                                 //error checking message
                                 errorText:
                                     _validateName ? 'Enter a name.' : null,
@@ -134,7 +143,15 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                               Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
+                                  border: Border.all(
+                                      color: Color(0x802B2D42), width: 2),
                                   borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black12,
+                                        blurRadius: 5,
+                                        spreadRadius: 4)
+                                  ],
                                 ),
                                 margin: EdgeInsets.symmetric(
                                   horizontal: 40,
@@ -252,7 +269,15 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
+                              border: Border.all(
+                                  color: Color(0x802B2D42), width: 2),
                               borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 5,
+                                    spreadRadius: 4)
+                              ],
                             ),
                             margin: EdgeInsets.symmetric(
                               horizontal: 40,
@@ -264,12 +289,13 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                                 cursorColor: Color(0xFF2B2D42),
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: "Mobile",
-                                  hintStyle: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15.0,
-                                      color: Color(0x802B2D42)),
+                                  labelText: "Phone",
+                                  labelStyle: TextStyle(
+                                    color: Color(0xFF2B2D42),
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 15.0,
+                                  ),
                                   //error checking message
                                   errorText: _validatePhone
                                       ? 'Enter a valid mobile number.'
@@ -283,7 +309,15 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
+                              border: Border.all(
+                                  color: Color(0x802B2D42), width: 2),
                               borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 5,
+                                    spreadRadius: 4)
+                              ],
                             ),
                             margin: EdgeInsets.symmetric(
                               horizontal: 40,
@@ -295,12 +329,13 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                               cursorColor: Color(0xFF2B2D42),
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Email",
-                                hintStyle: TextStyle(
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15.0,
-                                    color: Color(0x802B2D42)),
+                                labelText: "Email",
+                                labelStyle: TextStyle(
+                                  color: Color(0xFF2B2D42),
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15.0,
+                                ),
                                 //error message
                                 errorText: _validateEmail
                                     ? 'Enter a valid Email.'
@@ -315,7 +350,15 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
+                              border: Border.all(
+                                  color: Color(0x802B2D42), width: 2),
                               borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 5,
+                                    spreadRadius: 4)
+                              ],
                             ),
                             margin: EdgeInsets.symmetric(
                               horizontal: 40,
@@ -333,12 +376,13 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                                 cursorColor: Color(0xFF2B2D42),
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: "Address",
-                                  hintStyle: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15.0,
-                                      color: Color(0x802B2D42)),
+                                  labelText: "Address",
+                                  labelStyle: TextStyle(
+                                    color: Color(0xFF2B2D42),
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 15.0,
+                                  ),
                                   //error message
                                   errorText: _validateAddress
                                       ? 'Enter a valid address.'
@@ -354,7 +398,15 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
+                              border: Border.all(
+                                  color: Color(0x802B2D42), width: 2),
                               borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 5,
+                                    spreadRadius: 4)
+                              ],
                             ),
                             margin: EdgeInsets.symmetric(
                               horizontal: 40,
@@ -367,12 +419,13 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                               cursorColor: Color(0xFF2B2D42),
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Create password",
-                                hintStyle: TextStyle(
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15.0,
-                                    color: Color(0x802B2D42)),
+                                labelText: "Password",
+                                labelStyle: TextStyle(
+                                  color: Color(0xFF2B2D42),
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15.0,
+                                ),
                                 //error message
                                 errorText: _validatePass
                                     ? 'Password should be atleast 8 characters long.'
@@ -387,7 +440,15 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.white,
+                              border: Border.all(
+                                  color: Color(0x802B2D42), width: 2),
                               borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 5,
+                                    spreadRadius: 4)
+                              ],
                             ),
                             margin: EdgeInsets.symmetric(
                               horizontal: 40,
@@ -400,12 +461,13 @@ class _BloodcreateAccState extends State<BloodcreateAcc> {
                               cursorColor: Color(0xFF2B2D42),
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Confirm password",
-                                hintStyle: TextStyle(
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15.0,
-                                    color: Color(0x802B2D42)),
+                                labelText: "Confirm Password",
+                                labelStyle: TextStyle(
+                                  color: Color(0xFF2B2D42),
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15.0,
+                                ),
                                 //error message
                                 errorText: _validateConPass
                                     ? 'Passwords do not match.'
