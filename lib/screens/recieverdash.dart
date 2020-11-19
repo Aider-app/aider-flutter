@@ -104,7 +104,11 @@ class _RecieverdashState extends State<Recieverdash> {
                               alignment: Alignment.topRight,
                               child: FlatButton(
                                   onPressed: () {
-                                    Navigator.pop(context);
+                                    Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Donorlogin()),
+                                        (route) => false);
                                   },
                                   child: Text(
                                     'Logout',
@@ -168,7 +172,8 @@ class _RecieverdashState extends State<Recieverdash> {
                                 padding: EdgeInsets.all(25.0),
 
                                 child: Icon(
-                                  Icons.format_list_bulleted,
+                                  // Icons.format_list_bulleted,
+                                  Icons.chat_bubble_outline_outlined,
                                   color: Colors.white,
                                   size: 50.0,
                                 ),
@@ -179,7 +184,7 @@ class _RecieverdashState extends State<Recieverdash> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(width: 20.0),
+                            SizedBox(width: 17.0),
                             Text(
                               'Create Request',
                               style: TextStyle(
@@ -188,9 +193,9 @@ class _RecieverdashState extends State<Recieverdash> {
                                   fontSize: 15.0,
                                   color: Color(0xFF2B2D42)),
                             ),
-                            SizedBox(width: 40.0),
+                            SizedBox(width: 48.0),
                             Text(
-                              'Previous Requests',
+                              'Aider Connect',
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,

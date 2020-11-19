@@ -28,8 +28,11 @@ class _ChathomeState extends State<Chathome> {
       (element) {
         messages.add(
           chatsection(element["name"], element["chat_id"],
-              element["avg_rating"], context),
+              element["avg_rating"], element["item_name"], context),
         );
+        messages.add(SizedBox(
+          height: 10,
+        ));
       },
     );
     setState(() {
@@ -110,6 +113,7 @@ class _ChathomeState extends State<Chathome> {
               ),
               Expanded(
                   child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Column(children: finalmessages
                     /*list*/ /*[
                     SizedBox(height: 20.0),
@@ -150,7 +154,7 @@ class _ChathomeState extends State<Chathome> {
   }
 }
 
-Widget chatsection(name, id, rating, context) {
+Widget chatsection(name, id, rating, itemname, context) {
   return Container(
     height: 90,
     decoration: BoxDecoration(
@@ -203,7 +207,7 @@ Widget chatsection(name, id, rating, context) {
               ),
             ],
           ),
-
+          Text("Item : $itemname")
           //unread message notif
           /*  Container(
             height: 40,

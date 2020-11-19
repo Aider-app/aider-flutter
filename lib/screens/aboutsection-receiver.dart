@@ -479,7 +479,10 @@ class Posttile extends StatelessWidget {
                 child: Column(children: ratelist),
               ),
               FlatButton(
-                child: Icon(Icons.arrow_right),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
+                color: Color(0xFF2B2D42),
+                child: Icon(Icons.arrow_forward, color: Colors.white),
                 onPressed: () async {
                   print("pressed");
                   var response = await deletmypost(id);
