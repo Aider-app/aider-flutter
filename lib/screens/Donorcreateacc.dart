@@ -70,8 +70,16 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                     //****************************************************Name****************************************
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        border: Border.all(color: Color(0x802B2D42), width: 2),
                         borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 5,
+                              spreadRadius: 4)
+                        ],
+                        color: Colors.white,
+                        //borderRadius: BorderRadius.circular(20),
                       ),
                       margin: EdgeInsets.symmetric(
                         horizontal: 40,
@@ -83,12 +91,13 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                         cursorColor: Color(0xFF2B2D42),
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: "Name",
-                          hintStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15.0,
-                              color: Color(0x802B2D42)),
+                          labelText: "Name",
+                          labelStyle: TextStyle(
+                            color: Color(0xFF2B2D42),
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15.0,
+                          ),
                           //error checking message
                           errorText: _validateName ? 'Enter a name.' : null,
                         ),
@@ -100,8 +109,15 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                     //***************************************Phone*************************************************
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        border: Border.all(color: Color(0x802B2D42), width: 2),
                         borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 5,
+                              spreadRadius: 4)
+                        ],
+                        color: Colors.white,
                       ),
                       margin: EdgeInsets.symmetric(
                         horizontal: 40,
@@ -114,12 +130,13 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                           cursorColor: Color(0xFF2B2D42),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: "Mobile",
-                            hintStyle: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                                color: Color(0x802B2D42)),
+                            labelText: "Mobile",
+                            labelStyle: TextStyle(
+                              color: Color(0xFF2B2D42),
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15.0,
+                            ),
                             //error checking message
                             errorText: _validatePhone
                                 ? 'Enter a valid mobile number.'
@@ -132,8 +149,15 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                     //*****************************************Email**************************************************
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        border: Border.all(color: Color(0x802B2D42), width: 2),
                         borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 5,
+                              spreadRadius: 4)
+                        ],
+                        color: Colors.white,
                       ),
                       margin: EdgeInsets.symmetric(
                         horizontal: 40,
@@ -145,12 +169,13 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                         cursorColor: Color(0xFF2B2D42),
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: "Email",
-                          hintStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15.0,
-                              color: Color(0x802B2D42)),
+                          labelText: "Email",
+                          labelStyle: TextStyle(
+                            color: Color(0xFF2B2D42),
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15.0,
+                          ),
                           //error message
                           errorText:
                               _validateEmail ? 'Enter a valid Email.' : null,
@@ -202,8 +227,16 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                     //*******************************************password*******************************************************************
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        border: Border.all(color: Color(0x802B2D42), width: 2),
                         borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 5,
+                              spreadRadius: 4)
+                        ],
+                        color: Colors.white,
+                        // borderRadius: BorderRadius.circular(20),
                       ),
                       margin: EdgeInsets.symmetric(
                         horizontal: 40,
@@ -216,12 +249,13 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                         cursorColor: Color(0xFF2B2D42),
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: "Create password",
-                          hintStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15.0,
-                              color: Color(0x802B2D42)),
+                          labelText: "Password",
+                          labelStyle: TextStyle(
+                            color: Color(0xFF2B2D42),
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15.0,
+                          ),
                           //error message
                           errorText: _validatePass
                               ? 'Password should be atleast 8 characters long.'
@@ -235,8 +269,16 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                     //************************************confirm password***********************************************************
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        border: Border.all(color: Color(0x802B2D42), width: 2),
                         borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 5,
+                              spreadRadius: 4)
+                        ],
+                        color: Colors.white,
+                        //  borderRadius: BorderRadius.circular(20),
                       ),
                       margin: EdgeInsets.symmetric(
                         horizontal: 40,
@@ -249,12 +291,13 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                         cursorColor: Color(0xFF2B2D42),
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: "Confirm password",
-                          hintStyle: TextStyle(
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15.0,
-                              color: Color(0x802B2D42)),
+                          labelText: "Confirm Password",
+                          labelStyle: TextStyle(
+                            color: Color(0xFF2B2D42),
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15.0,
+                          ),
                           //error message
                           errorText: _validateConPass
                               ? 'Passwords do not match.'
@@ -377,7 +420,7 @@ class _DonorCreateAccState extends State<DonorCreateAcc> {
                             );
                           },
                           child: Text(
-                            'Create recipient account',
+                            'Create Recipient Account',
                             style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
