@@ -26,8 +26,8 @@ class _ChooseSectionState extends State<ChooseSection> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 300,
-                width: 300,
+                height: 200,
+                width: 200,
                 child: Image(image: AssetImage('images/logosplash.png')),
               ),
               SizedBox(
@@ -117,11 +117,10 @@ class _ChooseSectionState extends State<ChooseSection> {
                     'Choose Resource bank if you want to donate or request goods.\n\nChoose Blood bank if you want to request or donate blood.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF2B2D42),
-                    ),
+                        fontSize: 12,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF2B2D42).withOpacity(.8)),
                   ),
                 ),
               ),

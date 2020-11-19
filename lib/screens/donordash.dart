@@ -105,7 +105,11 @@ class _DonordashState extends State<Donordash> {
                             alignment: Alignment.topRight,
                             child: FlatButton(
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Donorlogin()),
+                                      (route) => false);
                                 },
                                 child: Text(
                                   'Logout',
