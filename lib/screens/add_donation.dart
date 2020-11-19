@@ -98,7 +98,14 @@ class _MakeDonationState extends State<MakeDonation> {
                     Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
+                        border: Border.all(color: Color(0x802B2D42), width: 2),
                         borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 5,
+                              spreadRadius: 4)
+                        ],
                       ),
                       padding: EdgeInsets.all(5.0),
                       child: DropdownButton(
@@ -171,7 +178,15 @@ class _MakeDonationState extends State<MakeDonation> {
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
+                          border:
+                              Border.all(color: Color(0x802B2D42), width: 2),
                           borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 5,
+                                spreadRadius: 4)
+                          ],
                         ),
                         margin: EdgeInsets.symmetric(
                           horizontal: 40,
@@ -182,12 +197,13 @@ class _MakeDonationState extends State<MakeDonation> {
                           maxLines: null,
                           cursorColor: Color(0xFF2B2D42),
                           decoration: InputDecoration(
-                            hintText: "Description",
-                            hintStyle: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                                color: Color(0x802B2D42)),
+                            labelText: "Description",
+                            labelStyle: TextStyle(
+                              color: Color(0xFF2B2D42),
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15.0,
+                            ),
                             errorText: _validatedescription
                                 ? 'Describe the item.'
                                 : null,
@@ -217,7 +233,15 @@ class _MakeDonationState extends State<MakeDonation> {
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
+                          border:
+                              Border.all(color: Color(0x802B2D42), width: 2),
                           borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 5,
+                                spreadRadius: 4)
+                          ],
                         ),
                         margin: EdgeInsets.symmetric(
                           horizontal: 40,
@@ -229,12 +253,13 @@ class _MakeDonationState extends State<MakeDonation> {
                           cursorColor: Color(0xFF2B2D42),
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                            hintText: "Quantity",
-                            hintStyle: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.0,
-                                color: Color(0x802B2D42)),
+                            labelText: "Quantity",
+                            labelStyle: TextStyle(
+                              color: Color(0xFF2B2D42),
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15.0,
+                            ),
                             errorText: _validatedescription
                                 ? 'Enter the quantity.'
                                 : null,

@@ -53,7 +53,12 @@ class _BloodloginState extends State<Bloodlogin> {
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
+                border: Border.all(color: Color(0x802B2D42), width: 2),
                 borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black12, blurRadius: 5, spreadRadius: 4)
+                ],
               ),
               margin: EdgeInsets.symmetric(
                 horizontal: 40,
@@ -92,7 +97,12 @@ class _BloodloginState extends State<Bloodlogin> {
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
+                border: Border.all(color: Color(0x802B2D42), width: 2),
                 borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black12, blurRadius: 5, spreadRadius: 4)
+                ],
               ),
               margin: EdgeInsets.symmetric(
                 horizontal: 40,
