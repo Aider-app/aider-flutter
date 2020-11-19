@@ -9,7 +9,6 @@ String loggeduser = "NA";
 String loginid;
 String id = "NA";
 String rating = "0";
-String contact = "NA";
 //import 'package:aider/screens/donorregsuccess.dart';
 Position position;
 void main() => runApp(Donorlogin());
@@ -47,21 +46,10 @@ class _DonorloginState extends State<Donorlogin> {
       },
       child: SafeArea(
         child: Scaffold(
-          /* appBar: AppBar(
-            backgroundColor: Color(0xFFEDF2F4),
-            elevation: 0,
-            title: Text(
-              "Aider",
-              style: TextStyle(
-                  color: Colors.black, fontSize: 30, fontFamily: 'Montserrat'),
-            ),
-          ),*/
-          /*appBar: AppBar(
-            title: Image.asset(
-              'images/logo.png',
-            ),
-            backgroundColor: Color(0xFFEDF2F4),
-          ),*/
+          // appBar: AppBar(
+          //   title: Image.asset('images/logo.png',),
+          //   backgroundColor: Color(0xFFEDF2F4),
+          // ),
           resizeToAvoidBottomInset: false,
           body: Container(
             decoration: BoxDecoration(
@@ -88,36 +76,35 @@ class _DonorloginState extends State<Donorlogin> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      border: Border.all(color: Color(0x802B2D42), width: 2),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 5,
-                            spreadRadius: 4)
-                      ]),
+                    border: Border.all(
+                      color: Color(0x802B2D42),
+                      width: 2),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
                   margin: EdgeInsets.symmetric(
                     horizontal: 40,
                   ),
                   padding: EdgeInsets.all(10),
                   child: TextField(
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
                     controller: _mailcon,
                     cursorColor: Color(0xFF2B2D42),
                     decoration: InputDecoration(
-                      border: InputBorder.none,
                       labelText: "Email",
                       labelStyle: TextStyle(
-                        color: Color(0xFF2B2D42),
                         fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold
                       ),
-                      suffixIcon: Icon(
-                        Icons.mail,
-                        size: 20.0,
-                        color: Color(0xFF2B2D42),
-                      ),
+                      suffixIcon: Icon(Icons.mail, size: 20.0,),
+                      border: InputBorder.none,
+                      hintStyle: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15.0,
+                          color: Color(0x802B2D42)),
                     ),
                   ),
                 ),
@@ -126,43 +113,40 @@ class _DonorloginState extends State<Donorlogin> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Color(0x802B2D42), width: 2),
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 5,
-                            spreadRadius: 4)
-                      ]),
+                    border: Border.all(
+                      color: Color(0x802B2D42),
+                      width: 2),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
                   margin: EdgeInsets.symmetric(
                     horizontal: 40,
                   ),
-                  padding: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(10),
                   child: TextField(
                       controller: _passcon,
                       obscureText: true,
                       cursorColor: Color(0xFF2B2D42),
                       decoration: InputDecoration(
-                        border: InputBorder.none,
-                        suffixIcon: Icon(
-                          Icons.lock,
-                          size: 20.0,
-                          color: Color(0xFF2B2D42),
-                        ),
                         labelText: "Password",
                         labelStyle: TextStyle(
-                          color: Color(0xFF2B2D42),
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.w600,
-                          fontSize: 15.0,
-                        ),
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold
+                      ),
+                        suffixIcon: Icon(Icons.lock, size: 20.0,),
+                        border: InputBorder.none,
+                        hintStyle: TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.0,
+                            color: Color(0x802B2D42)),
                       )),
                 ),
                 Container(
                   child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
+                        SizedBox(width: 37),
                         FlatButton(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20.0)),
@@ -175,27 +159,28 @@ class _DonorloginState extends State<Donorlogin> {
                               );
                             },
                             child: Text(
-                              'New user? Create an account.',
+                              'Create Account',
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 12.0,
+                                  fontSize: 18.0,
                                   color: Color(0xFF2B2D42)),
                             )),
-                        FlatButton(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            onPressed: () {
-                              print('Pressed forgot password');
-                            },
-                            child: Text(
-                              'Forgot password?',
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12.0,
-                                  color: Color(0xFF2B2D42)),
-                            )),
+                            SizedBox(width : 50.0),
+                        // FlatButton(
+                        //     shape: RoundedRectangleBorder(
+                        //         borderRadius: BorderRadius.circular(20.0)),
+                        //     onPressed: () {
+                        //       print('Pressed forgot password');
+                        //     },
+                        //     // child: Text(
+                        //     //   'Forgot password',
+                        //     //   style: TextStyle(
+                        //     //       fontFamily: 'Montserrat',
+                        //     //       fontWeight: FontWeight.bold,
+                        //     //       fontSize: 18.0,
+                        //     //       color: Color(0xFF2B2D42)),
+                        //     // )),
                       ]),
                 ),
                 SizedBox(
@@ -220,7 +205,6 @@ class _DonorloginState extends State<Donorlogin> {
                             loggeduser = response["name"];
                             loginid = response["email"];
                             rating = response["rating"];
-                            contact = response["phone"];
                             print(loggeduser);
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
@@ -232,16 +216,17 @@ class _DonorloginState extends State<Donorlogin> {
                             loginid = response["email"];
                             print(loggeduser);
                             id = response["org_id"];
-                            contact = response["phone"];
-                            print(contact);
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
                                 builder: (context) => Recieverdash(),
                               ),
                             );
                           }
+                        } else if (response["status"] == 403) {
+                          createdialogbox(
+                              context, "Incorrect Username or Password");
                         } else {
-                          createdialogbox(context, response["message"]);
+                          createdialogbox(context, "User Does not Exist");
                         }
                       },
                       child: Text(

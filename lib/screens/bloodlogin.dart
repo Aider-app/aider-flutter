@@ -63,8 +63,14 @@ class _BloodloginState extends State<Bloodlogin> {
                 controller: _bloodlogemail,
                 cursorColor: Colors.black,
                 decoration: InputDecoration(
-                  // border: InputBorder.none,
-                  hintText: "Email",
+                  border: InputBorder.none,
+                  labelText: "Email",
+                  labelStyle: TextStyle(
+                    color: Color(0xFF2B2D42),
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 15.0,
+                  ),
                   suffixIcon: Icon(
                     Icons.mail,
                     size: 20.0,
@@ -98,7 +104,13 @@ class _BloodloginState extends State<Bloodlogin> {
                 cursorColor: Colors.black,
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  hintText: "Password",
+                  labelText: "Password",
+                  labelStyle: TextStyle(
+                    color: Color(0xFF2B2D42),
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 15.0,
+                  ),
                   suffixIcon: Icon(
                     Icons.lock,
                     size: 20.0,
