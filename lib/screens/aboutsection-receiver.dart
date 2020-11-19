@@ -106,6 +106,7 @@ class _BestState extends State<Best> {
         backgroundColor: Color(0xFF2B2D42),
         child: Icon(Icons.home_outlined),
         onPressed: () {
+          Navigator.of(context).pop();
           // Navigator.of(context).pushReplacement(
           //   MaterialPageRoute(
           //     builder: (context) => Donordash(),

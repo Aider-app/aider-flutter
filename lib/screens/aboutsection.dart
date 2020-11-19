@@ -54,6 +54,7 @@ class _BestState extends State<Best> {
         backgroundColor: Color(0xFF2B2D42),
         child: Icon(Icons.home_outlined),
         onPressed: () {
+          Navigator.of(context).pop();
           // Navigator.of(context).pushReplacement(
           //   MaterialPageRoute(
           //     builder: (context) => Donordash(),
@@ -319,9 +320,14 @@ class _PostsState extends State<Posts> {
         },
       );
     } else if (response["status"] == 401) {
-      temp.add(Center(
-          child: Text("No posts yet!",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))));
+      temp.add(
+        Center(
+          child: Text(
+            "No posts yet!",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+      );
     }
     setState(
       () {
