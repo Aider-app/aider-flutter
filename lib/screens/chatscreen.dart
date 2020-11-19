@@ -118,7 +118,7 @@ class _ChatscreenState extends State<Chatscreen> {
                         spreadRadius: 2,
                         offset: Offset(3, 3))
                   ],
-            gradient: element["author"] == loginid
+            /* gradient: element["author"] == loginid
                 ? LinearGradient(
                     colors: [Color(0xff9597B5), Colors.white30],
                     //transform: GradientRotation(20),
@@ -128,10 +128,10 @@ class _ChatscreenState extends State<Chatscreen> {
                     Color(0xffA4C0E9),
                     Color(0x8fA4C0E9),
                     Colors.white30
-                  ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
-            /*color: sendertest == loginid
-              ? Color(0xff9597B5) //sent msg
-              : Color(0xffA4C0E9), //recieved*/
+                  ], begin: Alignment.topCenter, end: Alignment.bottomCenter),*/
+            color: element["author"] == loginid
+                ? Color(0xff9597B5) //sent msg
+                : Color(0xffA4C0E9), //recieved
             borderRadius: element["author"] == loginid
                 ? BorderRadius.only(
                     topLeft: Radius.circular(15.0),
