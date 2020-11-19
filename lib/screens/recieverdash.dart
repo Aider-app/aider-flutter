@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 //import 'package:aider/screens/reciever_details.dart';
 import 'package:aider/screens/chathome.dart';
 import 'package:aider/screens/aboutsection-receiver.dart';
+import 'package:aider/screens/chooseSection.dart';
 
 class Recieverdash extends StatefulWidget {
   @override
@@ -107,7 +108,8 @@ class _RecieverdashState extends State<Recieverdash> {
                                     Navigator.pushAndRemoveUntil(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Donorlogin()),
+                                            builder: (context) =>
+                                                ChooseSection()),
                                         (route) => false);
                                   },
                                   child: Text(

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:aider/screens/Login.dart';
 import 'package:aider/screens/rec_list.dart';
 import 'package:aider/screens/aboutsection.dart';
+import 'package:aider/screens/chooseSection.dart';
 
 class Donordash extends StatefulWidget {
   @override
@@ -108,7 +109,8 @@ class _DonordashState extends State<Donordash> {
                                   Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Donorlogin()),
+                                          builder: (context) =>
+                                              ChooseSection()),
                                       (route) => false);
                                 },
                                 child: Text(
