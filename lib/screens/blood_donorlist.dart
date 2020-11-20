@@ -41,11 +41,7 @@ class _DonationListState extends State<DonationList> {
             backgroundColor: Color(0xFF2B2D42),
             child: Icon(Icons.home_outlined),
             onPressed: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => Blooddash(),
-                ),
-              );
+              Navigator.of(context).pop();
             },
           ),
           floatingActionButtonLocation:

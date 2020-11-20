@@ -14,6 +14,7 @@ class BloodAccountDetails extends StatefulWidget {
 List<Widget> postlist = [];
 
 //class _BloodDetailsState extends State<BloodDetails> {
+bool isswitched = iswilling;
 
 class _BloodAccountDetailsState extends State<BloodAccountDetails> {
   int getPageIndex = 0;
@@ -22,7 +23,7 @@ class _BloodAccountDetailsState extends State<BloodAccountDetails> {
   final _quantity = TextEditingController();
   bool _validatequantity = false;
   int _value = 1;
-  bool isswitched = iswilling;
+
   PageController pageController;
   whenPageChanges(int pageIndex) {
     setState(() {

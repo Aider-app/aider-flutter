@@ -5,8 +5,8 @@ import 'package:aider/screens/Login.dart';
 import 'package:aider/networking/chat.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-Widget rowelement(
-    item_type, item_name, publisher, post_id, distance, quantity, context) {
+Widget rowelement(item_type, item_name, publisher, post_id, distance, quantity,
+    contact, context) {
   return Container(
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -29,7 +29,7 @@ Widget rowelement(
                 height: 8.0,
               ),
               Text(
-                '$distance m away',
+                '$distance km away',
                 style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
@@ -103,7 +103,7 @@ Widget rowelement(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0)),
                 onPressed: () {
-                  print('Pressed accept request');
+                  print('Pressed call button $contact');
                   launch("tel://$contact");
                   /*dynamic response =
                       await acceptchat(publisher, loginid, "true", post_id);
