@@ -5,6 +5,7 @@ import 'package:aider/screens/bloodlogin.dart';
 import 'package:aider/screens/bloodprereq.dart';
 import 'package:aider/screens/blood_reclist.dart';
 import 'package:flutter/material.dart';
+import 'package:aider/screens/chooseSection.dart';
 
 class Blooddash extends StatefulWidget {
   @override
@@ -45,6 +46,12 @@ class _BlooddashState extends State<Blooddash> {
                   Container(
                     height: deviceHeight * 0.30,
                     decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black38,
+                              spreadRadius: 5,
+                              blurRadius: 4)
+                        ],
                         color: Color(0xFF2B2D42),
                         borderRadius: new BorderRadius.only(
                           bottomLeft: const Radius.circular(50.0),
@@ -104,7 +111,12 @@ class _BlooddashState extends State<Blooddash> {
                               alignment: Alignment.topRight,
                               child: FlatButton(
                                   onPressed: () {
-                                    Navigator.pop(context);
+                                    Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ChooseSection()),
+                                        (route) => false);
                                   },
                                   child: Text(
                                     'Logout',
@@ -216,7 +228,8 @@ class _BlooddashState extends State<Blooddash> {
                                 onPressed: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => BloodAccountDetails(),
+                                      builder: (context) =>
+                                          BloodAccountDetails(),
                                     ),
                                   );
                                 },

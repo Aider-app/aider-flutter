@@ -25,7 +25,7 @@ Widget rowelement(
               height: 8.0,
             ),
             Text(
-              '$distance m',
+              '$distance km',
               style: TextStyle(
                   fontFamily: 'Montserrat',
                   fontWeight: FontWeight.bold,

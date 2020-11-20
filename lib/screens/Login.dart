@@ -4,6 +4,7 @@ import 'package:aider/screens/donordash.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 import 'package:aider/networking/auth.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 String loggeduser = "NA";
 String loginid;
@@ -28,6 +29,10 @@ class Donorlogin extends StatefulWidget {
 class _DonorloginState extends State<Donorlogin> {
   final _passcon = TextEditingController();
   final _mailcon = TextEditingController();
+  final Uri _emailLaunchUri = Uri(
+      scheme: 'mailto',
+      path: 'aiderapp454@gmail.com',
+      queryParameters: {'subject': 'Aider App'});
   @override
   void initState() {
     // TODO: implement initState
@@ -256,6 +261,12 @@ class _DonorloginState extends State<Donorlogin> {
                 SizedBox(
                   height: 60.0,
                 ),
+                FlatButton(
+                  child: Text("contact us"),
+                  onPressed: () {
+                    launch(_emailLaunchUri.toString());
+                  },
+                )
                 // ButtonTheme(
                 //   minWidth: 50.0,
                 //   height: 60.0,

@@ -45,8 +45,9 @@ class _BloodRecipientListState extends State<BloodRecipientList> {
               posts["message"][i]["data"]["name"],
               posts["message"][i]["data"]["address"],
               posts["message"][i]["data"]["blood_group"],
-              posts["message"][i]["distance"],
+              posts["message"][i]["distance"] / 1000,
               posts["message"][i]["data"]["post_id"],
+              posts["message"][i]["data"]["contact"],
               context),
         );
         l.add(

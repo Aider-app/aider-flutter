@@ -47,6 +47,12 @@ class _DonordashState extends State<Donordash> {
                 Container(
                   height: deviceHeight * 0.30,
                   decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black38,
+                            spreadRadius: 5,
+                            blurRadius: 4)
+                      ],
                       color: Color(0xFF2B2D42),
                       borderRadius: new BorderRadius.only(
                         bottomLeft: const Radius.circular(50.0),

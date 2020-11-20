@@ -36,7 +36,7 @@ class _RecipientListState extends State<RecipientList> {
             posts[i]["data"]["item_name"],
             posts[i]["data"]["publisher_id"],
             posts[i]["data"]["post_id"],
-            posts[i]["distance"],
+            posts[i]["distance"] / 1000,
             posts[i]["data"]["quantity"],
             context),
       );
